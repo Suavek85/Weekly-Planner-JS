@@ -1,0 +1,260 @@
+
+        body {
+
+            background-color: #E6E8FA;
+            margin: 0;
+
+
+        }
+
+
+        /* HEADER */
+
+        .header {
+            display: flex;
+            align-items: center;
+
+        }
+
+
+        h1 {
+
+
+            font-size: 24px;
+            text-transform: uppercase;
+
+
+        }
+
+        #logo {
+
+
+            width: 50px;
+            height: 50px;
+            margin: 15px 8px 15px 15px;
+
+
+        }
+
+
+        /* DAYS BOX*/
+
+        h2 {
+
+
+            border: 0.5px solid black;
+            text-align: center;
+            background-color: #E6E8FA;
+            font-size: 18px;
+
+
+
+
+
+        }
+
+        .flex-days {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+
+        }
+
+        .day-box {
+
+
+            display: block;
+            position: relative;
+            width: 120px;
+            height: 80px;
+            border: 3px solid black;
+            padding: 35px;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            background-size: cover;
+
+        }
+
+
+        .add {
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 8px;
+            font-size: 14px;
+
+
+
+        }
+
+        .open {
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 5px;
+            font-size: 14px;
+
+        }
+
+        .output {
+
+            font-weight: 600;
+            font-size: 16px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: block;
+            background-color: #E6E8FA;
+            overflow-wrap: break-word;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+
+        /* FORM BOX*/
+
+        #form-container {
+
+
+            display: none;
+            flex-direction: row;
+            width: 500px;
+            height: 400px;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border: 5px solid grey;
+
+        }
+
+
+
+
+        .flex-form {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+
+
+        }
+
+
+        .form-item {
+
+            align-self: stretch;
+            margin: 7px 10px;
+
+        }
+
+
+        .flex-form-btns {
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+        }
+
+
+        /* NOTES BOX*/
+
+        .notes-box {
+
+
+            display: none;
+            width: 600px;
+            margin: auto;
+            position: relative;
+            border: 5px solid grey;
+            background-image: url(images/pad.jpg);
+            background-size: cover;
+
+        }
+
+
+        .flex-notes {
+
+            display: flex;
+            width: 500px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+
+
+        }
+
+
+        .notes-item {
+
+            margin: 15px;
+            padding: 5px;
+            border: 1px solid grey;
+            width: 200px;
+            overflow-wrap: break-word;
+            background-color: white;
+
+        }
+
+
+        i {
+            border: solid black;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            margin-right: 7px;
+        }
+
+
+        .icon-task {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+
+        #close {
+
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+        }
+
+
+        /* BUTTONS*/
+
+        #btn_1,
+        #btn_2,
+        #btn_3,
+        #btn_4,
+        #btn_5,
+        #btn_6,
+        #btn_7 {
+
+
+            display: none;
+
+        }
+
+
+        #btn_1_sub,
+        #btn_2_sub,
+        #btn_3_sub,
+        #btn_4_sub,
+        #btn_5_sub,
+        #btn_6_sub,
+        #btn_7_sub {
+
+
+            display: none;
+
+        }
+
+   
