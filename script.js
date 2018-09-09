@@ -1,6 +1,6 @@
 
     
-    var notes1, notes2, notes3, notes4, notes5, day1List, day2List, day3List, day4List, day5List, day6List, day7List, view, radios, checkedRadio, eventbtn, addArray, openArray, submitArray;
+    var notes1, notes2, notes3, notes4, notes5, day1List, day2List, day3List, day4List, day5List, day6List, day7List, view, radios, checkedRadio, eventbtn, target, addArray, openArray, submitArray;
 
     addArray = Array.prototype.slice.call(document.querySelectorAll('.add'));
 
@@ -158,7 +158,7 @@
         view.objectBuilder();
 
 
-        var target = evt.target;
+        target = evt.target;
 
         switch (target.id) {
             case 'btn_1':
@@ -220,7 +220,7 @@
 
 
     for (var i = 0; i < openArray.length; i++)
-        openArray[i].onclick = function()
+        openArray[i].onclick = function(event)
 
     {
 
@@ -229,7 +229,7 @@
         view.undisplayForm();
 
 
-        if (event.srcElement.id === 'btn_1_sub') {
+        if (event.target.id === 'btn_1_sub') {
 
             document.querySelector('#output2').innerHTML = day1List.b;
             document.querySelector('#output3').innerHTML = day1List.c;
@@ -237,7 +237,7 @@
             document.querySelector('#output5').innerHTML = day1List.e;
 
 
-        } else if (event.srcElement.id === 'btn_2_sub') {
+        } else if (event.target.id === 'btn_2_sub') {
 
             document.querySelector('#output2').innerHTML = day2List.b;
             document.querySelector('#output3').innerHTML = day2List.c;
@@ -245,31 +245,31 @@
             document.querySelector('#output5').innerHTML = day2List.e;
 
 
-        } else if (event.srcElement.id === 'btn_3_sub') {
+        } else if (event.target.id === 'btn_3_sub') {
 
             document.querySelector('#output2').innerHTML = day3List.b;
             document.querySelector('#output3').innerHTML = day3List.c;
             document.querySelector('#output4').innerHTML = day3List.d;
             document.querySelector('#output5').innerHTML = day3List.e;
-        } else if (event.srcElement.id === 'btn_4_sub') {
+        } else if (event.target.id === 'btn_4_sub') {
 
             document.querySelector('#output2').innerHTML = day4List.b;
             document.querySelector('#output3').innerHTML = day4List.c;
             document.querySelector('#output4').innerHTML = day4List.d;
             document.querySelector('#output5').innerHTML = day4List.e;
-        } else if (event.srcElement.id === 'btn_5_sub') {
+        } else if (event.target.id === 'btn_5_sub') {
 
             document.querySelector('#output2').innerHTML = day5List.b;
             document.querySelector('#output3').innerHTML = day5List.c;
             document.querySelector('#output4').innerHTML = day5List.d;
             document.querySelector('#output5').innerHTML = day5List.e;
-        } else if (event.srcElement.id === 'btn_6_sub') {
+        } else if (event.target.id === 'btn_6_sub') {
 
             document.querySelector('#output2').innerHTML = day6List.b;
             document.querySelector('#output3').innerHTML = day6List.c;
             document.querySelector('#output4').innerHTML = day6List.d;
             document.querySelector('#output5').innerHTML = day6List.e;
-        } else if (event.srcElement.id === 'btn_7_sub') {
+        } else if (event.target.id === 'btn_7_sub') {
 
             document.querySelector('#output2').innerHTML = day7List.b;
             document.querySelector('#output3').innerHTML = day7List.c;
