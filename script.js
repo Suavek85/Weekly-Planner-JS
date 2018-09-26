@@ -1,6 +1,6 @@
 
     
-    var notes1, notes2, notes3, notes4, notes5, day1List, day2List, day3List, day4List, day5List, day6List, day7List, view, radios, checkedRadio, eventbtn, target, addArray, openArray, submitArray;
+    var addArray, openArray, submitArray;
 
     addArray = Array.prototype.slice.call(document.querySelectorAll('.add'));
 
@@ -44,18 +44,14 @@
 
             radios = document.getElementsByName('day');
 
-            checkedRadio;
-
             for (var i = 0, length = radios.length; i < length; i++) {
                 if (radios[i].checked) {
 
                     checkedRadio = radios[i].value
 
-
                     break;
                 }
             }
-
         },
 
         disableAdd: function() {
@@ -86,8 +82,7 @@
     }
 
 
-    //DISPLAY FORM (FOR ANY ADD BUTTON IN THE BOX)
-
+    //DISPLAY FORM 
 
 
     for (var i = 0; i < addArray.length; i++)
@@ -110,9 +105,7 @@
 
         view.disableAdd();
             
-            
-
-        eventbtn = event.target.id;
+       var eventbtn = event.target.id;
 
         switch (eventbtn) {
             case "day1-button":
@@ -139,8 +132,6 @@
             default:
                 break;
         }
-
-
     }
 
 
@@ -149,8 +140,6 @@
 
     document.getElementById('submit-btns').addEventListener('click', function(evt) {
 
-
-
         view.enableAdd();
 
         view.undisplayForm();
@@ -158,7 +147,7 @@
         view.objectBuilder();
 
 
-        target = evt.target;
+        var target = evt.target;
 
         switch (target.id) {
             case 'btn_1':
@@ -208,8 +197,6 @@
             default:
                 break;
         }
-
-       
 
     }, false);
 
