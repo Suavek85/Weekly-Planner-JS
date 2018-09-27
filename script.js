@@ -263,6 +263,69 @@ view.enableAdd();
 view.undisplayForm();
 };
 
+
+window.onload = function() {
+
+  var dayWeek = new Date();
+  var currentDay = dayWeek.getDay();
+  
+
+if(currentDay === 2) {
+
+document.getElementById('box1').style.order = 8;
+
+} else if(currentDay === 3) {
+
+  document.getElementById('box1').style.order = 8;
+  document.getElementById('box2').style.order = 9;
+  
+} else if(currentDay === 4) {
+
+  document.getElementById('box1').style.order = 8;
+  document.getElementById('box2').style.order = 9;
+  document.getElementById('box3').style.order = 10;
+} else if(currentDay === 5) {
+
+  document.getElementById('box5').style.order = -3;
+  document.getElementById('box6').style.order = -2;
+  document.getElementById('box7').style.order = -1;
+
+} else if(currentDay === 6) {
+
+  document.getElementById('box6').style.order = -2;
+  document.getElementById('box7').style.order = -1;
+} else if(currentDay === 7) {
+
+  document.getElementById('box7').style.order = -1;
+}
+}
+
+
+/*
+
+//GET DAY OF THE WEEK
+
+function myFunction() {
+    var d = new Date();
+    var n = d.getDay()
+    document.getElementById("demo").innerHTML = n;
+}
+
+//GET MONTH
+
+var d = new Date();
+var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+document.getElementById("demo").innerHTML = months[d.getMonth()];
+
+//GET DAY OF THE MONTH
+
+var d = new Date();
+document.getElementById("demo").innerHTML = d.getDate();
+
+
+*/
+
+
 /*
     for (var i = 0; i < addArray.length; i++)
         addArray[i].onclick = function(event)
