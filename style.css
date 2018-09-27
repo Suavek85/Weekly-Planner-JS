@@ -244,13 +244,13 @@
         }
 
 
-        #btn_1_sub,
-        #btn_2_sub,
-        #btn_3_sub,
-        #btn_4_sub,
-        #btn_5_sub,
-        #btn_6_sub,
-        #btn_7_sub {
+        #btns_1_sub,
+        #btns_2_sub,
+        #btns_3_sub,
+        #btns_4_sub,
+        #btns_5_sub,
+        #btns_6_sub,
+        #btns_7_sub {
 
 
             display: none;
