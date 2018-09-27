@@ -269,34 +269,52 @@ window.onload = function() {
   var dayWeek = new Date();
   var currentDay = dayWeek.getDay();
   
+  if(currentDay === 1) {
 
-if(currentDay === 2) {
+    document.getElementById('name1').innerHTML = 'Today';
+    document.getElementById('name1').style.backgroundColor = '#FFE4B2';
+
+  }
+
+else if(currentDay === 2) {
 
 document.getElementById('box1').style.order = 8;
+document.getElementById('name2').innerHTML = 'today';
+document.getElementById('name2').style.backgroundColor = '#FFE4B2';
 
 } else if(currentDay === 3) {
 
   document.getElementById('box1').style.order = 8;
   document.getElementById('box2').style.order = 9;
+  document.getElementById('name3').innerHTML = 'today';
+  document.getElementById('name3').style.backgroundColor = '#FFE4B2';
   
 } else if(currentDay === 4) {
 
   document.getElementById('box1').style.order = 8;
   document.getElementById('box2').style.order = 9;
   document.getElementById('box3').style.order = 10;
+  document.getElementById('name4').innerHTML = 'Today';
+  document.getElementById('name4').style.backgroundColor = '#FFE4B2';
 } else if(currentDay === 5) {
 
   document.getElementById('box5').style.order = -3;
   document.getElementById('box6').style.order = -2;
   document.getElementById('box7').style.order = -1;
+  document.getElementById('name5').innerHTML = 'Today';
+  document.getElementById('name5').style.backgroundColor = '#FFE4B2';
 
 } else if(currentDay === 6) {
 
   document.getElementById('box6').style.order = -2;
   document.getElementById('box7').style.order = -1;
+  document.getElementById('name6').innerHTML = 'Today';
+  document.getElementById('name6').style.backgroundColor = '#FFE4B2';
 } else if(currentDay === 7) {
 
   document.getElementById('box7').style.order = -1;
+  document.getElementById('name7').innerHTML = 'Today';
+  document.getElementById('name7').style.backgroundColor = '#FFE4B2';
 }
 }
 
