@@ -2,8 +2,8 @@
 
 <head>
 
-    
- <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css">
 
 
 </head>
@@ -13,142 +13,147 @@
 <body id='gen_listener'>
 
 
-<!-- HEADER -->
+    <!-- HEADER -->
 
-<div class="header">
+    <div class="header">
 
-    <div><img src='images/timeline.png' id='logo' alt="Logo"></div>
-    <h1>Weekly planner</h1>
+        <div><img src='images/timeline.png' id='logo' alt="Logo"></div>
+        <h1>Weekly planner</h1>
 
-
-</div>
-
-
-<!-- SEVEN DAYS -->
-
-<ul class='flex-days' id='zero'>
-    <li class='day-box' id='box1'>
-        <h2 id='name1'>MONDAY</h2>
-        <p class="output" id='output1'></p>
-        <button class='add' id='day1-button'>+</button>
-        <button class='open' id='btns_1_sub'>Open</button></li>
-
-    <li class='day-box' id='box2'>
-        <h2 id='name2'>TUESDAY</h2>
-        <p class="output" id='output1_2'></p>
-        <button class='add' id='day2-button'>+</button>
-        <button class='open' id='btns_2_sub'>Open</button>
-    </li>
-
-    <li class='day-box' id='box3'>
-        <h2 id='name3'>WEDNESDAY</h2>
-        <p class="output" id='output1_3'></p>
-        <button class='add' id='day3-button'>+</button>
-        <button class='open' id='btns_3_sub'>Open</button>
-    </li>
-
-    <li class='day-box' id='box4'>
-        <h2 id='name4'>THURSDAY</h2>
-        <p class="output" id='output1_4'></p>
-        <button class='add' id='day4-button'>+</button>
-        <button class='open' id='btns_4_sub'>Open</button></li>
-
-    <li class='day-box' id='box5'>
-        <h2 id='name5'>FRIDAY</h2>
-        <p class="output" id='output1_5'></p>
-        <button class='add' id='day5-button'>+</button>
-        <button class='open' id='btns_5_sub'>Open</button>
-    </li>
-
-    <li class='day-box' id='box6'>
-        <h2 id='name6'>SATURDAY</h2>
-        <p class="output" id='output1_6'></p>
-        <button class='add' id='day6-button'>+</button>
-        <button class='open' id='btns_6_sub'>Open</button>
-    </li>
-
-    <li class='day-box' id='box7'>
-        <h2 id='name7'>SUNDAY</h2>
-        <p class="output" id='output1_7'></p>
-        <button class='add' id='day7-button'>+</button>
-        <button class='open' id='btns_7_sub'>Open</button>
-    </li>
-
-</ul>
-
-
-<!-- FORM -->
-
-
-<div id='form-container'>
-
-    <div class='flex-form'>
-        Highlight of the day:
-        <input type="text" id='input2' class="form-item" maxlength='50'> Enter your notes:
-        <textarea id='input3' rows="15" cols="25" class="form-item">
-            </textarea>
 
     </div>
 
-    <div class='flex-form'>
-        Tasks:
-        <input type="text" id='input4' class="form-item" placeholder="Task no 1" maxlength='300'>
-        <input type="text" id='input5' class="form-item" placeholder="Task no 2" maxlength='300'>
-        <input type="text" id='input6' class="form-item" placeholder="Task no 3" maxlength='300'><br> Type of day:
-        <div class="form-item"><input type="radio" id="work" name="day" value="url(images/work.jpg)" checked>Working day</div>
-        <div class="form-item"><input type="radio" id="holiday" name="day" value="url(images/holidays.jpg)">Day off</div>
-        <div class="form-item"><input type="radio" id="other" name="day" value="url(images/trip.jpg)"> Trip/Holidays</div>
 
-        <div class='flex-form-btns'>
-            <div id='submit-btns' class="form-item">
+    <!-- SEVEN DAYS -->
 
-                <button class='submit-btn' id='btn_1'>Submit</button>
-                <button class='submit-btn' id='btn_2'>Submit</button>
-                <button class='submit-btn' id='btn_3'>Submit</button>
-                <button class='submit-btn' id='btn_4'>Submit</button>
-                <button class='submit-btn' id='btn_5'>Submit</button>
-                <button class='submit-btn' id='btn_6'>Submit</button>
-                <button class='submit-btn' id='btn_7'>Submit</button>
+    <ul class='flex-days' id='zero'>
+        <li class='day-box' id='box1'>
+            <h2 id='name1'>MONDAY</h2>
+            <p class="output" id='output1'></p>
+            <button class='add' id='day1-button'>+</button>
+            <button class='open' id='btns_1_sub'>Open</button>
+        </li>
+
+        <li class='day-box' id='box2'>
+            <h2 id='name2'>TUESDAY</h2>
+            <p class="output" id='output1_2'></p>
+            <button class='add' id='day2-button'>+</button>
+            <button class='open' id='btns_2_sub'>Open</button>
+        </li>
+
+        <li class='day-box' id='box3'>
+            <h2 id='name3'>WEDNESDAY</h2>
+            <p class="output" id='output1_3'></p>
+            <button class='add' id='day3-button'>+</button>
+            <button class='open' id='btns_3_sub'>Open</button>
+        </li>
+
+        <li class='day-box' id='box4'>
+            <h2 id='name4'>THURSDAY</h2>
+            <p class="output" id='output1_4'></p>
+            <button class='add' id='day4-button'>+</button>
+            <button class='open' id='btns_4_sub'>Open</button>
+        </li>
+
+        <li class='day-box' id='box5'>
+            <h2 id='name5'>FRIDAY</h2>
+            <p class="output" id='output1_5'></p>
+            <button class='add' id='day5-button'>+</button>
+            <button class='open' id='btns_5_sub'>Open</button>
+        </li>
+
+        <li class='day-box' id='box6'>
+            <h2 id='name6'>SATURDAY</h2>
+            <p class="output" id='output1_6'></p>
+            <button class='add' id='day6-button'>+</button>
+            <button class='open' id='btns_6_sub'>Open</button>
+        </li>
+
+        <li class='day-box' id='box7'>
+            <h2 id='name7'>SUNDAY</h2>
+            <p class="output" id='output1_7'></p>
+            <button class='add' id='day7-button'>+</button>
+            <button class='open' id='btns_7_sub'>Open</button>
+        </li>
+
+    </ul>
+
+
+    <!-- FORM -->
+
+
+    <div id='form-container'>
+
+        <div class='flex-form'>
+            <p>Highlight of the day:</p>
+            <input type="text" id='input2' class="form-item" maxlength='50'> 
+            <p>Enter your notes:</p>
+            <textarea id='input3' rows="15" cols="25" class="form-item">
+            </textarea>
+
+        </div>
+
+        <div class='flex-form'>
+            <p>To-do list:</p>
+            <input id='input_list' type='text' placeholder="enter one by one"><br>
+            <button id='enter'>Enter</button>
+            <ul id="task_list"></ul>
+        </div>
+
+
+
+
+        <div class='flex-form'>
+            <p>Type of day:</p>
+            <div class="form-item"><input type="radio" id="work" name="day" value="url(images/work.jpg)" checked>Working
+                day</div>
+            <div class="form-item"><input type="radio" id="holiday" name="day" value="url(images/holidays.jpg)">Day off</div>
+            <div class="form-item"><input type="radio" id="other" name="day" value="url(images/trip.jpg)">
+                Trip/Holidays</div>
+
+            <div class='flex-form-btns'>
+                <div id='submit-btns' class="form-item">
+
+                    <button class='submit-btn' id='btn_1'>Submit</button>
+                    <button class='submit-btn' id='btn_2'>Submit</button>
+                    <button class='submit-btn' id='btn_3'>Submit</button>
+                    <button class='submit-btn' id='btn_4'>Submit</button>
+                    <button class='submit-btn' id='btn_5'>Submit</button>
+                    <button class='submit-btn' id='btn_6'>Submit</button>
+                    <button class='submit-btn' id='btn_7'>Submit</button>
+
+                </div>
+
+                <div><button id="close-form">Close</button></div>
 
             </div>
 
-            <div><button id="close-form">Close</button></div>
-
         </div>
+
+        
 
     </div>
 
 
-</div>
+    <!-- DAILY NOTES -->
 
 
-<!-- DAILY NOTES -->
+    <div class='notes-box'>
+        <div id="flexy_notes" class='flex-notes'>
 
+            <div id='mynotes' class='notes-item'>My notes:
+                <p id='output2'></p>
+            </div>
 
-<div class='notes-box'>
-    <div class='flex-notes'>
-
-        <div class='notes-item'>My notes:
-            <p id='output2'></p>
+            <button id='close'>Close</button>
         </div>
 
-        <div class='notes-item'>
-            My tasks:<br>
-            <p><i class="icon-task"></i><span id='output3'></span></p>
-            <p><i class="icon-task"></i><span id='output4'></span></p>
-            <p><i class="icon-task"></i><span id='output5'></span></p>
-        </div>
-
-
-        <button id='close'>Close</button>
     </div>
 
-</div>
-
-<script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 
 
-    </body>
+</body>
 
 
 </html>
