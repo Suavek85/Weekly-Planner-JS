@@ -138,7 +138,7 @@ document.addEventListener(
     if (event.target.id.includes("btn_")) {
       view.enableAdd();
       view.undisplayForm();
-
+      view.enableOpen();
 
       var eventbtn_submit = event.target;
 
@@ -229,6 +229,7 @@ document.addEventListener(
       document.querySelector(".notes-box").style.display = "flex";
       view.undisplayForm();
       view.disableOpen();
+      view.disableAdd();
       var eventbtn_open = event.target.id;
      
 
@@ -275,6 +276,7 @@ document.getElementById("close").onclick = function () {
 
 document.getElementById("close-form").onclick = function () {
   view.enableAdd();
+  view.enableOpen();
   view.undisplayForm();
 };
 
