@@ -1,4 +1,4 @@
-var addArray, submitArray, openArray ;
+var addArray, submitArray, openArray, dayNumber ;
 
 addArray = Array.prototype.slice.call(document.querySelectorAll(".add"));
 
@@ -12,16 +12,40 @@ openArray = Array.prototype.slice.call(
 
 
 class DayList {
-  constructor(a, b, f, g) {
-    this.a = a;
-    this.b = b;
-    this.f = f;
-    this.g = g;
+  constructor() {
+    this.a = document.getElementById("input2").value;
+    this.b = document.getElementById("input3").value;
+    var radios = document.getElementsByName("day");
+    for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        var checkedRadio = radios[i].value;
+        break;
+      }
+    };
+    this.f = checkedRadio;
+    this.g = ul_tasks.innerHTML;
+    
   }
+
+createDay() {
+   
+  document.getElementById('btns_' + dayNumber + '_sub').style.display = "block";
+  document.querySelector('#output' + dayNumber).innerHTML = this.a;
+  document.getElementById('box' + dayNumber).style.backgroundImage = this.f;
+
+} 
+
+openDay() {
+
+  document.querySelector("#output8").innerHTML = this.b;
+  var word = this.g;
+  var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul>${word}</ul></div>`; 
+  mynotes.insertAdjacentHTML('afterend', todoHtml);
+}
+
 }
 
 //TODO SECTION
-
 
 
 var button_tasks = document.getElementById('enter');
@@ -59,6 +83,7 @@ function addListAfterEnter(event) {
   }
 }
 
+
 button_tasks.addEventListener("click", addListAfterClick );
 
 input_add.addEventListener("keypress", addListAfterEnter);
@@ -68,19 +93,6 @@ input_add.addEventListener("keypress", addListAfterEnter);
 //VIEW METHODS
 
 var view = {
-
-  objectBuilder: function () {
-    notes1 = document.getElementById("input2").value;
-    morenotes1 = document.getElementById("input3").value;
-    radios = document.getElementsByName("day");
-    for (var i = 0, length = radios.length; i < length; i++) {
-      if (radios[i].checked) {
-        checkedRadio = radios[i].value;
-        break;
-      }
-    };
-    tasks4 = ul_tasks.innerHTML;
-  },
 
   todoListRemove: function() {
     var todolist = document.getElementById('todolist');
@@ -126,88 +138,53 @@ document.addEventListener(
     if (event.target.id.includes("btn_")) {
       view.enableAdd();
       view.undisplayForm();
-      view.objectBuilder();
+
 
       var eventbtn_submit = event.target;
 
       switch (eventbtn_submit.id) {
         case "btn_1":
-          day1List = new DayList(
-            notes1,
-            morenotes1,
-            checkedRadio,
-            tasks4
-          );
-          document.getElementById("btns_1_sub").style.display = "block";
-          document.querySelector("#output1").innerHTML = day1List.a;
-          document.getElementById("box1").style.backgroundImage = day1List.f;
-          break;
+        dayNumber = 1;
+          day1List = new DayList();
+          day1List.createDay();
+         break;
+         
         case "btn_2":
-          day2List = new DayList(
-            notes1,
-            morenotes1,
-            checkedRadio,
-            tasks4
-          );
-          document.getElementById("btns_2_sub").style.display = "block";
-          document.querySelector("#output1_2").innerHTML = day2List.a;
-          document.getElementById("box2").style.backgroundImage = day2List.f;
+        dayNumber = 2;
+        day2List = new DayList();
+          day2List.createDay();
           break;
+          
         case "btn_3":
-          day3List = new DayList(
-            notes1,
-            morenotes1,
-            checkedRadio,
-            tasks4
-          );
-          document.getElementById("btns_3_sub").style.display = "block";
-          document.querySelector("#output1_3").innerHTML = day3List.a;
-          document.getElementById("box3").style.backgroundImage = day3List.f;
-          break;
+        dayNumber = 3;
+        day3List = new DayList();
+        day3List.createDay();
+        break;
+           
         case "btn_4":
-          day4List = new DayList(
-            notes1,
-            morenotes1,
-            checkedRadio,
-            tasks4
-          );
-          document.getElementById("btns_4_sub").style.display = "block";
-          document.querySelector("#output1_4").innerHTML = day4List.a;
-          document.getElementById("box4").style.backgroundImage = day4List.f;
-          break;
+        dayNumber = 4;
+        day4List = new DayList();
+        day4List.createDay();
+        break;
+
+
         case "btn_5":
-          day5List = new DayList(
-            notes1,
-            morenotes1,
-            checkedRadio,
-            tasks4
-          );
-          document.getElementById("btns_5_sub").style.display = "block";
-          document.querySelector("#output1_5").innerHTML = day5List.a;
-          document.getElementById("box5").style.backgroundImage = day5List.f;
-          break;
+        dayNumber = 5;
+        day5List = new DayList();
+        day5List.createDay();
+        break;
+           
         case "btn_6":
-          day6List = new DayList(
-            notes1,
-            morenotes1,
-            checkedRadio,
-            tasks4
-          );
-          document.getElementById("btns_6_sub").style.display = "block";
-          document.querySelector("#output1_6").innerHTML = day6List.a;
-          document.getElementById("box6").style.backgroundImage = day6List.f;
-          break;
+        dayNumber = 6;
+        day6List = new DayList();
+        day6List.createDay();
+        break;
+
         case "btn_7":
-          day7List = new DayList(
-            notes1,
-            morenotes1,
-            checkedRadio,
-            tasks4
-          );
-          document.getElementById("btns_7_sub").style.display = "block";
-          document.querySelector("#output1_7").innerHTML = day7List.a;
-          document.getElementById("box7").style.backgroundImage = day7List.f;
-          break;
+        dayNumber = 7;
+        day7List = new DayList();
+        day7List.createDay();
+        break;
 
         default:
           break;
@@ -253,36 +230,28 @@ document.addEventListener(
       view.undisplayForm();
       view.disableOpen();
       var eventbtn_open = event.target.id;
-      var word = day1List.g;
-      var todoHtml = `<div id='todolist' class='notes-item'>Your tasks:<ul>${word}</ul></div>`;
+     
 
       if (eventbtn_open === "btns_1_sub") {
-        
-        document.querySelector("#output2").innerHTML = day1List.b;
-        mynotes.insertAdjacentHTML('afterend', todoHtml);
+        day1List.openDay();
+      
       } else if (eventbtn_open === "btns_2_sub") {
-        document.querySelector("#output2").innerHTML = day2List.b;
-        mynotes.insertAdjacentHTML('afterend', "<div id='todolist'  class='notes-item'>Your tasks:<ul>" + day2List.g + "</ul></div>");
+        day2List.openDay();
         
       } else if (eventbtn_open === "btns_3_sub") {
-        document.querySelector("#output2").innerHTML = day3List.b;
-        mynotes.insertAdjacentHTML('afterend', "<div id='todolist' class='notes-item'>Your tasks:<ul>" + day3List.g + "</ul></div>");
+        day3List.openDay();
         
       } else if (eventbtn_open === "btns_4_sub") {
-        document.querySelector("#output2").innerHTML = day4List.b;
-        mynotes.insertAdjacentHTML('afterend', "<div id='todolist' class='notes-item'>Your tasks:<ul>" + day4List.g + "</ul></div>");
+        day4List.openDay();
         
       } else if (eventbtn_open === "btns_5_sub") {
-        document.querySelector("#output2").innerHTML = day5List.b;
-        mynotes.insertAdjacentHTML('afterend', "><div id='todolist' class='notes-item'>Your tasks:<ul>" + day5List.g + "</ul></div>");
+        day5List.openDay();
         
       } else if (eventbtn_open === "btns_6_sub") {
-        document.querySelector("#output2").innerHTML = day6List.b;
-        mynotes.insertAdjacentHTML('afterend', "<div id='todolist' class='notes-item'Your tasks:><ul>" + day6List.g + "</ul></div>");
+        day6List.openDay();
         
       } else if (eventbtn_open === "btns_7_sub") {
-        document.querySelector("#output2").innerHTML = day7List.b;
-        mynotes.insertAdjacentHTML('afterend', "><div id='todolist' class='notes-item'>Your tasks:<ul>" + day7List.g + "</ul></div>");
+        day7List.openDay();
         
       } else {
         return;

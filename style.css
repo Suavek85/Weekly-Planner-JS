@@ -1,8 +1,8 @@
 body {
 
-    background-color: #E6E8FA;
+    background: -webkit-linear-gradient(-45deg, #8363a1 0%, #74a8c3 100%);
+    background: linear-gradient(135deg, #8363a1 0%, #74a8c3 100%);
     margin: 0;
-
 
 }
 
@@ -21,6 +21,7 @@ h1 {
 
     font-size: 24px;
     text-transform: uppercase;
+    color: white;
 
 
 }
@@ -61,6 +62,7 @@ h2 {
     flex-wrap: wrap;
 
 
+
 }
 
 .day-box {
@@ -75,7 +77,11 @@ h2 {
     justify-content: center;
     align-items: center;
     margin: 10px;
-    background-size: cover;
+
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+    background: linear-gradient(to right, #eef2f3, #8e9eab);
+
 
 }
 
@@ -129,7 +135,7 @@ h2 {
     left: 0;
     padding: 5px;
     font-size: 14px;
-    background:#DCECEF;
+    background: #DCECEF;
 
 }
 
@@ -183,7 +189,7 @@ h2 {
 .form-item {
 
     align-self: stretch;
-  
+
 
 }
 
@@ -204,11 +210,21 @@ h2 {
 
     display: none;
     width: 600px;
+    height: 400px;
     margin: auto;
     position: relative;
     border: 5px solid grey;
-    background-image: url(images/pad.jpg);
-    background-size: cover;
+    background-color: #fff;
+    background-size: 100% 1.2em;
+    background-image: -webkit-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+        -webkit-linear-gradient(#eee .05em, transparent .05em);
+    background-image: -moz-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+        -moz-linear-gradient(#eee .05em, transparent .05em);
+    background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+        linear-gradient(#eee .05em, transparent .05em);
+    -pie-background: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px) 0 0 / 100% 1.2em,
+        linear-gradient(#eee .05em, transparent .05em) 0 0 / 100% 1.2em #fff;
+    behavior: url(/pie/PIE.htc);
 
 }
 
