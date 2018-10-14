@@ -1,4 +1,4 @@
-var addArray, submitArray, openArray, dayNumber ;
+var addArray, submitArray, openArray, dayNumber;
 
 addArray = Array.prototype.slice.call(document.querySelectorAll(".add"));
 
@@ -24,28 +24,25 @@ class DayList {
     };
     this.f = checkedRadio;
     this.g = ul_tasks.innerHTML;
-    
+
   }
 
-createDay() {
-   
-  document.getElementById('btns_' + dayNumber + '_sub').style.display = "block";
-  document.querySelector('#output' + dayNumber).innerHTML = this.a;
-  document.getElementById('box' + dayNumber).style.backgroundImage = this.f;
+  createDay() {
+    document.getElementById('btns_' + dayNumber + '_sub').style.display = "block";
+    document.querySelector('#output' + dayNumber).innerHTML = this.a;
+    document.getElementById('box' + dayNumber).style.backgroundImage = this.f;
+  }
 
-} 
-
-openDay() {
-
-  document.querySelector("#output8").innerHTML = this.b;
-  var word = this.g;
-  var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul>${word}</ul></div>`; 
-  mynotes.insertAdjacentHTML('afterend', todoHtml);
-}
+  openDay() {
+    document.querySelector("#output8").innerHTML = this.b;
+    var word = this.g;
+    var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul>${word}</ul></div>`;
+    mynotes.insertAdjacentHTML('afterend', todoHtml);
+  }
 
 }
 
-//TODO SECTION
+//TODO LIST - TBC, IN PROGRESS
 
 
 var button_tasks = document.getElementById('enter');
@@ -61,9 +58,9 @@ function inputLength() {
 function createListElement() {
 
   var li = document.createElement("li");
-    li.appendChild(document.createTextNode(input_add.value));
-    ul_tasks.appendChild(li);
-    input_add.value = '';
+  li.appendChild(document.createTextNode(input_add.value));
+  ul_tasks.appendChild(li);
+  input_add.value = '';
 
 }
 
@@ -83,22 +80,20 @@ function addListAfterEnter(event) {
   }
 }
 
-
-button_tasks.addEventListener("click", addListAfterClick );
-
+button_tasks.addEventListener("click", addListAfterClick);
 input_add.addEventListener("keypress", addListAfterEnter);
 
 
 
-//VIEW METHODS
+//VIEW
 
 var view = {
 
-  todoListRemove: function() {
+  todoListRemove: function () {
     var todolist = document.getElementById('todolist');
     todolist.remove();
   },
-  
+
   disableAdd: function () {
     for (var i = 0; i < addArray.length; i++) {
       addArray[i].disabled = true;
@@ -123,6 +118,17 @@ var view = {
     }
   },
 
+  displayForm: function () {
+
+    document.getElementById("input2").value = "";
+    document.getElementById("input3").value = "";
+    document.getElementById("work").checked = true;
+    document.getElementById("form-container").style.display = "flex";
+    document.querySelector(".notes-box").style.display = "none";
+    ul_tasks.innerHTML = "";
+
+  },
+
   undisplayForm: function () {
     for (var i = 0; i < submitArray.length; i++) {
       submitArray[i].style.display = "none";
@@ -144,60 +150,53 @@ document.addEventListener(
 
       switch (eventbtn_submit.id) {
         case "btn_1":
-        dayNumber = 1;
+          dayNumber = 1;
           day1List = new DayList();
           day1List.createDay();
-         break;
-         
+          break;
+
         case "btn_2":
-        dayNumber = 2;
-        day2List = new DayList();
+          dayNumber = 2;
+          day2List = new DayList();
           day2List.createDay();
           break;
-          
-        case "btn_3":
-        dayNumber = 3;
-        day3List = new DayList();
-        day3List.createDay();
-        break;
-           
-        case "btn_4":
-        dayNumber = 4;
-        day4List = new DayList();
-        day4List.createDay();
-        break;
 
+        case "btn_3":
+          dayNumber = 3;
+          day3List = new DayList();
+          day3List.createDay();
+          break;
+
+        case "btn_4":
+          dayNumber = 4;
+          day4List = new DayList();
+          day4List.createDay();
+          break;
 
         case "btn_5":
-        dayNumber = 5;
-        day5List = new DayList();
-        day5List.createDay();
-        break;
-           
+          dayNumber = 5;
+          day5List = new DayList();
+          day5List.createDay();
+          break;
+
         case "btn_6":
-        dayNumber = 6;
-        day6List = new DayList();
-        day6List.createDay();
-        break;
+          dayNumber = 6;
+          day6List = new DayList();
+          day6List.createDay();
+          break;
 
         case "btn_7":
-        dayNumber = 7;
-        day7List = new DayList();
-        day7List.createDay();
-        break;
+          dayNumber = 7;
+          day7List = new DayList();
+          day7List.createDay();
+          break;
 
         default:
           break;
       }
     } else if (event.target.id.includes("-button")) {
-      document.getElementById("input2").value = "";
-      document.getElementById("input3").value = "";
-      document.getElementById("work").checked = true;
-      document.getElementById("form-container").style.display = "flex";
-      document.querySelector(".notes-box").style.display = "none";
-      ul_tasks.innerHTML = "";
+      view.displayForm();
       view.disableAdd();
-
       var eventbtn_add = event.target.id;
 
       switch (eventbtn_add) {
@@ -231,55 +230,51 @@ document.addEventListener(
       view.disableOpen();
       view.disableAdd();
       var eventbtn_open = event.target.id;
-     
 
       if (eventbtn_open === "btns_1_sub") {
         day1List.openDay();
-      
+
       } else if (eventbtn_open === "btns_2_sub") {
         day2List.openDay();
-        
+
       } else if (eventbtn_open === "btns_3_sub") {
         day3List.openDay();
-        
+
       } else if (eventbtn_open === "btns_4_sub") {
         day4List.openDay();
-        
+
       } else if (eventbtn_open === "btns_5_sub") {
         day5List.openDay();
-        
+
       } else if (eventbtn_open === "btns_6_sub") {
         day6List.openDay();
-        
+
       } else if (eventbtn_open === "btns_7_sub") {
         day7List.openDay();
-        
+
       } else {
         return;
       }
     }
+
+    else if (event.target.id.includes("close-day")) {
+      document.querySelector(".notes-box").style.display = "none";
+      view.todoListRemove();
+      view.enableAdd();
+      view.enableOpen();
+    }
+
+    else if (event.target.id.includes("close-form")) {
+      view.enableAdd();
+      view.enableOpen();
+      view.undisplayForm();
+    }
+
   },
   false
 );
 
-//CLOSE DAY NOTES
-
-
-document.getElementById("close").onclick = function () {
-  document.querySelector(".notes-box").style.display = "none";
-  view.todoListRemove();
-  view.enableAdd();
-  view.enableOpen();
-};
-
-//CLOSE FORM
-
-document.getElementById("close-form").onclick = function () {
-  view.enableAdd();
-  view.enableOpen();
-  view.undisplayForm();
-};
-
+//DAY ORDER ON LOAD
 
 window.onload = function () {
 
@@ -332,4 +327,3 @@ window.onload = function () {
     document.getElementById('name7').style.backgroundColor = '#FFE4B2';
   }
 }
-
