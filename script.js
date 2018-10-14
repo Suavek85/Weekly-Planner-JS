@@ -294,14 +294,14 @@ window.onload = function () {
   } else if (currentDay === 2) {
 
     document.getElementById('box1').style.order = 8;
-    document.getElementById('name2').innerHTML = 'today';
+    document.getElementById('name2').innerHTML = 'Today';
     document.getElementById('name2').style.backgroundColor = '#FFE4B2';
 
   } else if (currentDay === 3) {
 
     document.getElementById('box1').style.order = 8;
     document.getElementById('box2').style.order = 9;
-    document.getElementById('name3').innerHTML = 'today';
+    document.getElementById('name3').innerHTML = 'Today';
     document.getElementById('name3').style.backgroundColor = '#FFE4B2';
 
   } else if (currentDay === 4) {
