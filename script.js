@@ -325,7 +325,7 @@ window.onload = function () {
     document.getElementById('box7').style.order = -1;
     document.getElementById('name6').innerHTML = 'Today';
     document.getElementById('name6').style.backgroundColor = '#FFE4B2';
-  } else if (currentDay === 7) {
+  } else if (currentDay === 0) {
 
     document.getElementById('box7').style.order = -1;
     document.getElementById('name7').innerHTML = 'Today';

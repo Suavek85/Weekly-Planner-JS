@@ -18,21 +18,17 @@ body {
 
 h1 {
 
-
     font-size: 24px;
     text-transform: uppercase;
     color: white;
-
 
 }
 
 #logo {
 
-
     width: 50px;
     height: 50px;
     margin: 15px 8px 15px 15px;
-
 
 }
 
@@ -41,16 +37,11 @@ h1 {
 
 h2 {
 
-
     border: 0.5px solid black;
     text-align: center;
     background-color: #E6E8FA;
     font-size: 18px;
     text-transform: uppercase;
-
-
-
-
 
 }
 
@@ -61,12 +52,9 @@ h2 {
     align-items: center;
     flex-wrap: wrap;
 
-
-
 }
 
 .day-box {
-
 
     display: block;
     position: relative;
@@ -77,11 +65,9 @@ h2 {
     justify-content: center;
     align-items: center;
     margin: 10px;
-
     background: #8e9eab;
     background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
     background: linear-gradient(to right, #eef2f3, #8e9eab);
-
 
 }
 
@@ -125,7 +111,6 @@ h2 {
     font-size: 14px;
     background: #EFECDC;
 
-
 }
 
 .open {
@@ -159,7 +144,6 @@ h2 {
 
 #form-container {
 
-
     display: none;
     flex-direction: row;
     width: 700px;
@@ -168,6 +152,9 @@ h2 {
     align-items: flex-start;
     margin: auto;
     border: 5px solid grey;
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+    background: linear-gradient(to right, #eef2f3, #8e9eab);
 
 }
 
@@ -182,14 +169,13 @@ h2 {
     align-items: flex-start;
     padding: 15px;
 
-
 }
 
 
 .form-item {
 
     align-self: stretch;
-
+    padding: 10px;
 
 }
 
@@ -206,7 +192,6 @@ h2 {
 /* NOTES BOX*/
 
 .notes-box {
-
 
     display: none;
     width: 600px;
@@ -237,12 +222,10 @@ h2 {
     justify-content: center;
     align-items: flex-start;
 
-
 }
 
 
 .notes-item {
-
     margin: 15px;
     padding: 5px;
     border: 1px solid grey;
@@ -270,13 +253,21 @@ i {
 #close {
 
     position: absolute;
-    bottom: 0;
+    padding: 10px;
+    top: 0;
     right: 0;
 
 }
 
 
 /* BUTTONS*/
+
+#close-form {
+
+padding: 10px;
+
+}
+
 
 #btn_1,
 #btn_2,
@@ -286,9 +277,8 @@ i {
 #btn_6,
 #btn_7 {
 
-
     display: none;
-
+    padding: 10px;
 }
 
 
@@ -299,7 +289,6 @@ i {
 #btns_5_sub,
 #btns_6_sub,
 #btns_7_sub {
-
 
     display: none;
 
