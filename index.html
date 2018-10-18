@@ -28,49 +28,49 @@
         <li class='day-box' id='box1'>
             <h2 id='name1'>MONDAY</h2>
             <p class="output" id='output1'></p>
-            <button class='add' id='day1-button'>+</button>
+            <button class='add' id='day1-button'>New</button>
             <button class='open' id='btns_1_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box2'>
             <h2 id='name2'>TUESDAY</h2>
             <p class="output" id='output2'></p>
-            <button class='add' id='day2-button'>+</button>
+            <button class='add' id='day2-button'>New</button>
             <button class='open' id='btns_2_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box3'>
             <h2 id='name3'>WEDNESDAY</h2>
             <p class="output" id='output3'></p>
-            <button class='add' id='day3-button'>+</button>
+            <button class='add' id='day3-button'>New</button>
             <button class='open' id='btns_3_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box4'>
             <h2 id='name4'>THURSDAY</h2>
             <p class="output" id='output4'></p>
-            <button class='add' id='day4-button'>+</button>
+            <button class='add' id='day4-button'>New</button>
             <button class='open' id='btns_4_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box5'>
             <h2 id='name5'>FRIDAY</h2>
             <p class="output" id='output5'></p>
-            <button class='add' id='day5-button'>+</button>
+            <button class='add' id='day5-button'>New</button>
             <button class='open' id='btns_5_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box6'>
             <h2 id='name6'>SATURDAY</h2>
             <p class="output" id='output6'></p>
-            <button class='add' id='day6-button'>+</button>
+            <button class='add' id='day6-button'>New</button>
             <button class='open' id='btns_6_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box7'>
             <h2 id='name7'>SUNDAY</h2>
             <p class="output" id='output7'></p>
-            <button class='add' id='day7-button'>+</button>
+            <button class='add' id='day7-button'>New</button>
             <button class='open' id='btns_7_sub'>Open</button>
         </li>
 
@@ -125,7 +125,7 @@
 
                 </div>
 
-                <div><button id="close-form" class="form-item">Close</button></div>
+                <div><button id="close-form" class="form-item">Save</button></div>
 
             </div>
 
@@ -143,12 +143,22 @@
         <div id="flexy_notes" class='flex-notes'>
 
             <div id='mynotes' class='notes-item'>My notes:
-                <p id='output8'></p>
-
-
+                <p contentEditable="true" id='output8'></p>
             </div>
 
-            <button id='close-day'>Close</button>
+            <div class='notes-item btns_day'>
+            <button id='delete_output'>Delete</button><button id='completed'>Completed</button>
+            <button id='add'>Add</button>
+            </div>
+
+            <button class='close-save' id='close-day-1'>Close & Save</button>
+            <button class='close-save'id='close-day-2'>Close & Save</button>
+            <button class='close-save'id='close-day-3'>Close & Save</button>
+            <button class='close-save'id='close-day-4'>Close & Save</button>
+            <button class='close-save'id='close-day-5'>Close & Save</button>
+            <button class='close-save'id='close-day-6'>Close & Save</button>
+            <button class='close-save'id='close-day-7'>Close & Save</button>
+
         </div>
 
     </div>

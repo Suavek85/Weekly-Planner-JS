@@ -30,11 +30,18 @@ class DayList {
     document.getElementById("box" + dayNumber).style.backgroundImage = this.f;
   }
 
-  openDay() {
+  openDay(dayNumber) {
     document.querySelector("#output8").innerHTML = this.b;
     var word = this.g;
-    var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list'>${word}</ul><button id='delete2'>Delete</button><button id='completed'>Completed</button></div>`;
+    var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul></div>`;
     mynotes.insertAdjacentHTML("afterend", todoHtml);
+    document.getElementById("close-day-" + dayNumber).style.display = "block";
+  }
+
+  changeDay() {
+    var ul_tasks_output = document.getElementById("task_list_output").innerHTML;
+    this.g = ul_tasks_output;
+    this.b = document.querySelector("#output8").innerHTML;
   }
 }
 
@@ -43,6 +50,7 @@ class DayList {
 var button_tasks = document.getElementById("enter");
 var input_add = document.getElementById("input_list");
 var ul_tasks = document.getElementById("task_list");
+
 var mynotes = document.getElementById("mynotes");
 
 function inputLength() {
@@ -63,7 +71,7 @@ function createListElement() {
   ul_tasks.appendChild(checkbox);
   var br = document.createElement("br");
   ul_tasks.appendChild(br);
-  document.getElementById("delete").style.display= 'block';
+  document.getElementById("delete").style.display = "block";
 }
 
 function addListAfterClick() {
@@ -82,6 +90,19 @@ button_tasks.addEventListener("click", addListAfterClick);
 input_add.addEventListener("keypress", addListAfterEnter);
 
 document.getElementById("delete").onclick = function() {
+  var todos_checked = document.getElementsByName("todoscb");
+  for (var i = 0, length = todos_checked.length; i < length; i++) {
+    if (todos_checked[i].checked) {
+      //debugger;
+      todos_checked[i].previousSibling.remove();
+      todos_checked[i].nextSibling.remove();
+      todos_checked[i].remove();
+      i--;
+    }
+  }
+};
+
+document.getElementById("delete_output").onclick = function() {
   var todos_checked = document.getElementsByName("todoscb");
   for (var i = 0, length = todos_checked.length; i < length; i++) {
     if (todos_checked[i].checked) {
@@ -135,6 +156,10 @@ var view = {
     ul_tasks.innerHTML = "";
   },
 
+  clearTodo: function() {
+    ul_tasks.innerHTML = "";
+  },
+
   undisplayForm: function() {
     for (var i = 0; i < submitArray.length; i++) {
       submitArray[i].style.display = "none";
@@ -149,6 +174,15 @@ var view = {
 
   closeDay: function() {
     document.querySelector(".notes-box").style.display = "none";
+    var closeSave = Array.prototype.slice.call(
+      document.querySelectorAll(".close-save")
+    );
+
+    closeSave.forEach(element => {
+      element.style.display = "none";
+    });
+
+    document.getElementById("close-day-1").style.display;
   },
 
   startFromToday: function(number) {
@@ -171,36 +205,43 @@ document.addEventListener(
         case "btn_1":
           day1List = new DayList();
           day1List.createDay(1);
+          view.clearTodo();
           break;
 
         case "btn_2":
           day2List = new DayList();
           day2List.createDay(2);
+          view.clearTodo();
           break;
 
         case "btn_3":
           day3List = new DayList();
           day3List.createDay(3);
+          view.clearTodo();
           break;
 
         case "btn_4":
           day4List = new DayList();
           day4List.createDay(4);
+          view.clearTodo();
           break;
 
         case "btn_5":
           day5List = new DayList();
           day5List.createDay(5);
+          view.clearTodo();
           break;
 
         case "btn_6":
           day6List = new DayList();
           day6List.createDay(6);
+          view.clearTodo();
           break;
 
         case "btn_7":
           day7List = new DayList();
           day7List.createDay(7);
+          view.clearTodo();
           break;
 
         default:
@@ -244,23 +285,44 @@ document.addEventListener(
       var eventbtn_open = event.target.id;
 
       if (eventbtn_open === "btns_1_sub") {
-        day1List.openDay();
+        day1List.openDay(1);
       } else if (eventbtn_open === "btns_2_sub") {
-        day2List.openDay();
+        day2List.openDay(2);
       } else if (eventbtn_open === "btns_3_sub") {
-        day3List.openDay();
+        day3List.openDay(3);
       } else if (eventbtn_open === "btns_4_sub") {
-        day4List.openDay();
+        day4List.openDay(4);
       } else if (eventbtn_open === "btns_5_sub") {
-        day5List.openDay();
+        day5List.openDay(5);
       } else if (eventbtn_open === "btns_6_sub") {
-        day6List.openDay();
+        day6List.openDay(6);
       } else if (eventbtn_open === "btns_7_sub") {
-        day7List.openDay();
+        day7List.openDay(7);
       } else {
         return;
       }
     } else if (event.target.id.includes("close-day")) {
+      //day4List.changeDay();
+      var eventbtn_closesave = event.target.id;
+
+      if (eventbtn_closesave === "close-day-1") {
+        day1List.changeDay();
+      } else if (eventbtn_closesave === "close-day-2") {
+        day2List.changeDay();
+      } else if (eventbtn_closesave === "close-day-3") {
+        day3List.changeDay();
+      } else if (eventbtn_closesave === "close-day-4") {
+        day4List.changeDay();
+      } else if (eventbtn_closesave === "close-day-5") {
+        day5List.changeDay();
+      } else if (eventbtn_closesave === "close-day-6") {
+        day6List.changeDay();
+      } else if (eventbtn_closesave === "close-day-7") {
+        day7List.changeDay();
+      } else {
+        return;
+      }
+
       view.closeDay();
       view.todoListRemove();
       view.enableAdd();
