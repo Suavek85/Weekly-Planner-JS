@@ -16,7 +16,7 @@
     <div class="header">
 
         <div><img src='images/timeline.png' id='logo' alt="Logo"></div>
-        <h1>Weekly planner</h1>
+        <div class="logo-text"><h1>Weekly planner</h1><p>Plan seven days ahead</p></div>
 
 
     </div>
@@ -26,50 +26,64 @@
 
     <ul class='flex-days' id='zero'>
         <li class='day-box' id='box1'>
-            <h2 id='name1'>MONDAY</h2>
-            <p class="output" id='output1'></p>
+            <div id='box_image_1' class='day_box_background'></div>
+            <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name1'>MONDAY</h2>
+            <p class="output" id='output1'></p></div>
+            </div>
             <button class='add' id='day1-button'>New</button>
             <button class='open' id='btns_1_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box2'>
-            <h2 id='name2'>TUESDAY</h2>
-            <p class="output" id='output2'></p>
+            <div id='box_image_2' class='day_box_background'></div>
+            <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name2'>TUESDAY</h2>
+            <p class="output" id='output2'></p></div>
+            </div>
             <button class='add' id='day2-button'>New</button>
             <button class='open' id='btns_2_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box3'>
-            <h2 id='name3'>WEDNESDAY</h2>
-            <p class="output" id='output3'></p>
+            <div id='box_image_3' class='day_box_background'></div>
+            <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name3'>WEDNESDAY</h2>
+            <p class="output" id='output3'></p></div>
+            </div>
             <button class='add' id='day3-button'>New</button>
             <button class='open' id='btns_3_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box4'>
-            <h2 id='name4'>THURSDAY</h2>
-            <p class="output" id='output4'></p>
+            <div id='box_image_4' class='day_box_background'></div>
+            <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name4'>THURSDAY</h2>
+            <p class="output" id='output4'></p></div>
+            </div>
             <button class='add' id='day4-button'>New</button>
             <button class='open' id='btns_4_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box5'>
-            <h2 id='name5'>FRIDAY</h2>
-            <p class="output" id='output5'></p>
+            <div id='box_image_5' class='day_box_background'></div>
+            <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name5'>FRIDAY</h2>
+            <p class="output" id='output5'></p></div>
+            </div>
             <button class='add' id='day5-button'>New</button>
             <button class='open' id='btns_5_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box6'>
-            <h2 id='name6'>SATURDAY</h2>
-            <p class="output" id='output6'></p>
+            <div id='box_image_6' class='day_box_background'></div>
+            <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name6'>SATURDAY</h2>
+            <p class="output" id='output6'></p></div>
+            </div>
             <button class='add' id='day6-button'>New</button>
             <button class='open' id='btns_6_sub'>Open</button>
         </li>
 
         <li class='day-box' id='box7'>
-            <h2 id='name7'>SUNDAY</h2>
-            <p class="output" id='output7'></p>
+            <div id='box_image_7' class='day_box_background'></div>
+            <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name7'>SUNDAY</h2>
+            <p class="output" id='output7'></p></div>
+            </div>
             <button class='add' id='day7-button'>New</button>
             <button class='open' id='btns_7_sub'>Open</button>
         </li>
@@ -106,10 +120,10 @@
 
         <div class='flex-form'>
             <p>Type of day:</p>
-            <div class="form-item"><input type="radio" id="work" name="day" value="url(images/work.jpg)" checked>Working
+            <div class="form-item"><input type="radio" id="work" name="day" value="url(images/work_360x120.jpg)" checked>Working
                 day</div>
-            <div class="form-item"><input type="radio" id="holiday" name="day" value="url(images/holidays.jpg)">Day off</div>
-            <div class="form-item"><input type="radio" id="other" name="day" value="url(images/trip.jpg)">
+            <div class="form-item"><input type="radio" id="holiday" name="day" value="url(images/dayoff_360x120.jpg)">Day off</div>
+            <div class="form-item"><input type="radio" id="other" name="day" value="url(images/travel_main_360x120.jpg)">
                 Trip/Holidays</div>
 
             <div class='flex-form-btns'>
@@ -125,7 +139,7 @@
 
                 </div>
 
-                <div><button id="close-form" class="form-item">Save</button></div>
+                <div><button id="close-form" class="form-item">Close</button></div>
 
             </div>
 
@@ -140,6 +154,8 @@
 
 
     <div class='notes-box'>
+
+        <div class='notes_day_background'></div>
         <div id="flexy_notes" class='flex-notes'>
 
             <div id='mynotes' class='notes-item'>My notes:
@@ -149,6 +165,7 @@
             <div class='notes-item btns_day'>
             <button id='delete_output'>Delete</button><button id='completed'>Completed</button>
             <button id='add'>Add</button>
+            <input id='input_list_output' type='text' placeholder="enter one by one">
             </div>
 
             <button class='close-save' id='close-day-1'>Close & Save</button>

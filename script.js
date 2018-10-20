@@ -27,7 +27,7 @@ class DayList {
     document.getElementById("btns_" + dayNumber + "_sub").style.display =
       "block";
     document.querySelector("#output" + dayNumber).innerHTML = this.a;
-    document.getElementById("box" + dayNumber).style.backgroundImage = this.f;
+    document.getElementById("box_image_" + dayNumber).style.backgroundImage = this.f;
   }
 
   openDay(dayNumber) {
@@ -58,13 +58,20 @@ function inputLength() {
 }
 
 function createListElement() {
+  var logo_done = document.createElement("img");
+  logo_done.setAttribute('src', 'images/completed.png');
+  logo_done.setAttribute('alt', 'logo done');
+  logo_done.setAttribute('id', 'logo_done');
+  logo_done.setAttribute('height', '15px');
+  logo_done.setAttribute('width', '15px');
+  ul_tasks.appendChild(logo_done);
   var li = document.createElement("li");
   li.appendChild(document.createTextNode(input_add.value));
   ul_tasks.appendChild(li);
   input_add.value = "";
   var checkbox = document.createElement("input");
   checkbox.type = "checkbox";
-  checkbox.id = "id";
+  checkbox.id = "checkbox_todo";
   checkbox.value = "test";
   checkbox.name = "todoscb";
   checkbox.checked = false;
@@ -88,6 +95,18 @@ function addListAfterEnter(event) {
 
 button_tasks.addEventListener("click", addListAfterClick);
 input_add.addEventListener("keypress", addListAfterEnter);
+
+//OUTPUT TODO LIST - TBC, IN PROGRESS...
+
+
+
+
+
+
+
+
+
+//DAY LIST ONLICKS - MOVE TO EVENT DELEGATION
 
 document.getElementById("delete").onclick = function() {
   var todos_checked = document.getElementsByName("todoscb");
@@ -114,6 +133,24 @@ document.getElementById("delete_output").onclick = function() {
     }
   }
 };
+
+
+
+
+document.getElementById("completed").onclick = function() {
+  var todos_checked = document.getElementsByName("todoscb");
+  for (var i = 0, length = todos_checked.length; i < length; i++) {
+    if (todos_checked[i].checked) {
+      //debugger;
+      todos_checked[i].previousSibling.style.textDecoration = 'line-through';
+      todos_checked[i].previousSibling.style.color = 'grey';
+      todos_checked[i].checked = false;
+      
+      todos_checked[i].previousSibling.previousSibling.style.display = 'inline-block';
+    }
+  }
+};
+
 
 //VIEW
 
@@ -187,7 +224,7 @@ var view = {
 
   startFromToday: function(number) {
     document.getElementById("name" + number).innerHTML = "Today";
-    document.getElementById("name" + number).style.backgroundColor = "#FFE4B2";
+    //document.getElementById("name" + number).style.backgroundColor = "#FFE4B2";
   }
 };
 

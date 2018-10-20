@@ -11,10 +11,18 @@ body {
   align-items: center;
 }
 
+.header  p {
+
+  color: white;
+  margin-top: -10;
+  font-style: italic;
+}
+
 h1 {
   font-size: 24px;
   text-transform: uppercase;
   color: white;
+ 
 }
 
 #logo {
@@ -23,12 +31,19 @@ h1 {
   margin: 15px 8px 15px 15px;
 }
 
+.logo-text {
+
+  align-items: center;
+  justify-content: center
+}
+
+
 /* DAYS BOX*/
 
 h2 {
-  border: 0.5px solid black;
+  
   text-align: center;
-  background-color: #e6e8fa;
+  margin:7;
   font-size: 18px;
   text-transform: uppercase;
 }
@@ -41,21 +56,56 @@ h2 {
 }
 
 .day-box {
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   border-radius: 15px;
-  width: 120px;
-  height: 80px;
+  width: 240px;
+  height: 160px;
   border: 3px solid black;
-  padding: 35px;
+  background-color: blue;
   justify-content: center;
   align-items: center;
   margin: 10px;
-  background: #8e9eab;
+  
+}
+
+.day_box_background {
+
+flex-basis: 50%;
+width: 100%;
+height: 100%;
+background-size: cover;
+background-image: url('images/generic_360x120.jpg');
+border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+
+}
+
+.day_box_text {
+
+  flex-basis: 50%;
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
   background: linear-gradient(to right, #eef2f3, #8e9eab);
   background-size: cover;
-}
+  
+  }
+
+  .day_box_text_sub {
+
+    flex-basis: 65%;
+    width: 100%;
+    height: 100%;
+
+  }
+
 
 #box1 {
   order: 1;
@@ -87,36 +137,40 @@ h2 {
 
 .add {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
-  padding: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   font-size: 14px;
   background: #efecdc;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 .open {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   font-size: 14px;
-  background: #dcecef;
-  border-radius: 5px;
+  background: #efecdc;
+  border-radius: 12px;
 }
 
 .output {
   font-weight: 600;
   font-size: 16px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  margin: 0;
   width: 100%;
   display: block;
   background-color: #e6e8fa;
   overflow-wrap: break-word;
   text-align: center;
-  margin-bottom: 10px;
+  
 }
 
 /* FORM BOX*/
@@ -137,6 +191,12 @@ h2 {
 
 #delete {
   display: none;
+}
+
+#checkbox_todo {
+
+margin-left: 7px;
+
 }
 
 .flex-form {
@@ -168,15 +228,26 @@ h2 {
   align-items: center;
 }
 
+#logo_done {
+
+margin-right: 5px;
+display: none;
+
+}
+
+
 /* NOTES BOX*/
 
 .notes-box {
   display: none;
-  width: 600px;
-  height: 400px;
+  flex-direction: column;
+  width: 700px;
+  height: 750px;
   margin: auto;
+  border-radius: 12px;
+  overflow:hidden;
   position: relative;
-  border: 5px solid grey;
+  border: 3px solid grey;
   background-color: #fff;
   background-size: 100% 1.2em;
   background-image: -webkit-linear-gradient(
@@ -216,7 +287,7 @@ h2 {
 }
 .flex-notes {
   display: flex;
-  width: 500px;
+  width: 600px;
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-start;
@@ -230,6 +301,17 @@ h2 {
   overflow-wrap: break-word;
   background-color: white;
 }
+
+.notes_day_background {
+
+width: 700px;
+background-image: url(images/day1000x350.jpg);
+background-size: cover;
+height: 200px;
+
+}
+
+
 i {
   border: solid black;
   border-width: 0 2px 2px 0;
@@ -259,6 +341,13 @@ i {
 }
 #task_list > li, #task_list_output > li {
   display: inline-block;
+}
+
+#task_list_output > li {
+
+line-height: 2;
+border-bottom: solid 0.3px #f2f2f2;
+
 }
 /* BUTTONS*/
 #close-form {
@@ -290,5 +379,11 @@ i {
     flex-direction: column;
     padding: 0;
     border: none;
+
+}
+
+.close-save {
+
+border-radius: 12px;
 
 }
