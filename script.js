@@ -45,30 +45,27 @@ class DayList {
   }
 }
 
-//TODO LIST - TBC, IN PROGRESS...
+//FORM TODO LIST - TBC, IN PROGRESS...
 
-var button_tasks = document.getElementById("enter");
-var input_add = document.getElementById("input_list");
+var input_todo_form = document.getElementById("input_list");
 var ul_tasks = document.getElementById("task_list");
 
-var mynotes = document.getElementById("mynotes");
-
-function inputLength() {
-  return input_add.value.length;
+function inputLength(element) {
+  return element.value.length;
 }
 
 function createListElement() {
   var logo_done = document.createElement("img");
   logo_done.setAttribute('src', 'images/completed.png');
   logo_done.setAttribute('alt', 'logo done');
-  logo_done.setAttribute('id', 'logo_done');
+  logo_done.setAttribute('class', 'logo_done');
   logo_done.setAttribute('height', '15px');
   logo_done.setAttribute('width', '15px');
   ul_tasks.appendChild(logo_done);
   var li = document.createElement("li");
-  li.appendChild(document.createTextNode(input_add.value));
+  li.appendChild(document.createTextNode(input_todo_form.value));
   ul_tasks.appendChild(li);
-  input_add.value = "";
+  input_todo_form.value = "";
   var checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.id = "checkbox_todo";
@@ -78,78 +75,39 @@ function createListElement() {
   ul_tasks.appendChild(checkbox);
   var br = document.createElement("br");
   ul_tasks.appendChild(br);
-  document.getElementById("delete").style.display = "block";
+  document.getElementById("delete_todo_form").style.display = "block";
 }
 
-function addListAfterClick() {
-  if (inputLength() > 0) {
-    createListElement();
-  }
+//DAY TODO LIST - TBC, IN PROGRESS...
+
+var input_todo_day = document.getElementById("input_list_output");
+var ul_tasks_day = document.getElementById("task_list_output");
+
+
+function createListDay() {
+  var ul_tasks_day = document.getElementById("task_list_output");
+  var logo_done = document.createElement("img");
+  logo_done.setAttribute('src', 'images/completed.png');
+  logo_done.setAttribute('alt', 'logo done');
+  logo_done.setAttribute('class', 'logo_done');
+  logo_done.setAttribute('height', '15px');
+  logo_done.setAttribute('width', '15px');
+  ul_tasks_day.appendChild(logo_done);
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(input_todo_day.value));
+  ul_tasks_day.appendChild(li);
+  input_todo_day.value = "";
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = "checkbox_todo";
+  checkbox.value = "test";
+  checkbox.name = "todoscb";
+  checkbox.checked = false;
+  ul_tasks_day.appendChild(checkbox);
+  var br = document.createElement("br");
+  ul_tasks_day.appendChild(br);
+  document.getElementById("delete_todo_form").style.display = "block";
 }
-
-function addListAfterEnter(event) {
-  if (inputLength() > 0 && event.keyCode === 13) {
-    createListElement();
-  }
-}
-
-button_tasks.addEventListener("click", addListAfterClick);
-input_add.addEventListener("keypress", addListAfterEnter);
-
-//OUTPUT TODO LIST - TBC, IN PROGRESS...
-
-
-
-
-
-
-
-
-
-//DAY LIST ONLICKS - MOVE TO EVENT DELEGATION
-
-document.getElementById("delete").onclick = function() {
-  var todos_checked = document.getElementsByName("todoscb");
-  for (var i = 0, length = todos_checked.length; i < length; i++) {
-    if (todos_checked[i].checked) {
-      //debugger;
-      todos_checked[i].previousSibling.remove();
-      todos_checked[i].nextSibling.remove();
-      todos_checked[i].remove();
-      i--;
-    }
-  }
-};
-
-document.getElementById("delete_output").onclick = function() {
-  var todos_checked = document.getElementsByName("todoscb");
-  for (var i = 0, length = todos_checked.length; i < length; i++) {
-    if (todos_checked[i].checked) {
-      //debugger;
-      todos_checked[i].previousSibling.remove();
-      todos_checked[i].nextSibling.remove();
-      todos_checked[i].remove();
-      i--;
-    }
-  }
-};
-
-
-
-
-document.getElementById("completed").onclick = function() {
-  var todos_checked = document.getElementsByName("todoscb");
-  for (var i = 0, length = todos_checked.length; i < length; i++) {
-    if (todos_checked[i].checked) {
-      //debugger;
-      todos_checked[i].previousSibling.style.textDecoration = 'line-through';
-      todos_checked[i].previousSibling.style.color = 'grey';
-      todos_checked[i].checked = false;
-      
-      todos_checked[i].previousSibling.previousSibling.style.display = 'inline-block';
-    }
-  }
-};
 
 
 //VIEW
@@ -224,9 +182,12 @@ var view = {
 
   startFromToday: function(number) {
     document.getElementById("name" + number).innerHTML = "Today";
-    //document.getElementById("name" + number).style.backgroundColor = "#FFE4B2";
+    
   }
 };
+
+
+//CLICK EVENT LISTENER
 
 document.addEventListener(
   "click",
@@ -339,7 +300,7 @@ document.addEventListener(
         return;
       }
     } else if (event.target.id.includes("close-day")) {
-      //day4List.changeDay();
+     
       var eventbtn_closesave = event.target.id;
 
       if (eventbtn_closesave === "close-day-1") {
@@ -369,9 +330,86 @@ document.addEventListener(
       view.enableOpen();
       view.undisplayForm();
     }
+
+else if (event.target.id.includes("delete_todo_form")) {
+  var todos_checked = document.getElementsByName("todoscb");
+  for (var i = 0, length = todos_checked.length; i < length; i++) {
+    if (todos_checked[i].checked) {
+      todos_checked[i].previousSibling.remove();
+      todos_checked[i].nextSibling.remove();
+      todos_checked[i].remove();
+      i--;
+    }
+  }
+}
+
+else if (event.target.id.includes("delete_output")) {
+  
+    var todos_checked = document.getElementsByName("todoscb");
+    for (var i = 0, length = todos_checked.length; i < length; i++) {
+      if (todos_checked[i].checked) {
+        //debugger;
+        todos_checked[i].previousSibling.remove();
+        todos_checked[i].previousSibling.remove();
+        todos_checked[i].nextSibling.remove();
+        todos_checked[i].remove();
+        i--;
+      }
+    }
+}
+
+else if (event.target.id.includes("completed")) {
+  
+    var todos_checked = document.getElementsByName("todoscb");
+    for (var i = 0, length = todos_checked.length; i < length; i++) {
+      if (todos_checked[i].checked) {
+        todos_checked[i].previousSibling.style.textDecoration = 'line-through';
+        todos_checked[i].previousSibling.style.color = 'grey';
+        todos_checked[i].checked = false;
+        
+        todos_checked[i].previousSibling.previousSibling.style.display = 'inline-block';
+      }
+    }
+}
+
+else if(event.target.id.includes("enter")) {
+
+    if (inputLength(input_todo_form) > 0) {
+      createListElement();
+    }
+}
+
+else if(event.target.id.includes("enter")) {
+
+  if (inputLength(input_todo_form) > 0) {
+    createListElement();
+  }
+}
+
+else if(event.target.id.includes("add")) {
+  if (inputLength(input_todo_day) > 0) {
+    createListDay();
+  }
+}
+
   },
   false
 );
+
+
+document.addEventListener(
+  "keypress",
+  function(event) {
+    
+    if(event.target.id.includes("input_list")) {
+      if (inputLength(input_todo_day) > 0 && event.keyCode === 13) {
+      createListElement();
+    }}
+    
+  }, false
+
+);
+
 
 //DAY ORDER ON LOAD
 

@@ -11,8 +11,7 @@ body {
   align-items: center;
 }
 
-.header  p {
-
+.header p {
   color: white;
   margin-top: -10;
   font-style: italic;
@@ -22,7 +21,6 @@ h1 {
   font-size: 24px;
   text-transform: uppercase;
   color: white;
- 
 }
 
 #logo {
@@ -32,18 +30,15 @@ h1 {
 }
 
 .logo-text {
-
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
-
 
 /* DAYS BOX*/
 
 h2 {
-  
   text-align: center;
-  margin:7;
+  margin: 7;
   font-size: 18px;
   text-transform: uppercase;
 }
@@ -68,22 +63,21 @@ h2 {
   justify-content: center;
   align-items: center;
   margin: 10px;
-  
 }
 
 .day_box_background {
-
-flex-basis: 50%;
-width: 100%;
-height: 100%;
-background-size: cover;
-background-image: url('images/generic_360x120.jpg');
-
-
+  flex-basis: 50%;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-image: url("images/generic_360x120.jpg"),
+    -webkit-linear-gradient(to right, #2193b0, #6dd5ed);
+  background-image: url("images/generic_360x120.jpg"),
+    linear-gradient(to right, #2193b0, #6dd5ed);
 }
 
 .day_box_text {
-
   flex-basis: 50%;
   width: 100%;
   height: 100%;
@@ -93,17 +87,13 @@ background-image: url('images/generic_360x120.jpg');
   background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
   background: linear-gradient(to right, #eef2f3, #8e9eab);
   background-size: cover;
-  
-  }
+}
 
-  .day_box_text_sub {
-
-    flex-basis: 65%;
-    width: 100%;
-    height: 100%;
-
-  }
-
+.day_box_text_sub {
+  flex-basis: 65%;
+  width: 100%;
+  height: 100%;
+}
 
 #box1 {
   order: 1;
@@ -168,7 +158,6 @@ background-image: url('images/generic_360x120.jpg');
   background-color: #e6e8fa;
   overflow-wrap: break-word;
   text-align: center;
-  
 }
 
 /* FORM BOX*/
@@ -187,14 +176,12 @@ background-image: url('images/generic_360x120.jpg');
   background: linear-gradient(to right, #eef2f3, #8e9eab);
 }
 
-#delete {
+#delete_todo_form {
   display: none;
 }
 
 #checkbox_todo {
-
-margin-left: 7px;
-
+  margin-left: 7px;
 }
 
 .flex-form {
@@ -226,14 +213,6 @@ margin-left: 7px;
   align-items: center;
 }
 
-#logo_done {
-
-margin-right: 5px;
-display: none;
-
-}
-
-
 /* NOTES BOX*/
 
 .notes-box {
@@ -243,45 +222,12 @@ display: none;
   height: 750px;
   margin: auto;
   border-radius: 12px;
-  overflow:hidden;
+  overflow: hidden;
   position: relative;
   border: 3px solid grey;
-  background-color: #fff;
-  background-size: 100% 1.2em;
-  background-image: -webkit-linear-gradient(
-      0deg,
-      transparent 79px,
-      #abced4 79px,
-      #abced4 81px,
-      transparent 81px
-    ),
-    -webkit-linear-gradient(#eee 0.05em, transparent 0.05em);
-  background-image: -moz-linear-gradient(
-      0deg,
-      transparent 79px,
-      #abced4 79px,
-      #abced4 81px,
-      transparent 81px
-    ),
-    -moz-linear-gradient(#eee 0.05em, transparent 0.05em);
-  background-image: linear-gradient(
-      90deg,
-      transparent 79px,
-      #abced4 79px,
-      #abced4 81px,
-      transparent 81px
-    ),
-    linear-gradient(#eee 0.05em, transparent 0.05em);
-  -pie-background: linear-gradient(
-        90deg,
-        transparent 79px,
-        #abced4 79px,
-        #abced4 81px,
-        transparent 81px
-      )
-      0 0 / 100% 1.2em,
-    linear-gradient(#eee 0.05em, transparent 0.05em) 0 0 / 100% 1.2em #fff;
-  behavior: url(/pie/PIE.htc);
+  background: #d3cce3;
+  background: -webkit-linear-gradient(to right, #e9e4f0, #d3cce3);
+  background: linear-gradient(to right, #e9e4f0, #d3cce3);
 }
 .flex-notes {
   display: flex;
@@ -293,22 +239,20 @@ display: none;
 }
 .notes-item {
   margin: 50px 15px 15px 15px;
- padding: 25px;
-  border: 1px solid grey;
-  width: 200px;
+  padding: 25px;
+  width: 250px;
   overflow-wrap: break-word;
   background-color: white;
 }
-
 .notes_day_background {
-
-width: 700px;
-background-image: url(images/day1000x350.jpg);
-background-size: cover;
-height: 200px;
-
+  width: 700px;
+  background-blend-mode: overlay;
+  background-image: url(images/day1000x350.jpg), linear-gradient(to right, rgba(247, 151, 30, 0.4), rgba(255, 210, 0, 0.4)); ;
+  background-size: cover;
+  height: 200px;
 }
 
+/* TODOS AND ICONS */
 
 i {
   border: solid black;
@@ -321,32 +265,25 @@ i {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
-#close-day-1,
-#close-day-2,
-#close-day-3,
-#close-day-4,
-#close-day-5,
-#close-day-6,
-#close-day-7 {
+
+.logo_done {
+  margin-right: 5px;
   display: none;
-  position: absolute;
-  padding: 10px;
-  top: 0;
-  left: 0;
 }
-#task_list, #task_list_output {
+
+#task_list,
+#task_list_output {
   padding-inline-start: 0px;
 }
-#task_list > li, #task_list_output > li {
+#task_list > li,
+#task_list_output > li {
   display: inline-block;
 }
-
 #task_list_output > li {
-
-line-height: 2;
-border-bottom: solid 0.3px #f2f2f2;
-
+  line-height: 2;
+  border-bottom: solid 0.3px #f2f2f2;
 }
+
 /* BUTTONS*/
 #close-form {
   padding: 10px;
@@ -371,17 +308,27 @@ border-bottom: solid 0.3px #f2f2f2;
   display: none;
 }
 
-.btns_day {
+#close-day-1,
+#close-day-2,
+#close-day-3,
+#close-day-4,
+#close-day-5,
+#close-day-6,
+#close-day-7 {
+  display: none;
+  position: absolute;
 
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    border: none;
-
+  padding: 10px;
+  top: 0;
+  left: 0;
 }
 
+.btns_day {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: none;
+}
 .close-save {
-
-border-radius: 12px;
-
+  border-radius: 12px;
 }
