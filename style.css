@@ -60,9 +60,10 @@ h2 {
   flex-direction: column;
   position: relative;
   border-radius: 15px;
+  overflow: hidden;
   width: 240px;
   height: 160px;
-  border: 3px solid black;
+  border: 1px solid black;
   background-color: blue;
   justify-content: center;
   align-items: center;
@@ -77,8 +78,7 @@ width: 100%;
 height: 100%;
 background-size: cover;
 background-image: url('images/generic_360x120.jpg');
-border-top-left-radius: 12px;
-border-top-right-radius: 12px;
+
 
 }
 
@@ -87,8 +87,6 @@ border-top-right-radius: 12px;
   flex-basis: 50%;
   width: 100%;
   height: 100%;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
