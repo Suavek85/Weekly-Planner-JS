@@ -244,8 +244,7 @@ h2 {
   position: relative;
   border: 3px solid grey;
   background: #d3cce3;
-  background: -webkit-linear-gradient(to right, #e9e4f0, #d3cce3);
-  background: linear-gradient(to right, #e9e4f0, #d3cce3);
+  
 }
 
 .flex-notes {
@@ -350,6 +349,26 @@ i {
   flex-direction: column;
   padding: 0;
   border: none;
+  background: #d3cce3;
+  
+  
+}
+
+.button_day {
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: white;
+  border: 1px solid #0099cc;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+
+}
+
+.button_day:hover {
+  background-color: #2193b0;
+  color: white;
 }
 
 .close-save {
