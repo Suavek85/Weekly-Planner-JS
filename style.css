@@ -57,13 +57,13 @@ h2 {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  width: 240px;
+  width: 210px;
   height: 160px;
   border: 1px solid black;
   background-color: blue;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 5px;
 }
 
 .day_box_background {
@@ -137,6 +137,7 @@ h2 {
   border: 1px solid #0099cc;
   border-radius: 12px;
   cursor: pointer;
+  outline: none;
 
 }
 
@@ -153,6 +154,7 @@ h2 {
   border: 1px solid #0099cc;
   border-radius: 12px;
   cursor: pointer;
+  outline: none;
 }
 
 
@@ -264,6 +266,12 @@ h2 {
   background-color: white;
 }
 
+#todolist {
+
+width: 600px;
+
+}
+
 .notes_day_background {
   width: 700px;
   background-blend-mode: overlay;
@@ -363,7 +371,7 @@ i {
   margin-bottom: 10px;
   border-radius: 12px;
   cursor: pointer;
-
+  outline: none;
 }
 
 .button_day:hover {
@@ -381,6 +389,7 @@ i {
   padding: 10px;
   top: 5;
   left: 5;
+  outline: none;
 }
 
 .close-save:hover {
