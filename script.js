@@ -8,6 +8,7 @@ submitArray = Array.prototype.slice.call(
 
 openArray = Array.prototype.slice.call(document.querySelectorAll(".open"));
 
+
 class DayList {
   constructor() {
     this.a = document.getElementById("input2").value;
