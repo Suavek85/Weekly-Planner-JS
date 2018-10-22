@@ -22,6 +22,8 @@ h1 {
   font-size: 24px;
   text-transform: uppercase;
   color: white;
+  font-family: monospace;
+  letter-spacing: 2;
 }
 
 #logo {
@@ -42,6 +44,9 @@ h2 {
   margin: 7;
   font-size: 18px;
   text-transform: uppercase;
+  color: darkslateblue;
+  font-family: cursive;
+  background-color: #eef2f3;
 }
 
 .flex-days {

@@ -184,11 +184,12 @@ var view = {
     document.getElementById("name" + number).innerHTML = "Today";
   },
 
-  dayDayDateDisplay: function(day) {
+  dayDayDateDisplay: function(day, shortday, longday) {
     var today = new Date();
     var newday = new Date();
     newday.setDate(today.getDate() + day);
-    var newestday = newday.toDateString();
+    var newerday = newday.toDateString();
+    var newestday = newerday.replace(shortday , longday);
     document.getElementById("background_text").innerHTML = newestday;
   }
 };
@@ -306,41 +307,43 @@ document.addEventListener(
         return;
       }
       {
+
+        var list = document.getElementById("zero");
         if (
           eventbtn_open ===
-          document.getElementById("zero").firstElementChild.lastElementChild.id
+          list.firstElementChild.lastElementChild.id
         ) {
-          view.dayDayDateDisplay(0);
+          view.dayDayDateDisplay(0, 'Mon', 'Monday');
         } else if (
           eventbtn_open ===
-          document.getElementById("zero").children[1].lastElementChild.id
+          list.children[1].lastElementChild.id
         ) {
-          view.dayDayDateDisplay(1);
+          view.dayDayDateDisplay(1, 'Tue', 'Tuesday');
         } else if (
           eventbtn_open ===
-          document.getElementById("zero").children[2].lastElementChild.id
+          list.children[2].lastElementChild.id
         ) {
-          view.dayDayDateDisplay(2);
+          view.dayDayDateDisplay(2, 'Wed', 'Wednesday');
         } else if (
           eventbtn_open ===
-          document.getElementById("zero").children[3].lastElementChild.id
+          list.children[3].lastElementChild.id
         ) {
-          view.dayDayDateDisplay(3);
+          view.dayDayDateDisplay(3, 'Thu', 'Thursday');
         } else if (
           eventbtn_open ===
-          document.getElementById("zero").children[4].lastElementChild.id
+          list.children[4].lastElementChild.id
         ) {
-          view.dayDayDateDisplay(4);
+          view.dayDayDateDisplay(4, 'Fri', 'Friday');
         } else if (
           eventbtn_open ===
-          document.getElementById("zero").children[5].lastElementChild.id
+          list.children[5].lastElementChild.id
         ) {
-          view.dayDayDateDisplay(5);
+          view.dayDayDateDisplay(5, 'Sat', 'Saturday');
         } else if (
           eventbtn_open ===
-          document.getElementById("zero").children[6].lastElementChild.id
+          list.children[6].lastElementChild.id
         ) {
-          view.dayDayDateDisplay(6);
+          view.dayDayDateDisplay(6, 'Sun', 'Sunday');
         }
       }
     } else if (event.target.id.includes("close-day")) {
