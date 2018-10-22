@@ -8,7 +8,6 @@ submitArray = Array.prototype.slice.call(
 
 openArray = Array.prototype.slice.call(document.querySelectorAll(".open"));
 
-
 class DayList {
   constructor() {
     this.a = document.getElementById("input2").value;
@@ -28,7 +27,9 @@ class DayList {
     document.getElementById("btns_" + dayNumber + "_sub").style.display =
       "block";
     document.querySelector("#output" + dayNumber).innerHTML = this.a;
-    document.getElementById("box_image_" + dayNumber).style.backgroundImage = this.f;
+    document.getElementById(
+      "box_image_" + dayNumber
+    ).style.backgroundImage = this.f;
   }
 
   openDay(dayNumber) {
@@ -57,11 +58,11 @@ function inputLength(element) {
 
 function createListElement() {
   var logo_done = document.createElement("img");
-  logo_done.setAttribute('src', 'images/completed.png');
-  logo_done.setAttribute('alt', 'logo done');
-  logo_done.setAttribute('class', 'logo_done');
-  logo_done.setAttribute('height', '15px');
-  logo_done.setAttribute('width', '15px');
+  logo_done.setAttribute("src", "images/completed.png");
+  logo_done.setAttribute("alt", "logo done");
+  logo_done.setAttribute("class", "logo_done");
+  logo_done.setAttribute("height", "15px");
+  logo_done.setAttribute("width", "15px");
   ul_tasks.appendChild(logo_done);
   var li = document.createElement("li");
   li.appendChild(document.createTextNode(input_todo_form.value));
@@ -84,15 +85,14 @@ function createListElement() {
 var input_todo_day = document.getElementById("input_list_output");
 var ul_tasks_day = document.getElementById("task_list_output");
 
-
 function createListDay() {
   var ul_tasks_day = document.getElementById("task_list_output");
   var logo_done = document.createElement("img");
-  logo_done.setAttribute('src', 'images/completed.png');
-  logo_done.setAttribute('alt', 'logo done');
-  logo_done.setAttribute('class', 'logo_done');
-  logo_done.setAttribute('height', '15px');
-  logo_done.setAttribute('width', '15px');
+  logo_done.setAttribute("src", "images/completed.png");
+  logo_done.setAttribute("alt", "logo done");
+  logo_done.setAttribute("class", "logo_done");
+  logo_done.setAttribute("height", "15px");
+  logo_done.setAttribute("width", "15px");
   ul_tasks_day.appendChild(logo_done);
   var li = document.createElement("li");
   li.appendChild(document.createTextNode(input_todo_day.value));
@@ -109,7 +109,6 @@ function createListDay() {
   ul_tasks_day.appendChild(br);
   document.getElementById("delete_todo_form").style.display = "block";
 }
-
 
 //VIEW
 
@@ -183,10 +182,16 @@ var view = {
 
   startFromToday: function(number) {
     document.getElementById("name" + number).innerHTML = "Today";
-    
+  },
+
+  dayDayDateDisplay: function(day) {
+    var today = new Date();
+    var newday = new Date();
+    newday.setDate(today.getDate() + day);
+    var newestday = newday.toDateString();
+    document.getElementById("background_text").innerHTML = newestday;
   }
 };
-
 
 //CLICK EVENT LISTENER
 
@@ -300,8 +305,45 @@ document.addEventListener(
       } else {
         return;
       }
+      {
+        if (
+          eventbtn_open ===
+          document.getElementById("zero").firstElementChild.lastElementChild.id
+        ) {
+          view.dayDayDateDisplay(0);
+        } else if (
+          eventbtn_open ===
+          document.getElementById("zero").children[1].lastElementChild.id
+        ) {
+          view.dayDayDateDisplay(1);
+        } else if (
+          eventbtn_open ===
+          document.getElementById("zero").children[2].lastElementChild.id
+        ) {
+          view.dayDayDateDisplay(2);
+        } else if (
+          eventbtn_open ===
+          document.getElementById("zero").children[3].lastElementChild.id
+        ) {
+          view.dayDayDateDisplay(3);
+        } else if (
+          eventbtn_open ===
+          document.getElementById("zero").children[4].lastElementChild.id
+        ) {
+          view.dayDayDateDisplay(4);
+        } else if (
+          eventbtn_open ===
+          document.getElementById("zero").children[5].lastElementChild.id
+        ) {
+          view.dayDayDateDisplay(5);
+        } else if (
+          eventbtn_open ===
+          document.getElementById("zero").children[6].lastElementChild.id
+        ) {
+          view.dayDayDateDisplay(6);
+        }
+      }
     } else if (event.target.id.includes("close-day")) {
-     
       var eventbtn_closesave = event.target.id;
 
       if (eventbtn_closesave === "close-day-1") {
@@ -330,87 +372,69 @@ document.addEventListener(
       view.enableAdd();
       view.enableOpen();
       view.undisplayForm();
-    }
+    } else if (event.target.id.includes("delete_todo_form")) {
+      var todos_checked = document.getElementsByName("todoscb");
+      for (var i = 0, length = todos_checked.length; i < length; i++) {
+        if (todos_checked[i].checked) {
+          todos_checked[i].previousSibling.remove();
+          todos_checked[i].nextSibling.remove();
+          todos_checked[i].remove();
+          i--;
+        }
+      }
+    } else if (event.target.id.includes("delete_output")) {
+      var todos_checked = document.getElementsByName("todoscb");
+      for (var i = 0, length = todos_checked.length; i < length; i++) {
+        if (todos_checked[i].checked) {
+          //debugger;
+          todos_checked[i].previousSibling.remove();
+          todos_checked[i].previousSibling.remove();
+          todos_checked[i].nextSibling.remove();
+          todos_checked[i].remove();
+          i--;
+        }
+      }
+    } else if (event.target.id.includes("completed")) {
+      var todos_checked = document.getElementsByName("todoscb");
+      for (var i = 0, length = todos_checked.length; i < length; i++) {
+        if (todos_checked[i].checked) {
+          todos_checked[i].previousSibling.style.textDecoration =
+            "line-through";
+          todos_checked[i].previousSibling.style.color = "grey";
+          todos_checked[i].checked = false;
 
-else if (event.target.id.includes("delete_todo_form")) {
-  var todos_checked = document.getElementsByName("todoscb");
-  for (var i = 0, length = todos_checked.length; i < length; i++) {
-    if (todos_checked[i].checked) {
-      todos_checked[i].previousSibling.remove();
-      todos_checked[i].nextSibling.remove();
-      todos_checked[i].remove();
-      i--;
-    }
-  }
-}
-
-else if (event.target.id.includes("delete_output")) {
-  
-    var todos_checked = document.getElementsByName("todoscb");
-    for (var i = 0, length = todos_checked.length; i < length; i++) {
-      if (todos_checked[i].checked) {
-        //debugger;
-        todos_checked[i].previousSibling.remove();
-        todos_checked[i].previousSibling.remove();
-        todos_checked[i].nextSibling.remove();
-        todos_checked[i].remove();
-        i--;
+          todos_checked[i].previousSibling.previousSibling.style.display =
+            "inline-block";
+        }
+      }
+    } else if (event.target.id.includes("enter")) {
+      if (inputLength(input_todo_form) > 0) {
+        createListElement();
+      }
+    } else if (event.target.id.includes("enter")) {
+      if (inputLength(input_todo_form) > 0) {
+        createListElement();
+      }
+    } else if (event.target.id.includes("add")) {
+      if (inputLength(input_todo_day) > 0) {
+        createListDay();
       }
     }
-}
-
-else if (event.target.id.includes("completed")) {
-  
-    var todos_checked = document.getElementsByName("todoscb");
-    for (var i = 0, length = todos_checked.length; i < length; i++) {
-      if (todos_checked[i].checked) {
-        todos_checked[i].previousSibling.style.textDecoration = 'line-through';
-        todos_checked[i].previousSibling.style.color = 'grey';
-        todos_checked[i].checked = false;
-        
-        todos_checked[i].previousSibling.previousSibling.style.display = 'inline-block';
-      }
-    }
-}
-
-else if(event.target.id.includes("enter")) {
-
-    if (inputLength(input_todo_form) > 0) {
-      createListElement();
-    }
-}
-
-else if(event.target.id.includes("enter")) {
-
-  if (inputLength(input_todo_form) > 0) {
-    createListElement();
-  }
-}
-
-else if(event.target.id.includes("add")) {
-  if (inputLength(input_todo_day) > 0) {
-    createListDay();
-  }
-}
-
   },
   false
 );
 
-
 document.addEventListener(
   "keypress",
   function(event) {
-    
-    if(event.target.id.includes("input_list")) {
+    if (event.target.id.includes("input_list")) {
       if (inputLength(input_todo_day) > 0 && event.keyCode === 13) {
-      createListElement();
-    }}
-    
-  }, false
-
+        createListElement();
+      }
+    }
+  },
+  false
 );
-
 
 //DAY ORDER ON LOAD
 

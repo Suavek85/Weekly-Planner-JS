@@ -273,12 +273,28 @@ width: 600px;
 }
 
 .notes_day_background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 700px;
   background-blend-mode: overlay;
   background-image: url(images/day1000x350.jpg), linear-gradient(to right, #2193b0, #6dd5ed);
   background-size: cover;
   height: 200px;
 }
+
+.notes_day_background_text {
+
+padding: 30px;
+font-size: 24px;
+border-radius: 12px;
+background: rgb(0, 0, 0); 
+background: rgba(0, 0, 0, 0.5); 
+color: #f1f1f1;
+
+
+}
+
 
 /* TODOS AND ICONS */
 
