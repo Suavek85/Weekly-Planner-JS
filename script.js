@@ -26,13 +26,14 @@ class DayList {
   createDay(dayNumber) {
     document.getElementById("btns_" + dayNumber + "_sub").style.display =
       "block";
-    document.querySelector("#output" + dayNumber).innerHTML = this.a;
+    
     document.getElementById(
       "box_image_" + dayNumber
     ).style.backgroundImage = this.f;
   }
 
   openDay(dayNumber) {
+    document.querySelector("#highlight").innerHTML = this.a;
     document.querySelector("#output8").innerHTML = this.b;
     var word = this.g;
     var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul></div>`;
