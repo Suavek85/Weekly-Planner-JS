@@ -188,7 +188,7 @@ var newday = new Date();
 newday.setDate(today.getDate() + (1 + dayno - today.getDay()) % dayno);
 var newerday = newday.toDateString();
     document.getElementById("background_text").innerHTML = newerday;
-    console.log(newerday);
+    
   }
 
   
@@ -294,10 +294,10 @@ document.addEventListener(
         view.dayDayDateDisplay(7);
         day1List.openDay(1);
       } else if (eventbtn_open === "btns_2_sub") {
-        view.dayDayDateDisplay(1);
+        view.dayDayDateDisplay(8);
         day2List.openDay(2);
       } else if (eventbtn_open === "btns_3_sub") {
-        view.dayDayDateDisplay(2);
+        view.dayDayDateDisplay(1);
         day3List.openDay(3);
       } else if (eventbtn_open === "btns_4_sub") {
         view.dayDayDateDisplay(3);
