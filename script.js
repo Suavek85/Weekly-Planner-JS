@@ -10,7 +10,6 @@ openArray = Array.prototype.slice.call(document.querySelectorAll(".open"));
 
 class DayList {
   constructor() {
-    this.a = document.getElementById("input2").value;
     this.b = document.getElementById("input3").value;
     var radios = document.getElementsByName("day");
     for (var i = 0, length = radios.length; i < length; i++) {
@@ -33,7 +32,6 @@ class DayList {
   }
 
   openDay(dayNumber) {
-    document.querySelector("#highlight").innerHTML = this.a;
     document.querySelector("#output8").innerHTML = this.b;
     var word = this.g;
     var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul></div>`;
@@ -144,7 +142,6 @@ var view = {
   },
 
   displayForm: function() {
-    document.getElementById("input2").value = "";
     document.getElementById("input3").value = "";
     document.getElementById("work").checked = true;
     document.getElementById("form-container").style.display = "flex";
@@ -183,17 +180,18 @@ var view = {
 
   startFromToday: function(number) {
     document.getElementById("name" + number).innerHTML = "Today";
-  }
-/*
-  dayDayDateDisplay: function(day) {
+  },
+
+  dayDayDateDisplay: function(dayno) {
     var today = new Date();
-    var newday = new Date();
-    newday.setDate(today.getDate() + day);
-    var newerday = newday.toDateString();
+var newday = new Date();
+newday.setDate(today.getDate() + (1 + dayno - today.getDay()) % dayno);
+var newerday = newday.toDateString();
     document.getElementById("background_text").innerHTML = newerday;
+    console.log(newerday);
   }
 
-  */
+  
 };
 
 //CLICK EVENT LISTENER
@@ -292,18 +290,26 @@ document.addEventListener(
       var eventbtn_open = event.target.id;
 
       if (eventbtn_open === "btns_1_sub") {
+        
+        view.dayDayDateDisplay(7);
         day1List.openDay(1);
       } else if (eventbtn_open === "btns_2_sub") {
+        view.dayDayDateDisplay(1);
         day2List.openDay(2);
       } else if (eventbtn_open === "btns_3_sub") {
+        view.dayDayDateDisplay(2);
         day3List.openDay(3);
       } else if (eventbtn_open === "btns_4_sub") {
+        view.dayDayDateDisplay(3);
         day4List.openDay(4);
       } else if (eventbtn_open === "btns_5_sub") {
+        view.dayDayDateDisplay(4);
         day5List.openDay(5);
       } else if (eventbtn_open === "btns_6_sub") {
+        view.dayDayDateDisplay(5);
         day6List.openDay(6);
       } else if (eventbtn_open === "btns_7_sub") {
+        view.dayDayDateDisplay(6);
         day7List.openDay(7);
       } else {
         return;
