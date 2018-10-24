@@ -181,16 +181,16 @@ var view = {
   startFromToday: function(number) {
     document.getElementById("name" + number).innerHTML = "Today";
   },
-
+/*
   dayDayDateDisplay: function(dayno) {
     var today = new Date();
-var newday = new Date();
-newday.setDate(today.getDate() + (1 + dayno - today.getDay()) % dayno);
+  var newday = new Date();
+   newday.setDate(today.getDate() + (1 + dayno - today.getDay()) % dayno);
 var newerday = newday.toDateString();
     document.getElementById("background_text").innerHTML = newerday;
     
   }
-
+*/
   
 };
 
@@ -291,71 +291,30 @@ document.addEventListener(
 
       if (eventbtn_open === "btns_1_sub") {
         
-        view.dayDayDateDisplay(7);
+        //view.dayDayDateDisplay(7);
         day1List.openDay(1);
       } else if (eventbtn_open === "btns_2_sub") {
-        view.dayDayDateDisplay(8);
+        //view.dayDayDateDisplay(8);
         day2List.openDay(2);
       } else if (eventbtn_open === "btns_3_sub") {
-        view.dayDayDateDisplay(1);
+        //view.dayDayDateDisplay(1);
         day3List.openDay(3);
       } else if (eventbtn_open === "btns_4_sub") {
-        view.dayDayDateDisplay(3);
+        //view.dayDayDateDisplay(3);
         day4List.openDay(4);
       } else if (eventbtn_open === "btns_5_sub") {
-        view.dayDayDateDisplay(4);
+        //view.dayDayDateDisplay(4);
         day5List.openDay(5);
       } else if (eventbtn_open === "btns_6_sub") {
-        view.dayDayDateDisplay(5);
+        //view.dayDayDateDisplay(5);
         day6List.openDay(6);
       } else if (eventbtn_open === "btns_7_sub") {
-        view.dayDayDateDisplay(6);
+        //view.dayDayDateDisplay(6);
         day7List.openDay(7);
       } else {
         return;
       }
-      /*
-      {
-
-        var list = document.getElementById("zero");
-        if (
-          eventbtn_open ===
-          list.firstElementChild.lastElementChild.id
-        ) {
-          view.dayDayDateDisplay(0);
-        } else if (
-          eventbtn_open ===
-          list.children[1].lastElementChild.id
-        ) {
-          view.dayDayDateDisplay(1);
-        } else if (
-          eventbtn_open ===
-          list.children[2].lastElementChild.id
-        ) {
-          view.dayDayDateDisplay(2);
-        } else if (
-          eventbtn_open ===
-          list.children[3].lastElementChild.id
-        ) {
-          view.dayDayDateDisplay(3);
-        } else if (
-          eventbtn_open ===
-          list.children[4].lastElementChild.id
-        ) {
-          view.dayDayDateDisplay(4);
-        } else if (
-          eventbtn_open ===
-          list.children[5].lastElementChild.id
-        ) {
-          view.dayDayDateDisplay(5);
-        } else if (
-          eventbtn_open ===
-          list.children[6].lastElementChild.id
-        ) {
-          view.dayDayDateDisplay(6);
-        }
-      }
-      */
+      
     } else if (event.target.id.includes("close-day")) {
       var eventbtn_closesave = event.target.id;
 
