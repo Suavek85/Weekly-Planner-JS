@@ -210,6 +210,14 @@ var view = {
       document.getElementById('progressbar').innerHTML = widthPercentage + '% done';
       document.getElementById('progressbar').style.backgroundColor = 'orange';
     }
+  },
+
+  clearProgress: function() {
+    document.getElementById('progressbar').style.width = '100%';
+      document.getElementById('progressbar').innerHTML = '0% completed';
+      document.getElementById('progressbar').style.backgroundColor = 'grey';
+
+
   }
 };
 
@@ -420,6 +428,7 @@ document.addEventListener(
       view.todoListRemove();
       view.enableAdd();
       view.enableOpen();
+      view.clearProgress();
     } else if (event.target.id.includes("close-form")) {
       view.enableAdd();
       view.enableOpen();
