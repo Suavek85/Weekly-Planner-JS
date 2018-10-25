@@ -7,9 +7,7 @@
 </head>
 
 
-
 <body>
-
 
     <!-- HEADER -->
 
@@ -18,9 +16,7 @@
         <div><img src='images/timeline.png' id='logo' alt="Logo"></div>
         <div class="logo-text"><h1>Weekly planner</h1><p>Plan seven days ahead</p></div>
 
-
     </div>
-
 
     <!-- SEVEN DAYS -->
 
@@ -90,9 +86,7 @@
 
     </ul>
 
-
     <!-- FORM -->
-
 
     <div id='form-container'>
 
@@ -112,7 +106,6 @@
             </div>
             <ul id="task_list"></ul>
         </div>
-
 
 
 
@@ -144,16 +137,15 @@
         </div>
 
 
-
     </div>
-
 
     <!-- DAILY NOTES -->
 
-
     <div class='notes-box'>
 
-        <div class='notes_day_background'><div id='background_text' class='notes_day_background_text'>Hello</div></div>
+        <div class='notes_day_background'><div id='background_text' class='notes_day_background_text'>Hello</div>
+        
+    </div>
 
        
         <div id="flexy_notes" class='flex-notes'>
@@ -162,11 +154,15 @@
                 <p contentEditable="true" id='output8'></p>
             </div>
 
+
+
             <div class='notes-item btns_day'>
             <button class='button_day' id='delete_output'>Delete</button><button class='button_day' id='completed'>Completed</button>
             <button class='button_day' id='add'>Add</button>
             <input id='input_list_output' type='text' placeholder="enter one by one">
-            </div>
+
+            <div id='progressbar'></div>
+            
 
             <button class='close-save' id='close-day-1'>Close & Save</button>
             <button class='close-save'id='close-day-2'>Close & Save</button>
@@ -178,12 +174,13 @@
 
         </div>
 
+        
+
     </div>
 
     <script type="text/javascript" src="script.js"></script>
 
-
 </body>
 
-
 </html>
+

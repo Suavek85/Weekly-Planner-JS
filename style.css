@@ -252,7 +252,7 @@ h2 {
   position: relative;
   border: 3px solid grey;
   background: #d3cce3;
-  
+
 }
 
 .flex-notes {
@@ -268,13 +268,12 @@ h2 {
   margin: 50px 15px 15px 15px;
   padding: 25px;
   width: 250px;
-  overflow-wrap: break-word;
   background-color: white;
 }
 
 #todolist {
 
-width: 600px;
+  width: 600px;
 
 }
 
@@ -291,13 +290,28 @@ width: 600px;
 
 .notes_day_background_text {
 
-padding: 30px;
-font-size: 24px;
-border-radius: 12px;
-background: rgb(0, 0, 0); 
-background: rgba(0, 0, 0, 0.5); 
-color: #f1f1f1;
+  padding: 30px;
+  font-size: 24px;
+  border-radius: 12px;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
 
+
+}
+
+#progressbar {
+
+  margin-top: 15px;
+  border-radius: 8px;
+  width: 100%;
+  height: 27px;
+  background-color: orange;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding-top: 8px;
 
 }
 
@@ -380,8 +394,8 @@ i {
   padding: 0;
   border: none;
   background: #d3cce3;
-  
-  
+
+
 }
 
 .button_day {

@@ -25,7 +25,7 @@ class DayList {
   createDay(dayNumber) {
     document.getElementById("btns_" + dayNumber + "_sub").style.display =
       "block";
-    
+
     document.getElementById(
       "box_image_" + dayNumber
     ).style.backgroundImage = this.f;
@@ -72,7 +72,7 @@ function createListElement() {
   checkbox.id = "checkbox_todo";
   checkbox.value = "test";
   checkbox.name = "todoscb";
-  checkbox.checked = false;
+  //checkbox.checked = false;
   ul_tasks.appendChild(checkbox);
   var br = document.createElement("br");
   ul_tasks.appendChild(br);
@@ -102,46 +102,46 @@ function createListDay() {
   checkbox.id = "checkbox_todo";
   checkbox.value = "test";
   checkbox.name = "todoscb";
-  checkbox.checked = false;
+  //checkbox.checked = false;
   ul_tasks_day.appendChild(checkbox);
   var br = document.createElement("br");
   ul_tasks_day.appendChild(br);
   document.getElementById("delete_todo_form").style.display = "block";
 }
 
-//VIEW
+//VIEW OBJECT
 
 var view = {
-  todoListRemove: function() {
+  todoListRemove: function () {
     var todolist = document.getElementById("todolist");
     todolist.remove();
   },
 
-  disableAdd: function() {
+  disableAdd: function () {
     for (var i = 0; i < addArray.length; i++) {
       addArray[i].disabled = true;
     }
   },
 
-  disableOpen: function() {
+  disableOpen: function () {
     for (var i = 0; i < openArray.length; i++) {
       openArray[i].disabled = true;
     }
   },
 
-  enableAdd: function() {
+  enableAdd: function () {
     for (var i = 0; i < addArray.length; i++) {
       addArray[i].disabled = false;
     }
   },
 
-  enableOpen: function() {
+  enableOpen: function () {
     for (var i = 0; i < openArray.length; i++) {
       openArray[i].disabled = false;
     }
   },
 
-  displayForm: function() {
+  displayForm: function () {
     document.getElementById("input3").value = "";
     document.getElementById("work").checked = true;
     document.getElementById("form-container").style.display = "flex";
@@ -149,11 +149,11 @@ var view = {
     ul_tasks.innerHTML = "";
   },
 
-  clearTodo: function() {
+  clearTodo: function () {
     ul_tasks.innerHTML = "";
   },
 
-  undisplayForm: function() {
+  undisplayForm: function () {
     for (var i = 0; i < submitArray.length; i++) {
       submitArray[i].style.display = "none";
 
@@ -161,11 +161,11 @@ var view = {
     }
   },
 
-  displaySubmit: function(el) {
+  displaySubmit: function (el) {
     document.getElementById("btn_" + el).style.display = "block";
   },
 
-  closeDay: function() {
+  closeDay: function () {
     document.querySelector(".notes-box").style.display = "none";
     var closeSave = Array.prototype.slice.call(
       document.querySelectorAll(".close-save")
@@ -178,27 +178,66 @@ var view = {
     document.getElementById("close-day-1").style.display;
   },
 
-  startFromToday: function(number) {
+  startFromToday: function (number) {
     document.getElementById("name" + number).innerHTML = "Today";
   },
-/*
-  dayDayDateDisplay: function(dayno) {
-    var today = new Date();
-  var newday = new Date();
-   newday.setDate(today.getDate() + (1 + dayno - today.getDay()) % dayno);
-var newerday = newday.toDateString();
-    document.getElementById("background_text").innerHTML = newerday;
-    
+
+
+  calculateProgress: function () {
+
+    var todos_checked3 = Array.prototype.slice.call(document.getElementsByName("todoscb"));
+
+    var x = 0;
+
+    for (var i = 0, length = todos_checked3.length; i < length; i++) {
+      if (todos_checked3[i].previousSibling.style.textDecoration ===
+        "line-through") {
+        var x = x + 1;
+      }
+    }
+
+    var y = (x / todos_checked3.length) * 100;
+    var widthPercentage = Math.round(y);
+
+    if (isNaN(widthPercentage) || widthPercentage === 0) {
+
+      document.getElementById('progressbar').style.width = '100%';
+      document.getElementById('progressbar').innerHTML = '0% completed';
+      document.getElementById('progressbar').style.backgroundColor = 'grey';
+
+    } else {
+      document.getElementById('progressbar').style.width = widthPercentage * 1.8;
+      document.getElementById('progressbar').innerHTML = widthPercentage + '% done';
+      document.getElementById('progressbar').style.backgroundColor = 'orange';
+    }
   }
-*/
-  
 };
+
+//SEVEN DAYS DISPLAY CONUNDRUM IN PROGRESS...
+
+
+var date = new Date();
+var today = date.toDateString();
+var hellotoday = "Hi, today\'s " + today;
+var day = date.getDay();
+var currentDate;
+
+function jumpToNextDay(date, numb) {
+  currentDate = (new Date(+date + (7 - (date.getDay() + numb) % 7) * 86400000)).toDateString();
+  document.getElementById("background_text").innerHTML = currentDate;
+};
+
+function jumpToToday() {
+  document.getElementById("background_text").innerHTML = hellotoday;
+}
+
+
 
 //CLICK EVENT LISTENER
 
 document.addEventListener(
   "click",
-  function(event) {
+  function (event) {
     if (event.target.id.includes("btn_")) {
       view.enableAdd();
       view.undisplayForm();
@@ -287,34 +326,75 @@ document.addEventListener(
       view.undisplayForm();
       view.disableOpen();
       view.disableAdd();
+
       var eventbtn_open = event.target.id;
 
       if (eventbtn_open === "btns_1_sub") {
-        
-        //view.dayDayDateDisplay(7);
+        if (document.getElementById('btns_1_sub').previousSibling.previousSibling.previousSibling.previousSibling.firstChild.firstChild.innerHTML !== 'Today') {
+          jumpToNextDay(date, 6)
+        } else {
+          jumpToToday();
+        }
+       
         day1List.openDay(1);
       } else if (eventbtn_open === "btns_2_sub") {
-        //view.dayDayDateDisplay(8);
+
+        if (document.getElementById('btns_2_sub').previousSibling.previousSibling.previousSibling.previousSibling.firstChild.firstChild.innerHTML !== 'Today') {
+          jumpToNextDay(date, 5)
+        } else {
+          jumpToToday();
+        }
         day2List.openDay(2);
+        view.calculateProgress();
       } else if (eventbtn_open === "btns_3_sub") {
-        //view.dayDayDateDisplay(1);
+
+        if (document.getElementById('btns_3_sub').previousSibling.previousSibling.previousSibling.previousSibling.firstChild.firstChild.innerHTML !== 'Today') {
+          jumpToNextDay(date, 4)
+        }
         day3List.openDay(3);
+        view.calculateProgress();
       } else if (eventbtn_open === "btns_4_sub") {
-        //view.dayDayDateDisplay(3);
+
+        if (document.getElementById('btns_4_sub').previousSibling.previousSibling.previousSibling.previousSibling.firstChild.firstChild.innerHTML !== 'Today') {
+          jumpToNextDay(date, 3)
+        } else {
+          jumpToToday();
+        }
         day4List.openDay(4);
+        view.calculateProgress();
       } else if (eventbtn_open === "btns_5_sub") {
-        //view.dayDayDateDisplay(4);
+
+        if (document.getElementById('btns_5_sub').previousSibling.previousSibling.previousSibling.previousSibling.firstChild.firstChild.innerHTML !== 'Today') {
+          jumpToNextDay(date, 2)
+        } else {
+          jumpToToday();
+        }
         day5List.openDay(5);
+        view.calculateProgress();
       } else if (eventbtn_open === "btns_6_sub") {
-        //view.dayDayDateDisplay(5);
+
+        if (document.getElementById('btns_6_sub').previousSibling.previousSibling.previousSibling.previousSibling.firstChild.firstChild.innerHTML !== 'Today') {
+          jumpToNextDay(date, 1)
+        } else {
+          jumpToToday();
+        }
         day6List.openDay(6);
+        view.calculateProgress();
       } else if (eventbtn_open === "btns_7_sub") {
-        //view.dayDayDateDisplay(6);
+
+        if (document.getElementById('btns_7_sub').previousSibling.previousSibling.previousSibling.previousSibling.firstChild.firstChild.innerHTML !== 'Today') {
+          jumpToNextDay(date, 0)
+        } else {
+          jumpToToday();
+        }
         day7List.openDay(7);
+        view.calculateProgress();
       } else {
         return;
       }
-      
+
+
+
     } else if (event.target.id.includes("close-day")) {
       var eventbtn_closesave = event.target.id;
 
@@ -358,14 +438,17 @@ document.addEventListener(
       var todos_checked = document.getElementsByName("todoscb");
       for (var i = 0, length = todos_checked.length; i < length; i++) {
         if (todos_checked[i].checked) {
-          //debugger;
+
           todos_checked[i].previousSibling.remove();
           todos_checked[i].previousSibling.remove();
           todos_checked[i].nextSibling.remove();
           todos_checked[i].remove();
           i--;
         }
+        view.calculateProgress();
       }
+
+
     } else if (event.target.id.includes("completed")) {
       var todos_checked = document.getElementsByName("todoscb");
       for (var i = 0, length = todos_checked.length; i < length; i++) {
@@ -378,30 +461,40 @@ document.addEventListener(
           todos_checked[i].previousSibling.previousSibling.style.display =
             "inline-block";
         }
+
+      }
+      view.calculateProgress();
+
+    } else if (event.target.id.includes("enter")) {
+      if (inputLength(input_todo_form) > 0) {
+        createListElement();
+
       }
     } else if (event.target.id.includes("enter")) {
       if (inputLength(input_todo_form) > 0) {
         createListElement();
-      }
-    } else if (event.target.id.includes("enter")) {
-      if (inputLength(input_todo_form) > 0) {
-        createListElement();
+
       }
     } else if (event.target.id.includes("add")) {
       if (inputLength(input_todo_day) > 0) {
         createListDay();
+        view.calculateProgress();
       }
     }
   },
   false
 );
 
+
+
+
 document.addEventListener(
   "keypress",
-  function(event) {
+  function (event) {
     if (event.target.id.includes("input_list")) {
       if (inputLength(input_todo_day) > 0 && event.keyCode === 13) {
         createListElement();
+        view.calculateProgress();
       }
     }
   },
@@ -410,7 +503,7 @@ document.addEventListener(
 
 //DAY ORDER ON LOAD
 
-window.onload = function() {
+window.onload = function () {
   var dayWeek = new Date();
   var currentDay = dayWeek.getDay();
 
