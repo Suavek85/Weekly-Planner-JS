@@ -179,7 +179,7 @@ var view = {
   },
 
   startFromToday: function(number) {
-    document.getElementById("name" + number).innerHTML = "Today";
+    document.getElementById("name" + number).innerHTML = "TODAY";
   },
 
   calculateProgress: function() {
@@ -236,13 +236,21 @@ var currentDate;
 
 function jumpToNextDay(date, numb) {
   currentDate = new Date(
-    +date + (7 - ((date.getDay() + numb) % 7)) * 86400000
+    + date + (7 - ((date.getDay() + numb) % 7)) * 86400000
   ).toDateString();
   document.getElementById("background_text").innerHTML = currentDate;
 }
 
 function jumpToToday() {
   document.getElementById("background_text").innerHTML = hellotoday;
+}
+
+function notToday(dayNumber) {
+
+  return document.getElementById("btns_" + dayNumber + "_sub").previousSibling.previousSibling
+  .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
+"TODAY";
+
 }
 
 //CLICK EVENT LISTENER
@@ -343,9 +351,7 @@ document.addEventListener(
 
       if (eventbtn_open === "btns_1_sub") {
         if (
-          document.getElementById("btns_1_sub").previousSibling.previousSibling
-            .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
-          "Today"
+          notToday(1) 
         ) {
           jumpToNextDay(date, 6);
         } else {
@@ -355,9 +361,7 @@ document.addEventListener(
         day1List.openDay(1);
       } else if (eventbtn_open === "btns_2_sub") {
         if (
-          document.getElementById("btns_2_sub").previousSibling.previousSibling
-            .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
-          "Today"
+          notToday(2) 
         ) {
           jumpToNextDay(date, 5);
         } else {
@@ -367,19 +371,17 @@ document.addEventListener(
         view.calculateProgress();
       } else if (eventbtn_open === "btns_3_sub") {
         if (
-          document.getElementById("btns_3_sub").previousSibling.previousSibling
-            .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
-          "Today"
+          notToday(3) 
         ) {
           jumpToNextDay(date, 4);
+        } else {
+          jumpToToday();
         }
         day3List.openDay(3);
         view.calculateProgress();
       } else if (eventbtn_open === "btns_4_sub") {
         if (
-          document.getElementById("btns_4_sub").previousSibling.previousSibling
-            .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
-          "Today"
+          notToday(4) 
         ) {
           jumpToNextDay(date, 3);
         } else {
@@ -389,9 +391,7 @@ document.addEventListener(
         view.calculateProgress();
       } else if (eventbtn_open === "btns_5_sub") {
         if (
-          document.getElementById("btns_5_sub").previousSibling.previousSibling
-            .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
-          "Today"
+          notToday(5) 
         ) {
           jumpToNextDay(date, 2);
         } else {
@@ -401,9 +401,7 @@ document.addEventListener(
         view.calculateProgress();
       } else if (eventbtn_open === "btns_6_sub") {
         if (
-          document.getElementById("btns_6_sub").previousSibling.previousSibling
-            .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
-          "Today"
+          notToday(6) 
         ) {
           jumpToNextDay(date, 1);
         } else {
@@ -413,9 +411,7 @@ document.addEventListener(
         view.calculateProgress();
       } else if (eventbtn_open === "btns_7_sub") {
         if (
-          document.getElementById("btns_7_sub").previousSibling.previousSibling
-            .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
-          "Today"
+          notToday(7) 
         ) {
           jumpToNextDay(date, 0);
         } else {
