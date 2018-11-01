@@ -204,7 +204,7 @@ var view = {
     if (isNaN(widthPercentage) || widthPercentage === 0) {
       document.getElementById("progressbar").style.width = "100%";
       document.getElementById("progressbar").innerHTML = "0% completed";
-      document.getElementById("progressbar").style.backgroundColor = "grey";
+      document.getElementById("progressbar").style.backgroundColor = "#A4A4A4";
     } else {
       document.getElementById("progressbar").style.width =
         widthPercentage * 1.8;
@@ -222,7 +222,7 @@ var view = {
   clearProgress: function() {
     document.getElementById("progressbar").style.width = "100%";
     document.getElementById("progressbar").innerHTML = "0% completed";
-    document.getElementById("progressbar").style.backgroundColor = "grey";
+    document.getElementById("progressbar").style.backgroundColor = "#A4A4A4";
   }
 };
 
