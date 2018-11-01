@@ -228,16 +228,21 @@ var view = {
 
 //SEVEN DAYS DISPLAY CONUNDRUM IN PROGRESS...
 
+
+function shortToLong(el) { return el.replace(/Mon/g, "Monday,").replace(/Tue/g, "Tuesday,").replace(/Wed/g, "Wednesday,").replace(/Thu/g, "Thursday,").replace(/Fri/g, "Friday,").replace(/Sat/g, "Saturday,").replace(/Sun/g, "Sunday,").replace(/Jan/g, "January").replace(/Feb/g, "February").replace(/Mar/g, "March").replace(/Apr/g, "April").replace(/Jun/g, "June").replace(/Jul/g, "July").replace(/Aug/g, "August").replace(/Sep/g, "September").replace(/Oct/g, "October").replace(/Nov/g, "November").replace(/Dec/g, "December").replace(/2018/g, "").replace(/2019/g, ""); }
+
+
 var date = new Date();
-var today = date.toDateString();
+var today = shortToLong(date.toDateString());
+
 var hellotoday = "Hi, today's " + today;
 var day = date.getDay();
 var currentDate;
 
 function jumpToNextDay(date, numb) {
-  currentDate = new Date(
+  currentDate = shortToLong(new Date(
     + date + (7 - ((date.getDay() + numb) % 7)) * 86400000
-  ).toDateString();
+  ).toDateString());
   document.getElementById("background_text").innerHTML = currentDate;
 }
 

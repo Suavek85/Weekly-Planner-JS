@@ -293,9 +293,9 @@ h2 {
   padding: 30px;
   font-size: 24px;
   border-radius: 12px;
-  background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
+  font-family: cursive;
+  color: white;
 
 
 }
