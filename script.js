@@ -232,36 +232,38 @@ function createListDay() {
 }
 
 
-//SEVEN DAYS DISPLAY CONUNDRUM IN PROGRESS...
+//SEVEN DAYS METHODS OBJECT
 
-var date = new Date();
-var today = shortToLong(date.toDateString());
-var hellotoday = "Hi, today's " + today;
-var day = date.getDay();
-var currentDate;
 
-function jumpToNextDay(date, numb) {
-  currentDate = shortToLong(
+var dates = {
+
+date: function() { return new Date(); },
+today: function() {  return this.shortToLong(this.date().toDateString()); },
+hellotoday: function() { return "Hi, today's " + this.today() },
+day: function() { return this.date().getDay(); },
+
+ jumpToNextDay: function(date, numb) {
+  var currentDate = this.shortToLong(
     new Date(
-      +date + (7 - ((date.getDay() + numb) % 7)) * 86400000
+      + date + (7 - ((date.getDay() + numb) % 7)) * 86400000
     ).toDateString()
   );
   document.getElementById("background_text").innerHTML = currentDate;
-}
+},
 
-function jumpToToday() {
-  document.getElementById("background_text").innerHTML = hellotoday;
-}
+jumpToToday: function() {
+  document.getElementById("background_text").innerHTML = this.hellotoday();
+},
 
-function notToday(dayNumber) {
+notToday: function (dayNumber) {
   return (
     document.getElementById("btns_" + dayNumber + "_sub").previousSibling
       .previousSibling.previousSibling.previousSibling.firstChild.firstChild
       .innerHTML !== "TODAY"
   );
-}
+},
 
-function shortToLong(el) {
+shortToLong: function(el) {
   return el
     .replace(/Mon/g, "Monday,")
     .replace(/Tue/g, "Tuesday,")
@@ -283,6 +285,8 @@ function shortToLong(el) {
     .replace(/Dec/g, "December")
     .replace(/2018/g, "")
     .replace(/2019/g, "");
+}
+
 }
 
 
@@ -383,63 +387,63 @@ document.addEventListener(
       var eventbtn_open = event.target.id;
 
       if (eventbtn_open === "btns_1_sub") {
-        if (notToday(1)) {
-          jumpToNextDay(date, 6);
+        if (dates.notToday(1)) {
+          dates.jumpToNextDay(dates.date(), 6);
         } else {
-          jumpToToday();
+          dates.jumpToToday();
         }
         day1full.createDayCard(1);
       } 
       else if (eventbtn_open === "btns_2_sub") {
-        if (notToday(2)) {
-          jumpToNextDay(date, 5);
+        if (dates.notToday(2)) {
+          dates.jumpToNextDay(dates.date(), 5);
         } else {
-          jumpToToday();
+          dates.jumpToToday();
         }
         day2full.createDayCard(2);
         view.calculateProgress();
       } 
       else if (eventbtn_open === "btns_3_sub") {
-        if (notToday(3)) {
-          jumpToNextDay(date, 4);
+        if (dates.notToday(3)) {
+          dates.jumpToNextDay(dates.date(), 4);
         } else {
-          jumpToToday();
+          dates.jumpToToday();
         }
         day3full.createDayCard(3);
         view.calculateProgress();
       } 
       else if (eventbtn_open === "btns_4_sub") {
-        if (notToday(4)) {
-          jumpToNextDay(date, 3);
+        if (dates.notToday(4)) {
+          dates.jumpToNextDay(dates.date(), 3);
         } else {
-          jumpToToday();
+          dates.jumpToToday();
         }
         day4full.createDayCard(4);
         view.calculateProgress();
       } 
       else if (eventbtn_open === "btns_5_sub") {
-        if (notToday(5)) {
-          jumpToNextDay(date, 2);
+        if (dates.notToday(5)) {
+          dates.jumpToNextDay(dates.date(), 2);
         } else {
-          jumpToToday();
+          dates.jumpToToday();
         }
         day5full.createDayCard(5);
         view.calculateProgress();
       } 
       else if (eventbtn_open === "btns_6_sub") {
-        if (notToday(6)) {
-          jumpToNextDay(date, 1);
+        if (dates.notToday(6)) {
+          dates.jumpToNextDay(dates.date(), 1);
         } else {
-          jumpToToday();
+          dates.jumpToToday();
         }
         day6full.createDayCard(6);
         view.calculateProgress();
       } 
       else if (eventbtn_open === "btns_7_sub") {
-        if (notToday(7)) {
-          jumpToNextDay(date, 0);
+        if (dates.notToday(7)) {
+          dates.jumpToNextDay(dates.date(), 0);
         } else {
-          jumpToToday();
+          dates.jumpToToday();
         }
         day7full.createDayCard(7);
         view.calculateProgress();

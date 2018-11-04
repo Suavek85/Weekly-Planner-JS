@@ -135,45 +135,21 @@ h2 {
   position: absolute;
   bottom: 5;
   right: 5;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  font-size: 14px;
-  background: #efecdc;
-  border: 1px solid #0099cc;
-  border-radius: 12px;
+  width: 32;
+  height: 32;
   cursor: pointer;
-  outline: none;
 
 }
 
 .open {
   position: absolute;
-  bottom: 5;
-  left: 5;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  font-size: 14px;
-  background: #efecdc;
-  border: 1px solid #0099cc;
-  border-radius: 12px;
+  width: 32px;
+  height: 32px;
+  bottom: 7;
+  left: 7;
   cursor: pointer;
-  outline: none;
 }
 
-
-.open:hover {
-  background-color: #2193b0;
-  color: white;
-}
-
-.add:hover {
-  background-color: #6dd5ed;
-  color: white;
-}
 
 
 .output {
