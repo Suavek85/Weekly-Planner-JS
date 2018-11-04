@@ -8,9 +8,9 @@ submitArray = Array.prototype.slice.call(
 
 openArray = Array.prototype.slice.call(document.querySelectorAll(".open"));
 
-class DayList {
+class Day {
   constructor() {
-    this.b = document.getElementById("input3").value;
+    this.b = document.getElementById("notes").value;
     var radios = document.getElementsByName("day");
     for (var i = 0, length = radios.length; i < length; i++) {
       if (radios[i].checked) {
@@ -39,7 +39,7 @@ class DayList {
     document.getElementById("close-day-" + dayNumber).style.display = "block";
   }
 
-  changeDay() {
+  updateDay() {
     var ul_tasks_output = document.getElementById("task_list_output").innerHTML;
     this.g = ul_tasks_output;
     this.b = document.querySelector("#output8").innerHTML;
@@ -55,7 +55,7 @@ function inputLength(element) {
   return element.value.length;
 }
 
-function createListElement() {
+function createListForm() {
   var logo_done = document.createElement("img");
   logo_done.setAttribute("src", "images/completed.png");
   logo_done.setAttribute("alt", "logo done");
@@ -102,7 +102,6 @@ function createListDay() {
   checkbox.id = "checkbox_todo";
   checkbox.value = "test";
   checkbox.name = "todoscb";
-  //checkbox.checked = false;
   ul_tasks_day.appendChild(checkbox);
   var br = document.createElement("br");
   ul_tasks_day.appendChild(br);
@@ -142,7 +141,7 @@ var view = {
   },
 
   displayForm: function() {
-    document.getElementById("input3").value = "";
+    document.getElementById("notes").value = "";
     document.getElementById("work").checked = true;
     document.getElementById("form-container").style.display = "flex";
     document.querySelector(".notes-box").style.display = "none";
@@ -165,7 +164,7 @@ var view = {
     document.getElementById("btn_" + el).style.display = "block";
   },
 
-  closeDay: function() {
+  undisplayDay: function() {
     document.querySelector(".notes-box").style.display = "none";
     var closeSave = Array.prototype.slice.call(
       document.querySelectorAll(".close-save")
@@ -178,59 +177,85 @@ var view = {
     document.getElementById("close-day-1").style.display;
   },
 
+  displayDay: function() {
+
+    document.querySelector(".notes-box").style.display = "flex";
+
+  },
+
   startFromToday: function(number) {
     document.getElementById("name" + number).innerHTML = "TODAY";
   },
 
   calculateProgress: function() {
-    var todos_checked3 = Array.prototype.slice.call(
+    var allTodosOutput = Array.prototype.slice.call(
       document.getElementsByName("todoscb")
     );
 
-    var x = 0;
+    var todosCompletedCount = 0;
+    var progressBar = document.getElementById("progressbar");
 
-    for (var i = 0, length = todos_checked3.length; i < length; i++) {
+    for (var i = 0, length = allTodosOutput.length; i < length; i++) {
       if (
-        todos_checked3[i].previousSibling.style.textDecoration ===
+        allTodosOutput[i].previousSibling.style.textDecoration ===
         "line-through"
       ) {
-        var x = x + 1;
+        var todosCompletedCount = todosCompletedCount + 1;
       }
     }
 
-    var y = (x / todos_checked3.length) * 100;
-    var widthPercentage = Math.round(y);
+    var widthPercentage = Math.round(
+      (todosCompletedCount / allTodosOutput.length) * 100
+    );
 
     if (isNaN(widthPercentage) || widthPercentage === 0) {
-      document.getElementById("progressbar").style.width = "100%";
-      document.getElementById("progressbar").innerHTML = "0% completed";
-      document.getElementById("progressbar").style.backgroundColor = "#A4A4A4";
+      progressBar.style.width = "100%";
+      progressBar.innerHTML = "0% completed";
+      progressBar.style.backgroundColor = "#A4A4A4";
     } else {
-      document.getElementById("progressbar").style.width =
-        widthPercentage * 1.8;
-      document.getElementById("progressbar").style.backgroundColor = "orange";
+      progressBar.style.width = widthPercentage * 1.8;
+      progressBar.style.backgroundColor = "orange";
       if (widthPercentage > 40) {
-        document.getElementById("progressbar").innerHTML =
-          widthPercentage + "% done";
+        progressBar.innerHTML = widthPercentage + "% done";
       } else {
-        document.getElementById("progressbar").innerHTML =
-          widthPercentage + "%";
+        progressBar.innerHTML = widthPercentage + "%";
       }
     }
   },
 
   clearProgress: function() {
-    document.getElementById("progressbar").style.width = "100%";
-    document.getElementById("progressbar").innerHTML = "0% completed";
-    document.getElementById("progressbar").style.backgroundColor = "#A4A4A4";
+    var progressBar = document.getElementById("progressbar");
+    progressBar.style.width = "100%";
+    progressBar.innerHTML = "0% completed";
+    progressBar.style.backgroundColor = "#A4A4A4";
   }
 };
 
 //SEVEN DAYS DISPLAY CONUNDRUM IN PROGRESS...
 
-
-function shortToLong(el) { return el.replace(/Mon/g, "Monday,").replace(/Tue/g, "Tuesday,").replace(/Wed/g, "Wednesday,").replace(/Thu/g, "Thursday,").replace(/Fri/g, "Friday,").replace(/Sat/g, "Saturday,").replace(/Sun/g, "Sunday,").replace(/Jan/g, "January").replace(/Feb/g, "February").replace(/Mar/g, "March").replace(/Apr/g, "April").replace(/Jun/g, "June").replace(/Jul/g, "July").replace(/Aug/g, "August").replace(/Sep/g, "September").replace(/Oct/g, "October").replace(/Nov/g, "November").replace(/Dec/g, "December").replace(/2018/g, "").replace(/2019/g, ""); }
-
+function shortToLong(el) {
+  return el
+    .replace(/Mon/g, "Monday,")
+    .replace(/Tue/g, "Tuesday,")
+    .replace(/Wed/g, "Wednesday,")
+    .replace(/Thu/g, "Thursday,")
+    .replace(/Fri/g, "Friday,")
+    .replace(/Sat/g, "Saturday,")
+    .replace(/Sun/g, "Sunday,")
+    .replace(/Jan/g, "January")
+    .replace(/Feb/g, "February")
+    .replace(/Mar/g, "March")
+    .replace(/Apr/g, "April")
+    .replace(/Jun/g, "June")
+    .replace(/Jul/g, "July")
+    .replace(/Aug/g, "August")
+    .replace(/Sep/g, "September")
+    .replace(/Oct/g, "October")
+    .replace(/Nov/g, "November")
+    .replace(/Dec/g, "December")
+    .replace(/2018/g, "")
+    .replace(/2019/g, "");
+}
 
 var date = new Date();
 var today = shortToLong(date.toDateString());
@@ -240,9 +265,11 @@ var day = date.getDay();
 var currentDate;
 
 function jumpToNextDay(date, numb) {
-  currentDate = shortToLong(new Date(
-    + date + (7 - ((date.getDay() + numb) % 7)) * 86400000
-  ).toDateString());
+  currentDate = shortToLong(
+    new Date(
+      +date + (7 - ((date.getDay() + numb) % 7)) * 86400000
+    ).toDateString()
+  );
   document.getElementById("background_text").innerHTML = currentDate;
 }
 
@@ -251,11 +278,11 @@ function jumpToToday() {
 }
 
 function notToday(dayNumber) {
-
-  return document.getElementById("btns_" + dayNumber + "_sub").previousSibling.previousSibling
-  .previousSibling.previousSibling.firstChild.firstChild.innerHTML !==
-"TODAY";
-
+  return (
+    document.getElementById("btns_" + dayNumber + "_sub").previousSibling
+      .previousSibling.previousSibling.previousSibling.firstChild.firstChild
+      .innerHTML !== "TODAY"
+  );
 }
 
 //CLICK EVENT LISTENER
@@ -272,44 +299,44 @@ document.addEventListener(
 
       switch (eventbtn_submit.id) {
         case "btn_1":
-          day1List = new DayList();
-          day1List.createDay(1);
+          day1full = new Day();
+          day1full.createDay(1);
           view.clearTodo();
           break;
 
         case "btn_2":
-          day2List = new DayList();
-          day2List.createDay(2);
+          day2full = new Day();
+          day2full.createDay(2);
           view.clearTodo();
           break;
 
         case "btn_3":
-          day3List = new DayList();
-          day3List.createDay(3);
+          day3full = new Day();
+          day3full.createDay(3);
           view.clearTodo();
           break;
 
         case "btn_4":
-          day4List = new DayList();
-          day4List.createDay(4);
+          day4full = new Day();
+          day4full.createDay(4);
           view.clearTodo();
           break;
 
         case "btn_5":
-          day5List = new DayList();
-          day5List.createDay(5);
+          day5full = new Day();
+          day5full.createDay(5);
           view.clearTodo();
           break;
 
         case "btn_6":
-          day6List = new DayList();
-          day6List.createDay(6);
+          day6full = new Day();
+          day6full.createDay(6);
           view.clearTodo();
           break;
 
         case "btn_7":
-          day7List = new DayList();
-          day7List.createDay(7);
+          day7full = new Day();
+          day7full.createDay(7);
           view.clearTodo();
           break;
 
@@ -347,7 +374,7 @@ document.addEventListener(
           break;
       }
     } else if (event.target.id.includes("_sub")) {
-      document.querySelector(".notes-box").style.display = "flex";
+      view.displayDay();
       view.undisplayForm();
       view.disableOpen();
       view.disableAdd();
@@ -355,74 +382,60 @@ document.addEventListener(
       var eventbtn_open = event.target.id;
 
       if (eventbtn_open === "btns_1_sub") {
-        if (
-          notToday(1) 
-        ) {
+        if (notToday(1)) {
           jumpToNextDay(date, 6);
         } else {
           jumpToToday();
         }
 
-        day1List.openDay(1);
+        day1full.openDay(1);
       } else if (eventbtn_open === "btns_2_sub") {
-        if (
-          notToday(2) 
-        ) {
+        if (notToday(2)) {
           jumpToNextDay(date, 5);
         } else {
           jumpToToday();
         }
-        day2List.openDay(2);
+        day2full.openDay(2);
         view.calculateProgress();
       } else if (eventbtn_open === "btns_3_sub") {
-        if (
-          notToday(3) 
-        ) {
+        if (notToday(3)) {
           jumpToNextDay(date, 4);
         } else {
           jumpToToday();
         }
-        day3List.openDay(3);
+        day3full.openDay(3);
         view.calculateProgress();
       } else if (eventbtn_open === "btns_4_sub") {
-        if (
-          notToday(4) 
-        ) {
+        if (notToday(4)) {
           jumpToNextDay(date, 3);
         } else {
           jumpToToday();
         }
-        day4List.openDay(4);
+        day4full.openDay(4);
         view.calculateProgress();
       } else if (eventbtn_open === "btns_5_sub") {
-        if (
-          notToday(5) 
-        ) {
+        if (notToday(5)) {
           jumpToNextDay(date, 2);
         } else {
           jumpToToday();
         }
-        day5List.openDay(5);
+        day5full.openDay(5);
         view.calculateProgress();
       } else if (eventbtn_open === "btns_6_sub") {
-        if (
-          notToday(6) 
-        ) {
+        if (notToday(6)) {
           jumpToNextDay(date, 1);
         } else {
           jumpToToday();
         }
-        day6List.openDay(6);
+        day6full.openDay(6);
         view.calculateProgress();
       } else if (eventbtn_open === "btns_7_sub") {
-        if (
-          notToday(7) 
-        ) {
+        if (notToday(7)) {
           jumpToNextDay(date, 0);
         } else {
           jumpToToday();
         }
-        day7List.openDay(7);
+        day7full.openDay(7);
         view.calculateProgress();
       } else {
         return;
@@ -431,24 +444,24 @@ document.addEventListener(
       var eventbtn_closesave = event.target.id;
 
       if (eventbtn_closesave === "close-day-1") {
-        day1List.changeDay();
+        day1full.updateDay();
       } else if (eventbtn_closesave === "close-day-2") {
-        day2List.changeDay();
+        day2full.updateDay();
       } else if (eventbtn_closesave === "close-day-3") {
-        day3List.changeDay();
+        day3full.updateDay();
       } else if (eventbtn_closesave === "close-day-4") {
-        day4List.changeDay();
+        day4full.updateDay();
       } else if (eventbtn_closesave === "close-day-5") {
-        day5List.changeDay();
+        day5full.updateDay();
       } else if (eventbtn_closesave === "close-day-6") {
-        day6List.changeDay();
+        day6full.updateDay();
       } else if (eventbtn_closesave === "close-day-7") {
-        day7List.changeDay();
+        day7full.updateDay();
       } else {
         return;
       }
 
-      view.closeDay();
+      view.undisplayDay();
       view.todoListRemove();
       view.enableAdd();
       view.enableOpen();
@@ -458,48 +471,47 @@ document.addEventListener(
       view.enableOpen();
       view.undisplayForm();
     } else if (event.target.id.includes("delete_todo_form")) {
-      var todos_checked = document.getElementsByName("todoscb");
-      for (var i = 0, length = todos_checked.length; i < length; i++) {
-        if (todos_checked[i].checked) {
-          todos_checked[i].previousSibling.remove();
-          todos_checked[i].nextSibling.remove();
-          todos_checked[i].remove();
+      var allTodos = document.getElementsByName("todoscb");
+      for (var i = 0, length = allTodos.length; i < length; i++) {
+        if (allTodos[i].checked) {
+          allTodos[i].previousSibling.remove();
+          allTodos[i].nextSibling.remove();
+          allTodos[i].remove();
           i--;
         }
       }
     } else if (event.target.id.includes("delete_output")) {
-      var todos_checked = document.getElementsByName("todoscb");
-      for (var i = 0, length = todos_checked.length; i < length; i++) {
-        if (todos_checked[i].checked) {
-          todos_checked[i].previousSibling.remove();
-          todos_checked[i].previousSibling.remove();
-          todos_checked[i].nextSibling.remove();
-          todos_checked[i].remove();
+      var allTodos = document.getElementsByName("todoscb");
+      for (var i = 0, length = allTodos.length; i < length; i++) {
+        if (allTodos[i].checked) {
+          allTodos[i].previousSibling.remove();
+          allTodos[i].previousSibling.remove();
+          allTodos[i].nextSibling.remove();
+          allTodos[i].remove();
           i--;
         }
         view.calculateProgress();
       }
     } else if (event.target.id.includes("completed")) {
-      var todos_checked = document.getElementsByName("todoscb");
-      for (var i = 0, length = todos_checked.length; i < length; i++) {
-        if (todos_checked[i].checked) {
-          todos_checked[i].previousSibling.style.textDecoration =
+      var allTodos = document.getElementsByName("todoscb");
+      for (var i = 0, length = allTodos.length; i < length; i++) {
+        if (allTodos[i].checked) {
+          allTodos[i].previousSibling.style.textDecoration =
             "line-through";
-          todos_checked[i].previousSibling.style.color = "grey";
-          todos_checked[i].checked = false;
-
-          todos_checked[i].previousSibling.previousSibling.style.display =
+            allTodos[i].previousSibling.style.color = "grey";
+            allTodos[i].checked = false;
+            allTodos[i].previousSibling.previousSibling.style.display =
             "inline-block";
         }
       }
       view.calculateProgress();
     } else if (event.target.id.includes("enter")) {
       if (inputLength(input_todo_form) > 0) {
-        createListElement();
+        createListForm();
       }
     } else if (event.target.id.includes("enter")) {
       if (inputLength(input_todo_form) > 0) {
-        createListElement();
+        createListForm();
       }
     } else if (event.target.id.includes("add")) {
       if (inputLength(input_todo_day) > 0) {
@@ -516,7 +528,7 @@ document.addEventListener(
   function(event) {
     if (event.target.id.includes("input_list")) {
       if (inputLength(input_todo_day) > 0 && event.keyCode === 13) {
-        createListElement();
+        createListForm();
         view.calculateProgress();
       }
     }
@@ -529,32 +541,37 @@ document.addEventListener(
 window.onload = function() {
   var dayWeek = new Date();
   var currentDay = dayWeek.getDay();
-
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var box3 = document.getElementById("box3");
+  var box5 = document.getElementById("box5");
+  var box6 = document.getElementById("box6");
+  var box7 = document.getElementById("box7");
   if (currentDay === 1) {
     view.startFromToday(1);
   } else if (currentDay === 2) {
-    document.getElementById("box1").style.order = 8;
+    box1.style.order = 8;
     view.startFromToday(2);
   } else if (currentDay === 3) {
-    document.getElementById("box1").style.order = 8;
-    document.getElementById("box2").style.order = 9;
+    box1.style.order = 8;
+    box2.style.order = 9;
     view.startFromToday(3);
   } else if (currentDay === 4) {
-    document.getElementById("box1").style.order = 8;
-    document.getElementById("box2").style.order = 9;
-    document.getElementById("box3").style.order = 10;
+    box1.style.order = 8;
+    box2.style.order = 9;
+    box3.style.order = 10;
     view.startFromToday(4);
   } else if (currentDay === 5) {
-    document.getElementById("box5").style.order = -3;
-    document.getElementById("box6").style.order = -2;
-    document.getElementById("box7").style.order = -1;
+    box5.style.order = -3;
+    box6.style.order = -2;
+    box7.style.order = -1;
     view.startFromToday(5);
   } else if (currentDay === 6) {
-    document.getElementById("box6").style.order = -2;
-    document.getElementById("box7").style.order = -1;
+    box6.style.order = -2;
+    box7.style.order = -1;
     view.startFromToday(6);
   } else if (currentDay === 0) {
-    document.getElementById("box7").style.order = -1;
+    box7.style.order = -1;
     view.startFromToday(7);
   }
 };
