@@ -1,13 +1,3 @@
-var addArray, submitArray, openArray;
-
-addArray = Array.prototype.slice.call(document.querySelectorAll(".add"));
-
-submitArray = Array.prototype.slice.call(
-  document.querySelectorAll(".submit-btn")
-);
-
-openArray = Array.prototype.slice.call(document.querySelectorAll(".open"));
-
 class Day {
   constructor() {
     this.b = document.getElementById("notes").value;
@@ -22,7 +12,7 @@ class Day {
     this.g = ul_tasks.innerHTML;
   }
 
-  createDay(dayNumber) {
+  createDayBox(dayNumber) {
     document.getElementById("btns_" + dayNumber + "_sub").style.display =
       "block";
 
@@ -31,7 +21,7 @@ class Day {
     ).style.backgroundImage = this.f;
   }
 
-  openDay(dayNumber) {
+  createDayCard(dayNumber) {
     document.querySelector("#output8").innerHTML = this.b;
     var word = this.g;
     var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul></div>`;
@@ -46,97 +36,46 @@ class Day {
   }
 }
 
-//FORM TODO LIST - TBC, IN PROGRESS...
 
-var input_todo_form = document.getElementById("input_list");
-var ul_tasks = document.getElementById("task_list");
 
-function inputLength(element) {
-  return element.value.length;
-}
-
-function createListForm() {
-  var logo_done = document.createElement("img");
-  logo_done.setAttribute("src", "images/completed.png");
-  logo_done.setAttribute("alt", "logo done");
-  logo_done.setAttribute("class", "logo_done");
-  logo_done.setAttribute("height", "15px");
-  logo_done.setAttribute("width", "15px");
-  ul_tasks.appendChild(logo_done);
-  var li = document.createElement("li");
-  li.appendChild(document.createTextNode(input_todo_form.value));
-  ul_tasks.appendChild(li);
-  input_todo_form.value = "";
-  var checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.id = "checkbox_todo";
-  checkbox.value = "test";
-  checkbox.name = "todoscb";
-  //checkbox.checked = false;
-  ul_tasks.appendChild(checkbox);
-  var br = document.createElement("br");
-  ul_tasks.appendChild(br);
-  document.getElementById("delete_todo_form").style.display = "block";
-}
-
-//DAY TODO LIST - TBC, IN PROGRESS...
-
-var input_todo_day = document.getElementById("input_list_output");
-var ul_tasks_day = document.getElementById("task_list_output");
-
-function createListDay() {
-  var ul_tasks_day = document.getElementById("task_list_output");
-  var logo_done = document.createElement("img");
-  logo_done.setAttribute("src", "images/completed.png");
-  logo_done.setAttribute("alt", "logo done");
-  logo_done.setAttribute("class", "logo_done");
-  logo_done.setAttribute("height", "15px");
-  logo_done.setAttribute("width", "15px");
-  ul_tasks_day.appendChild(logo_done);
-  var li = document.createElement("li");
-  li.appendChild(document.createTextNode(input_todo_day.value));
-  ul_tasks_day.appendChild(li);
-  input_todo_day.value = "";
-  var checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.id = "checkbox_todo";
-  checkbox.value = "test";
-  checkbox.name = "todoscb";
-  ul_tasks_day.appendChild(checkbox);
-  var br = document.createElement("br");
-  ul_tasks_day.appendChild(br);
-  document.getElementById("delete_todo_form").style.display = "block";
-}
-
-//VIEW OBJECT
+//VIEW OBJECT METHODS
 
 var view = {
+
+  addArray: Array.prototype.slice.call(document.querySelectorAll(".add")),
+
+  submitArray: Array.prototype.slice.call(
+    document.querySelectorAll(".submit-btn")
+  ),
+
+  openArray: Array.prototype.slice.call(document.querySelectorAll(".open")),
+
   todoListRemove: function() {
     var todolist = document.getElementById("todolist");
     todolist.remove();
   },
 
   disableAdd: function() {
-    for (var i = 0; i < addArray.length; i++) {
-      addArray[i].disabled = true;
+    for (var i = 0; i < this.addArray.length; i++) {
+      this.addArray[i].disabled = true;
     }
   },
 
   disableOpen: function() {
-    for (var i = 0; i < openArray.length; i++) {
-      openArray[i].disabled = true;
+    for (var i = 0; i < this.openArray.length; i++) {
+      this.openArray[i].disabled = true;
     }
   },
 
   enableAdd: function() {
-    for (var i = 0; i < addArray.length; i++) {
-      addArray[i].disabled = false;
+    for (var i = 0; i < this.addArray.length; i++) {
+      this.addArray[i].disabled = false;
     }
   },
 
   enableOpen: function() {
-    for (var i = 0; i < openArray.length; i++) {
-      openArray[i].disabled = false;
+    for (var i = 0; i < this.openArray.length; i++) {
+      this.openArray[i].disabled = false;
     }
   },
 
@@ -153,9 +92,8 @@ var view = {
   },
 
   undisplayForm: function() {
-    for (var i = 0; i < submitArray.length; i++) {
-      submitArray[i].style.display = "none";
-
+    for (var i = 0; i < this.submitArray.length; i++) {
+      this.submitArray[i].style.display = "none";
       document.getElementById("form-container").style.display = "none";
     }
   },
@@ -231,35 +169,73 @@ var view = {
   }
 };
 
-//SEVEN DAYS DISPLAY CONUNDRUM IN PROGRESS...
 
-function shortToLong(el) {
-  return el
-    .replace(/Mon/g, "Monday,")
-    .replace(/Tue/g, "Tuesday,")
-    .replace(/Wed/g, "Wednesday,")
-    .replace(/Thu/g, "Thursday,")
-    .replace(/Fri/g, "Friday,")
-    .replace(/Sat/g, "Saturday,")
-    .replace(/Sun/g, "Sunday,")
-    .replace(/Jan/g, "January")
-    .replace(/Feb/g, "February")
-    .replace(/Mar/g, "March")
-    .replace(/Apr/g, "April")
-    .replace(/Jun/g, "June")
-    .replace(/Jul/g, "July")
-    .replace(/Aug/g, "August")
-    .replace(/Sep/g, "September")
-    .replace(/Oct/g, "October")
-    .replace(/Nov/g, "November")
-    .replace(/Dec/g, "December")
-    .replace(/2018/g, "")
-    .replace(/2019/g, "");
+//FORM TODO LIST - TBC, IN PROGRESS...
+
+var input_todo_form = document.getElementById("input_list");
+var ul_tasks = document.getElementById("task_list");
+
+function inputLength(element) {
+  return element.value.length;
 }
+
+function createListForm() {
+  var logo_done = document.createElement("img");
+  logo_done.setAttribute("src", "images/completed.png");
+  logo_done.setAttribute("alt", "logo done");
+  logo_done.setAttribute("class", "logo_done");
+  logo_done.setAttribute("height", "15px");
+  logo_done.setAttribute("width", "15px");
+  ul_tasks.appendChild(logo_done);
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(input_todo_form.value));
+  ul_tasks.appendChild(li);
+  input_todo_form.value = "";
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = "checkbox_todo";
+  checkbox.value = "test";
+  checkbox.name = "todoscb";
+  ul_tasks.appendChild(checkbox);
+  var br = document.createElement("br");
+  ul_tasks.appendChild(br);
+  document.getElementById("delete_todo_form").style.display = "block";
+}
+
+//DAY TODO LIST - TBC, IN PROGRESS...
+
+var input_todo_day = document.getElementById("input_list_output");
+var ul_tasks_day = document.getElementById("task_list_output");
+
+function createListDay() {
+  var ul_tasks_day = document.getElementById("task_list_output");
+  var logo_done = document.createElement("img");
+  logo_done.setAttribute("src", "images/completed.png");
+  logo_done.setAttribute("alt", "logo done");
+  logo_done.setAttribute("class", "logo_done");
+  logo_done.setAttribute("height", "15px");
+  logo_done.setAttribute("width", "15px");
+  ul_tasks_day.appendChild(logo_done);
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(input_todo_day.value));
+  ul_tasks_day.appendChild(li);
+  input_todo_day.value = "";
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = "checkbox_todo";
+  checkbox.value = "test";
+  checkbox.name = "todoscb";
+  ul_tasks_day.appendChild(checkbox);
+  var br = document.createElement("br");
+  ul_tasks_day.appendChild(br);
+  document.getElementById("delete_todo_form").style.display = "block";
+}
+
+
+//SEVEN DAYS DISPLAY CONUNDRUM IN PROGRESS...
 
 var date = new Date();
 var today = shortToLong(date.toDateString());
-
 var hellotoday = "Hi, today's " + today;
 var day = date.getDay();
 var currentDate;
@@ -285,6 +261,31 @@ function notToday(dayNumber) {
   );
 }
 
+function shortToLong(el) {
+  return el
+    .replace(/Mon/g, "Monday,")
+    .replace(/Tue/g, "Tuesday,")
+    .replace(/Wed/g, "Wednesday,")
+    .replace(/Thu/g, "Thursday,")
+    .replace(/Fri/g, "Friday,")
+    .replace(/Sat/g, "Saturday,")
+    .replace(/Sun/g, "Sunday,")
+    .replace(/Jan/g, "January")
+    .replace(/Feb/g, "February")
+    .replace(/Mar/g, "March")
+    .replace(/Apr/g, "April")
+    .replace(/Jun/g, "June")
+    .replace(/Jul/g, "July")
+    .replace(/Aug/g, "August")
+    .replace(/Sep/g, "September")
+    .replace(/Oct/g, "October")
+    .replace(/Nov/g, "November")
+    .replace(/Dec/g, "December")
+    .replace(/2018/g, "")
+    .replace(/2019/g, "");
+}
+
+
 //CLICK EVENT LISTENER
 
 document.addEventListener(
@@ -300,43 +301,43 @@ document.addEventListener(
       switch (eventbtn_submit.id) {
         case "btn_1":
           day1full = new Day();
-          day1full.createDay(1);
+          day1full.createDayBox(1);
           view.clearTodo();
           break;
 
         case "btn_2":
           day2full = new Day();
-          day2full.createDay(2);
+          day2full.createDayBox(2);
           view.clearTodo();
           break;
 
         case "btn_3":
           day3full = new Day();
-          day3full.createDay(3);
+          day3full.createDayBox(3);
           view.clearTodo();
           break;
 
         case "btn_4":
           day4full = new Day();
-          day4full.createDay(4);
+          day4full.createDayBox(4);
           view.clearTodo();
           break;
 
         case "btn_5":
           day5full = new Day();
-          day5full.createDay(5);
+          day5full.createDayBox(5);
           view.clearTodo();
           break;
 
         case "btn_6":
           day6full = new Day();
-          day6full.createDay(6);
+          day6full.createDayBox(6);
           view.clearTodo();
           break;
 
         case "btn_7":
           day7full = new Day();
-          day7full.createDay(7);
+          day7full.createDayBox(7);
           view.clearTodo();
           break;
 
@@ -387,57 +388,63 @@ document.addEventListener(
         } else {
           jumpToToday();
         }
-
-        day1full.openDay(1);
-      } else if (eventbtn_open === "btns_2_sub") {
+        day1full.createDayCard(1);
+      } 
+      else if (eventbtn_open === "btns_2_sub") {
         if (notToday(2)) {
           jumpToNextDay(date, 5);
         } else {
           jumpToToday();
         }
-        day2full.openDay(2);
+        day2full.createDayCard(2);
         view.calculateProgress();
-      } else if (eventbtn_open === "btns_3_sub") {
+      } 
+      else if (eventbtn_open === "btns_3_sub") {
         if (notToday(3)) {
           jumpToNextDay(date, 4);
         } else {
           jumpToToday();
         }
-        day3full.openDay(3);
+        day3full.createDayCard(3);
         view.calculateProgress();
-      } else if (eventbtn_open === "btns_4_sub") {
+      } 
+      else if (eventbtn_open === "btns_4_sub") {
         if (notToday(4)) {
           jumpToNextDay(date, 3);
         } else {
           jumpToToday();
         }
-        day4full.openDay(4);
+        day4full.createDayCard(4);
         view.calculateProgress();
-      } else if (eventbtn_open === "btns_5_sub") {
+      } 
+      else if (eventbtn_open === "btns_5_sub") {
         if (notToday(5)) {
           jumpToNextDay(date, 2);
         } else {
           jumpToToday();
         }
-        day5full.openDay(5);
+        day5full.createDayCard(5);
         view.calculateProgress();
-      } else if (eventbtn_open === "btns_6_sub") {
+      } 
+      else if (eventbtn_open === "btns_6_sub") {
         if (notToday(6)) {
           jumpToNextDay(date, 1);
         } else {
           jumpToToday();
         }
-        day6full.openDay(6);
+        day6full.createDayCard(6);
         view.calculateProgress();
-      } else if (eventbtn_open === "btns_7_sub") {
+      } 
+      else if (eventbtn_open === "btns_7_sub") {
         if (notToday(7)) {
           jumpToNextDay(date, 0);
         } else {
           jumpToToday();
         }
-        day7full.openDay(7);
+        day7full.createDayCard(7);
         view.calculateProgress();
-      } else {
+      } 
+      else {
         return;
       }
     } else if (event.target.id.includes("close-day")) {
@@ -536,7 +543,7 @@ document.addEventListener(
   false
 );
 
-//DAY ORDER ON LOAD
+//DAY ORDER ONLOAD
 
 window.onload = function() {
   var dayWeek = new Date();
