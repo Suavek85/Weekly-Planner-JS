@@ -66,7 +66,6 @@ h2 {
   overflow: hidden;
   width: 210px;
   height: 160px;
-  border: 1px solid black;
   background-color: blue;
   justify-content: center;
   align-items: center;
@@ -74,10 +73,11 @@ h2 {
 }
 
 .day_box_background {
-  flex-basis: 50%;
+  flex-basis: 70%;
   width: 100%;
   height: 100%;
   background-size: cover;
+  background-position: center;
   background-blend-mode: overlay;
   background-image: url("images/generic_360x120.jpg"),
     -webkit-linear-gradient(to right, #2193b0, #6dd5ed);
@@ -197,7 +197,6 @@ h2 {
   justify-content: flex-start;
   align-items: flex-start;
   margin: auto;
-  border: 5px solid grey;
   background: #8e9eab;
   background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
   background: linear-gradient(to right, #eef2f3, #8e9eab);
@@ -252,7 +251,6 @@ h2 {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  border: 3px solid grey;
   background: #d3cce3;
 
 }
@@ -285,6 +283,7 @@ h2 {
   align-items: center;
   width: 700px;
   background-blend-mode: overlay;
+  background-position: center;
   background-image: url(images/day1000x350.jpg), linear-gradient(to right, #2193b0, #6dd5ed);
   background-size: cover;
   height: 200px;
