@@ -37,7 +37,47 @@ h1 {
   justify-content: center;
 }
 
+
+/* WELCOME*/
+
+.welcome {
+
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+
+}
+
+#welcome_text {
+
+  color: white;
+  font-size: 40px;
+  font-family: cursive;
+ 
+  }
+
 /* DAYS BOX*/
+
+
+.main-image {
+
+background-image: url(images/mountains_morning_resize.jpg);
+background-position: center;
+width: 90vw;
+min-height: 90vh;
+max-height: 120vh;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+border-radius: 10px;
+margin: auto;
+
+
+}
+
+
+
 
 h2 {
   text-align: center;
@@ -64,9 +104,8 @@ h2 {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  width: 210px;
+  width: 180px;
   height: 160px;
-  background-color: blue;
   justify-content: center;
   align-items: center;
   margin: 5px;
@@ -135,19 +174,24 @@ h2 {
   position: absolute;
   bottom: 5;
   right: 5;
-  width: 32;
-  height: 32;
+  width: 24;
+  height: 24;
   cursor: pointer;
 
 }
 
 .open {
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   bottom: 7;
   left: 7;
   cursor: pointer;
+}
+
+.open:hover, .add:hover {
+  transform: scale(1.1);
+
 }
 
 
@@ -388,40 +432,55 @@ i {
   border: none;
   background: #d3cce3;
 
+}
 
+.three-btns {
+
+  display: flex;
+  flex-direction: row;
+  justify-content:stretch;
+  align-items: stretch;
+  align-content: space-between;
+  
 }
 
 .button_day {
 
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
   background: white;
-  border: 1px solid #0099cc;
   margin-bottom: 10px;
-  border-radius: 12px;
-  cursor: pointer;
-  outline: none;
+  border-radius: 20px;
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
 }
 
-.button_day:hover {
-  background-color: #2193b0;
-  color: white;
+.button_day:first-child:hover {
+  background-color: red;
+ 
+}
+
+.button_day:nth-child(2):hover {
+  background-color: green;
+ 
+}
+
+.button_day:nth-child(3):hover {
+  background-color: green;
+ 
 }
 
 .close-save {
 
-  background: #efecdc;
-  border: 1px solid #0099cc;
-  border-radius: 12px;
-  cursor: pointer;
-  position: absolute;
-  padding: 10px;
-  top: 5;
-  left: 5;
-  outline: none;
+    cursor: pointer;
+    position: absolute;
+    top: 5;
+    left: 5;
+    width: 48;
+
 }
 
 .close-save:hover {
-  background-color: #2193b0;
-  color: white;
+  transform: scale(1.1);
+
 }
