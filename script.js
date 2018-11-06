@@ -263,6 +263,25 @@ var dates = {
     return this.date().getHours();
   },
 
+  welcomeMessage: function(el) {
+    return (document.getElementById("welcoming").innerHTML = "Good " + el);
+  },
+
+  morQuote: function() {
+    return (document.getElementById("quotes_text").innerHTML =
+      "I opened two gifts this morning. They were my eyes.");
+  },
+
+  aftQuote: function() {
+    return (document.getElementById("quotes_text").innerHTML =
+      "Get busy living or get busy dying. - Stephen King");
+  },
+
+  eveQuote: function() {
+    return (document.getElementById("quotes_text").innerHTML =
+      "Eighty percent of success is showing up. – Woody Allen");
+  },
+
   jumpToNextDay: function(date, numb) {
     var currentDate = this.shortToLong(
       new Date(
@@ -310,12 +329,17 @@ var dates = {
 
   nowTime: function() {
     if (this.nowHour() >= 5 && this.nowHour() <= 11) {
-      console.log("Good morning");
+      this.welcomeMessage("morning");
+      this.morQuote();
+      this.randomPicGen("mor_1", "mor_2");
     } else if (this.nowHour() >= 12 && this.nowHour() <= 17) {
-      console.log("Good afternoon");
-      //randomPicGen('First', 'Two', 'Three')
+      this.welcomeMessage("afernoon");
+      this.aftQuote();
+      this.randomPicGen("after_1", "after_2");
     } else {
-      console.log("Good evening");
+      this.welcomeMessage("evening");
+      this.eveQuote();
+      this.randomPicGen("eve_1", "eve_2");
     }
   },
 
@@ -353,20 +377,19 @@ var dates = {
       box7.style.order = -1;
       view.startFromToday(7);
     }
-  }
+  },
 
-  /*
-    function randomPicGen(pic1, pic2, pic3) {
-    
-    var randomPic = Math.floor((Math.random() * 3) + 1);
-    
-    if ( randomPic === 1) 
-    { console.log(pic1) }
-     else if (randomPic === 2) { console.log(pic2)}
-     else { console.log(pic3) }
-    
+  randomPicGen: function(pic1, pic2) {
+    var randomPic = Math.floor(Math.random() * 2 + 1);
+
+    if (randomPic === 1) {
+      document.getElementById("main_pic").style.backgroundImage =
+        "url(images/" + pic1 + ".jpg";
+    } else {
+      document.getElementById("main_pic").style.backgroundImage =
+        "url(images/" + pic2 + ".jpg";
     }
-*/
+  }
 };
 
 //CLICK EVENT LISTENERS & ONLOADS
