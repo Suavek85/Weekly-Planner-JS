@@ -36,12 +36,9 @@ class Day {
   }
 }
 
-
-
 //VIEW OBJECT METHODS
 
 var view = {
-
   addArray: Array.prototype.slice.call(document.querySelectorAll(".add")),
 
   submitArray: Array.prototype.slice.call(
@@ -116,9 +113,7 @@ var view = {
   },
 
   displayDay: function() {
-
     document.querySelector(".notes-box").style.display = "flex";
-
   },
 
   startFromToday: function(number) {
@@ -146,7 +141,11 @@ var view = {
       (todosCompletedCount / allTodosOutput.length) * 100
     );
 
-    if (isNaN(widthPercentage) || widthPercentage === 0) {
+    if (
+      isNaN(widthPercentage) ||
+      widthPercentage === 0 ||
+      widthPercentage === undefined
+    ) {
       progressBar.style.width = "100%";
       progressBar.innerHTML = "0% completed";
       progressBar.style.backgroundColor = "#A4A4A4";
@@ -166,9 +165,22 @@ var view = {
     progressBar.style.width = "100%";
     progressBar.innerHTML = "0% completed";
     progressBar.style.backgroundColor = "#A4A4A4";
+  },
+
+  undisplayWelcome: function() {
+    var welcome = document.querySelector(".welcome");
+    var quotes = document.querySelector(".quotes");
+    welcome.style.display = "none";
+    quotes.style.display = "none";
+  },
+
+  displayWelcome: function() {
+    var welcome = document.querySelector(".welcome");
+    var quotes = document.querySelector(".quotes");
+    welcome.style.display = "block";
+    quotes.style.display = "block";
   }
 };
-
 
 //FORM TODO LIST - TBC, IN PROGRESS...
 
@@ -231,66 +243,133 @@ function createListDay() {
   document.getElementById("delete_todo_form").style.display = "block";
 }
 
-
 //SEVEN DAYS METHODS OBJECT
 
-
 var dates = {
+  date: function() {
+    return new Date();
+  },
+  today: function() {
+    return this.shortToLong(this.date().toDateString());
+  },
+  hellotoday: function() {
+    return "Hi, today's " + this.today();
+  },
+  day: function() {
+    return this.date().getDay();
+  },
 
-date: function() { return new Date(); },
-today: function() {  return this.shortToLong(this.date().toDateString()); },
-hellotoday: function() { return "Hi, today's " + this.today() },
-day: function() { return this.date().getDay(); },
+  nowHour: function() {
+    return this.date().getHours();
+  },
 
- jumpToNextDay: function(date, numb) {
-  var currentDate = this.shortToLong(
-    new Date(
-      + date + (7 - ((date.getDay() + numb) % 7)) * 86400000
-    ).toDateString()
-  );
-  document.getElementById("background_text").innerHTML = currentDate;
-},
+  jumpToNextDay: function(date, numb) {
+    var currentDate = this.shortToLong(
+      new Date(
+        +date + (7 - ((date.getDay() + numb) % 7)) * 86400000
+      ).toDateString()
+    );
+    document.getElementById("background_text").innerHTML = currentDate;
+  },
 
-jumpToToday: function() {
-  document.getElementById("background_text").innerHTML = this.hellotoday();
-},
+  jumpToToday: function() {
+    document.getElementById("background_text").innerHTML = this.hellotoday();
+  },
 
-notToday: function (dayNumber) {
-  return (
-    document.getElementById("btns_" + dayNumber + "_sub").previousSibling
-      .previousSibling.previousSibling.previousSibling.firstChild.firstChild
-      .innerHTML !== "TODAY"
-  );
-},
+  notToday: function(dayNumber) {
+    return (
+      document.getElementById("btns_" + dayNumber + "_sub").previousSibling
+        .previousSibling.previousSibling.previousSibling.firstChild.firstChild
+        .innerHTML !== "TODAY"
+    );
+  },
 
-shortToLong: function(el) {
-  return el
-    .replace(/Mon/g, "Monday,")
-    .replace(/Tue/g, "Tuesday,")
-    .replace(/Wed/g, "Wednesday,")
-    .replace(/Thu/g, "Thursday,")
-    .replace(/Fri/g, "Friday,")
-    .replace(/Sat/g, "Saturday,")
-    .replace(/Sun/g, "Sunday,")
-    .replace(/Jan/g, "January")
-    .replace(/Feb/g, "February")
-    .replace(/Mar/g, "March")
-    .replace(/Apr/g, "April")
-    .replace(/Jun/g, "June")
-    .replace(/Jul/g, "July")
-    .replace(/Aug/g, "August")
-    .replace(/Sep/g, "September")
-    .replace(/Oct/g, "October")
-    .replace(/Nov/g, "November")
-    .replace(/Dec/g, "December")
-    .replace(/2018/g, "")
-    .replace(/2019/g, "");
-}
+  shortToLong: function(el) {
+    return el
+      .replace(/Mon/g, "Monday,")
+      .replace(/Tue/g, "Tuesday,")
+      .replace(/Wed/g, "Wednesday,")
+      .replace(/Thu/g, "Thursday,")
+      .replace(/Fri/g, "Friday,")
+      .replace(/Sat/g, "Saturday,")
+      .replace(/Sun/g, "Sunday,")
+      .replace(/Jan/g, "January")
+      .replace(/Feb/g, "February")
+      .replace(/Mar/g, "March")
+      .replace(/Apr/g, "April")
+      .replace(/Jun/g, "June")
+      .replace(/Jul/g, "July")
+      .replace(/Aug/g, "August")
+      .replace(/Sep/g, "September")
+      .replace(/Oct/g, "October")
+      .replace(/Nov/g, "November")
+      .replace(/Dec/g, "December")
+      .replace(/2018/g, "")
+      .replace(/2019/g, "");
+  },
 
-}
+  nowTime: function() {
+    if (this.nowHour() >= 5 && this.nowHour() <= 11) {
+      console.log("Good morning");
+    } else if (this.nowHour() >= 12 && this.nowHour() <= 17) {
+      console.log("Good afternoon");
+      //randomPicGen('First', 'Two', 'Three')
+    } else {
+      console.log("Good evening");
+    }
+  },
 
+  orderDays: function() {
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var box3 = document.getElementById("box3");
+    var box5 = document.getElementById("box5");
+    var box6 = document.getElementById("box6");
+    var box7 = document.getElementById("box7");
+    if (this.day() === 1) {
+      view.startFromToday(1);
+    } else if (this.day() === 2) {
+      box1.style.order = 8;
+      view.startFromToday(2);
+    } else if (this.day() === 3) {
+      box1.style.order = 8;
+      box2.style.order = 9;
+      view.startFromToday(3);
+    } else if (this.day() === 4) {
+      box1.style.order = 8;
+      box2.style.order = 9;
+      box3.style.order = 10;
+      view.startFromToday(4);
+    } else if (this.day() === 5) {
+      box5.style.order = -3;
+      box6.style.order = -2;
+      box7.style.order = -1;
+      view.startFromToday(5);
+    } else if (this.day() === 6) {
+      box6.style.order = -2;
+      box7.style.order = -1;
+      view.startFromToday(6);
+    } else if (this.day() === 0) {
+      box7.style.order = -1;
+      view.startFromToday(7);
+    }
+  }
 
-//CLICK EVENT LISTENER
+  /*
+    function randomPicGen(pic1, pic2, pic3) {
+    
+    var randomPic = Math.floor((Math.random() * 3) + 1);
+    
+    if ( randomPic === 1) 
+    { console.log(pic1) }
+     else if (randomPic === 2) { console.log(pic2)}
+     else { console.log(pic3) }
+    
+    }
+*/
+};
+
+//CLICK EVENT LISTENERS & ONLOADS
 
 document.addEventListener(
   "click",
@@ -351,6 +430,7 @@ document.addEventListener(
     } else if (event.target.id.includes("-button")) {
       view.displayForm();
       view.disableAdd();
+      view.undisplayWelcome();
       var eventbtn_add = event.target.id;
 
       switch (eventbtn_add) {
@@ -383,6 +463,7 @@ document.addEventListener(
       view.undisplayForm();
       view.disableOpen();
       view.disableAdd();
+      view.undisplayWelcome();
 
       var eventbtn_open = event.target.id;
 
@@ -393,8 +474,7 @@ document.addEventListener(
           dates.jumpToToday();
         }
         day1full.createDayCard(1);
-      } 
-      else if (eventbtn_open === "btns_2_sub") {
+      } else if (eventbtn_open === "btns_2_sub") {
         if (dates.notToday(2)) {
           dates.jumpToNextDay(dates.date(), 5);
         } else {
@@ -402,8 +482,7 @@ document.addEventListener(
         }
         day2full.createDayCard(2);
         view.calculateProgress();
-      } 
-      else if (eventbtn_open === "btns_3_sub") {
+      } else if (eventbtn_open === "btns_3_sub") {
         if (dates.notToday(3)) {
           dates.jumpToNextDay(dates.date(), 4);
         } else {
@@ -411,8 +490,7 @@ document.addEventListener(
         }
         day3full.createDayCard(3);
         view.calculateProgress();
-      } 
-      else if (eventbtn_open === "btns_4_sub") {
+      } else if (eventbtn_open === "btns_4_sub") {
         if (dates.notToday(4)) {
           dates.jumpToNextDay(dates.date(), 3);
         } else {
@@ -420,8 +498,7 @@ document.addEventListener(
         }
         day4full.createDayCard(4);
         view.calculateProgress();
-      } 
-      else if (eventbtn_open === "btns_5_sub") {
+      } else if (eventbtn_open === "btns_5_sub") {
         if (dates.notToday(5)) {
           dates.jumpToNextDay(dates.date(), 2);
         } else {
@@ -429,8 +506,7 @@ document.addEventListener(
         }
         day5full.createDayCard(5);
         view.calculateProgress();
-      } 
-      else if (eventbtn_open === "btns_6_sub") {
+      } else if (eventbtn_open === "btns_6_sub") {
         if (dates.notToday(6)) {
           dates.jumpToNextDay(dates.date(), 1);
         } else {
@@ -438,8 +514,7 @@ document.addEventListener(
         }
         day6full.createDayCard(6);
         view.calculateProgress();
-      } 
-      else if (eventbtn_open === "btns_7_sub") {
+      } else if (eventbtn_open === "btns_7_sub") {
         if (dates.notToday(7)) {
           dates.jumpToNextDay(dates.date(), 0);
         } else {
@@ -447,13 +522,11 @@ document.addEventListener(
         }
         day7full.createDayCard(7);
         view.calculateProgress();
-      } 
-      else {
+      } else {
         return;
       }
     } else if (event.target.id.includes("close-day")) {
       var eventbtn_closesave = event.target.id;
-
       if (eventbtn_closesave === "close-day-1") {
         day1full.updateDay();
       } else if (eventbtn_closesave === "close-day-2") {
@@ -471,13 +544,14 @@ document.addEventListener(
       } else {
         return;
       }
-
+      view.displayWelcome();
       view.undisplayDay();
       view.todoListRemove();
       view.enableAdd();
       view.enableOpen();
       view.clearProgress();
     } else if (event.target.id.includes("close-form")) {
+      view.displayWelcome();
       view.enableAdd();
       view.enableOpen();
       view.undisplayForm();
@@ -507,11 +581,10 @@ document.addEventListener(
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
-          allTodos[i].previousSibling.style.textDecoration =
-            "line-through";
-            allTodos[i].previousSibling.style.color = "grey";
-            allTodos[i].checked = false;
-            allTodos[i].previousSibling.previousSibling.style.display =
+          allTodos[i].previousSibling.style.textDecoration = "line-through";
+          allTodos[i].previousSibling.style.color = "grey";
+          allTodos[i].checked = false;
+          allTodos[i].previousSibling.previousSibling.style.display =
             "inline-block";
         }
       }
@@ -547,42 +620,7 @@ document.addEventListener(
   false
 );
 
-//DAY ORDER ONLOAD
-
 window.onload = function() {
-  var dayWeek = new Date();
-  var currentDay = dayWeek.getDay();
-  var box1 = document.getElementById("box1");
-  var box2 = document.getElementById("box2");
-  var box3 = document.getElementById("box3");
-  var box5 = document.getElementById("box5");
-  var box6 = document.getElementById("box6");
-  var box7 = document.getElementById("box7");
-  if (currentDay === 1) {
-    view.startFromToday(1);
-  } else if (currentDay === 2) {
-    box1.style.order = 8;
-    view.startFromToday(2);
-  } else if (currentDay === 3) {
-    box1.style.order = 8;
-    box2.style.order = 9;
-    view.startFromToday(3);
-  } else if (currentDay === 4) {
-    box1.style.order = 8;
-    box2.style.order = 9;
-    box3.style.order = 10;
-    view.startFromToday(4);
-  } else if (currentDay === 5) {
-    box5.style.order = -3;
-    box6.style.order = -2;
-    box7.style.order = -1;
-    view.startFromToday(5);
-  } else if (currentDay === 6) {
-    box6.style.order = -2;
-    box7.style.order = -1;
-    view.startFromToday(6);
-  } else if (currentDay === 0) {
-    box7.style.order = -1;
-    view.startFromToday(7);
-  }
+  dates.nowTime();
+  dates.orderDays();
 };

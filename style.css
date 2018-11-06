@@ -42,20 +42,39 @@ h1 {
 
 .welcome {
 
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
+
 
 }
 
-#welcome_text {
+.welcome_text {
 
   color: white;
   font-size: 40px;
   font-family: cursive;
- 
+  text-align: center;
+  align-items: center
+  
   }
+
+
+/* QUOTES*/
+
+.quotes {
+
+ 
+  
+  }
+  
+  #quotes_text {
+  
+    color: white;
+    font-size: 20px;
+    font-family: cursive;
+    font-style: italic;
+    text-align: center;
+  align-items: center
+    }
+  
 
 /* DAYS BOX*/
 
@@ -69,7 +88,7 @@ min-height: 90vh;
 max-height: 120vh;
 display: flex;
 flex-direction: column;
-justify-content: flex-start;
+justify-content: space-between;
 border-radius: 10px;
 margin: auto;
 
