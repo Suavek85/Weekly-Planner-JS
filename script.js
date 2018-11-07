@@ -54,25 +54,25 @@ var view = {
 
   disableAdd: function() {
     for (var i = 0; i < this.addArray.length; i++) {
-      this.addArray[i].disabled = true;
+      this.addArray[i].style.visibility= "hidden";
     }
   },
 
   disableOpen: function() {
     for (var i = 0; i < this.openArray.length; i++) {
-      this.openArray[i].disabled = true;
+      this.openArray[i].style.visibility= "hidden";
     }
   },
 
   enableAdd: function() {
     for (var i = 0; i < this.addArray.length; i++) {
-      this.addArray[i].disabled = false;
+      this.addArray[i].style.visibility= "visible";
     }
   },
 
   enableOpen: function() {
     for (var i = 0; i < this.openArray.length; i++) {
-      this.openArray[i].disabled = false;
+      this.openArray[i].style.visibility= "visible";
     }
   },
 
