@@ -338,15 +338,15 @@ var dates = {
 
   nowTime: function() {
     if (this.nowHour() >= 5 && this.nowHour() <= 11) {
-      this.welcomeMessage("morning");
+      this.welcomeMessage("morning.");
       this.morQuote();
       this.randomPicGen("mor_1", "mor_2");
     } else if (this.nowHour() >= 12 && this.nowHour() <= 17) {
-      this.welcomeMessage("afernoon");
+      this.welcomeMessage("afternoon.");
       this.aftQuote();
       this.randomPicGen("after_1", "after_2");
     } else {
-      this.welcomeMessage("evening");
+      this.welcomeMessage("evening.");
       this.eveQuote();
       this.randomPicGen("eve_1", "eve_2");
     }
@@ -393,10 +393,10 @@ var dates = {
 
     if (randomPic === 1) {
       document.getElementById("main_pic").style.backgroundImage =
-        "url(images/" + pic1 + ".jpg";
+        "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(images/" + pic1 + ".jpg";
     } else {
       document.getElementById("main_pic").style.backgroundImage =
-        "url(images/" + pic2 + ".jpg";
+        "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(images/" + pic2 + ".jpg";
     }
   }
 };
