@@ -192,22 +192,26 @@ function inputLength(element) {
 }
 
 function createListForm() {
+  
   var logo_done = document.createElement("img");
   logo_done.setAttribute("src", "images/completed.png");
   logo_done.setAttribute("alt", "logo done");
   logo_done.setAttribute("class", "logo_done");
   logo_done.setAttribute("height", "15px");
   logo_done.setAttribute("width", "15px");
+
   ul_tasks.appendChild(logo_done);
   var li = document.createElement("li");
   li.appendChild(document.createTextNode(input_todo_form.value));
   ul_tasks.appendChild(li);
   input_todo_form.value = "";
   var checkbox = document.createElement("input");
+
   checkbox.type = "checkbox";
   checkbox.id = "checkbox_todo";
   checkbox.value = "test";
   checkbox.name = "todoscb";
+  
   ul_tasks.appendChild(checkbox);
   var br = document.createElement("br");
   ul_tasks.appendChild(br);
@@ -221,22 +225,27 @@ var ul_tasks_day = document.getElementById("task_list_output");
 
 function createListDay() {
   var ul_tasks_day = document.getElementById("task_list_output");
+  
   var logo_done = document.createElement("img");
   logo_done.setAttribute("src", "images/completed.png");
   logo_done.setAttribute("alt", "logo done");
   logo_done.setAttribute("class", "logo_done");
   logo_done.setAttribute("height", "15px");
   logo_done.setAttribute("width", "15px");
+
   ul_tasks_day.appendChild(logo_done);
   var li = document.createElement("li");
   li.appendChild(document.createTextNode(input_todo_day.value));
   ul_tasks_day.appendChild(li);
   input_todo_day.value = "";
+
   var checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.id = "checkbox_todo";
   checkbox.value = "test";
   checkbox.name = "todoscb";
+
+
   ul_tasks_day.appendChild(checkbox);
   var br = document.createElement("br");
   ul_tasks_day.appendChild(br);

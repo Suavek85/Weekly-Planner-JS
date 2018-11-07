@@ -82,7 +82,7 @@ h1 {
 .main-image {
 
 background-image: url(images/mountains_morning_resize.jpg);
-background-position: center;
+background-size: cover; 
 width: 90vw;
 min-height: 90vh;
 max-height: 120vh;
