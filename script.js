@@ -9,7 +9,7 @@ class Day {
       }
     }
     this.f = checkedRadio;
-    this.g = ul_tasks.innerHTML;
+    this.g = todos.ul_tasks().innerHTML;
   }
 
   createDayBox(dayNumber) {
@@ -36,7 +36,7 @@ class Day {
   }
 }
 
-//VIEW OBJECT METHODS
+//VIEW OBJECT 
 
 var view = {
   addArray: Array.prototype.slice.call(document.querySelectorAll(".add")),
@@ -47,59 +47,59 @@ var view = {
 
   openArray: Array.prototype.slice.call(document.querySelectorAll(".open")),
 
-  todoListRemove: function() {
+  todoListRemove: function () {
     var todolist = document.getElementById("todolist");
     todolist.remove();
   },
 
-  disableAdd: function() {
+  disableAdd: function () {
     for (var i = 0; i < this.addArray.length; i++) {
-      this.addArray[i].style.visibility= "hidden";
+      this.addArray[i].style.visibility = "hidden";
     }
   },
 
-  disableOpen: function() {
+  disableOpen: function () {
     for (var i = 0; i < this.openArray.length; i++) {
-      this.openArray[i].style.visibility= "hidden";
+      this.openArray[i].style.visibility = "hidden";
     }
   },
 
-  enableAdd: function() {
+  enableAdd: function () {
     for (var i = 0; i < this.addArray.length; i++) {
-      this.addArray[i].style.visibility= "visible";
+      this.addArray[i].style.visibility = "visible";
     }
   },
 
-  enableOpen: function() {
+  enableOpen: function () {
     for (var i = 0; i < this.openArray.length; i++) {
-      this.openArray[i].style.visibility= "visible";
+      this.openArray[i].style.visibility = "visible";
     }
   },
 
-  displayForm: function() {
+  displayForm: function () {
     document.getElementById("notes").value = "";
     document.getElementById("work").checked = true;
     document.getElementById("form-container").style.display = "flex";
     document.querySelector(".notes-box").style.display = "none";
-    ul_tasks.innerHTML = "";
+    todos.ul_tasks().innerHTML = "";
   },
 
-  clearTodo: function() {
-    ul_tasks.innerHTML = "";
+  clearTodo: function () {
+    todos.ul_tasks().innerHTML = "";
   },
 
-  undisplayForm: function() {
+  undisplayForm: function () {
     for (var i = 0; i < this.submitArray.length; i++) {
       this.submitArray[i].style.display = "none";
       document.getElementById("form-container").style.display = "none";
     }
   },
 
-  displaySubmit: function(el) {
+  displaySubmit: function (el) {
     document.getElementById("btn_" + el).style.display = "block";
   },
 
-  undisplayDay: function() {
+  undisplayDay: function () {
     document.querySelector(".notes-box").style.display = "none";
     var closeSave = Array.prototype.slice.call(
       document.querySelectorAll(".close-save")
@@ -112,15 +112,15 @@ var view = {
     document.getElementById("close-day-1").style.display;
   },
 
-  displayDay: function() {
+  displayDay: function () {
     document.querySelector(".notes-box").style.display = "flex";
   },
 
-  startFromToday: function(number) {
+  startFromToday: function (number) {
     document.getElementById("name" + number).innerHTML = "TODAY";
   },
 
-  calculateProgress: function() {
+  calculateProgress: function () {
     var allTodosOutput = Array.prototype.slice.call(
       document.getElementsByName("todoscb")
     );
@@ -160,21 +160,21 @@ var view = {
     }
   },
 
-  clearProgress: function() {
+  clearProgress: function () {
     var progressBar = document.getElementById("progressbar");
     progressBar.style.width = "100%";
     progressBar.innerHTML = "0% completed";
     progressBar.style.backgroundColor = "#A4A4A4";
   },
 
-  undisplayWelcome: function() {
+  undisplayWelcome: function () {
     var welcome = document.querySelector(".welcome");
     var quotes = document.querySelector(".quotes");
     welcome.style.display = "none";
     quotes.style.display = "none";
   },
 
-  displayWelcome: function() {
+  displayWelcome: function () {
     var welcome = document.querySelector(".welcome");
     var quotes = document.querySelector(".quotes");
     welcome.style.display = "block";
@@ -182,116 +182,123 @@ var view = {
   }
 };
 
-//FORM TODO LIST - TBC, IN PROGRESS...
 
-var input_todo_form = document.getElementById("input_list");
-var ul_tasks = document.getElementById("task_list");
+//TODOS OBJECT
 
-function inputLength(element) {
-  return element.value.length;
-}
+var todos = {
 
-function createListForm() {
-  
-  var logo_done = document.createElement("img");
-  logo_done.setAttribute("src", "images/completed.png");
-  logo_done.setAttribute("alt", "logo done");
-  logo_done.setAttribute("class", "logo_done");
-  logo_done.setAttribute("height", "15px");
-  logo_done.setAttribute("width", "15px");
+  input_todo_form: function () {
+    return document.getElementById("input_list");
+  },
 
-  ul_tasks.appendChild(logo_done);
-  var li = document.createElement("li");
-  li.appendChild(document.createTextNode(input_todo_form.value));
-  ul_tasks.appendChild(li);
-  input_todo_form.value = "";
-  var checkbox = document.createElement("input");
+  input_todo_day: function () {
+    return document.getElementById("input_list_output");
+  },
 
-  checkbox.type = "checkbox";
-  checkbox.id = "checkbox_todo";
-  checkbox.value = "test";
-  checkbox.name = "todoscb";
-  
-  ul_tasks.appendChild(checkbox);
-  var br = document.createElement("br");
-  ul_tasks.appendChild(br);
-  document.getElementById("delete_todo_form").style.display = "block";
-}
+  ul_tasks: function () {
+    return document.getElementById("task_list");
+  },
 
-//DAY TODO LIST - TBC, IN PROGRESS...
+  ul_tasks_day: function () {
+    return document.getElementById("task_list_output");
+  },
 
-var input_todo_day = document.getElementById("input_list_output");
-var ul_tasks_day = document.getElementById("task_list_output");
+  inputLength: function (element) {
+    return element.value.length;
+  },
 
-function createListDay() {
-  var ul_tasks_day = document.getElementById("task_list_output");
-  
-  var logo_done = document.createElement("img");
-  logo_done.setAttribute("src", "images/completed.png");
-  logo_done.setAttribute("alt", "logo done");
-  logo_done.setAttribute("class", "logo_done");
-  logo_done.setAttribute("height", "15px");
-  logo_done.setAttribute("width", "15px");
+  createIconDone: function (el) {
 
-  ul_tasks_day.appendChild(logo_done);
-  var li = document.createElement("li");
-  li.appendChild(document.createTextNode(input_todo_day.value));
-  ul_tasks_day.appendChild(li);
-  input_todo_day.value = "";
+    var logo_done = document.createElement("img");
+    logo_done.setAttribute("src", "images/completed.png");
+    logo_done.setAttribute("alt", "logo done");
+    logo_done.setAttribute("class", "logo_done");
+    logo_done.setAttribute("height", "15px");
+    logo_done.setAttribute("width", "15px");
 
-  var checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.id = "checkbox_todo";
-  checkbox.value = "test";
-  checkbox.name = "todoscb";
+    el.appendChild(logo_done);
+  },
+
+  createCheckbox: function (el) {
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = "checkbox_todo";
+    checkbox.value = "test";
+    checkbox.name = "todoscb";
+    el.appendChild(checkbox);
+  },
+
+  createLi: function (el, el2) {
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(el2.value));
+    el.appendChild(li);
+  },
+
+  createListForm: function () {
+    this.createIconDone(this.ul_tasks());
+    this.createLi(this.ul_tasks(), this.input_todo_form());
+    this.input_todo_form().value = "";
+    this.createCheckbox(this.ul_tasks());
+
+    var br = document.createElement("br");
+    this.ul_tasks().appendChild(br);
+    document.getElementById("delete_todo_form").style.display = "block";
+  },
+
+  createListDay: function () {
+    this.createIconDone(this.ul_tasks_day());
+    this.createLi(this.ul_tasks_day(), this.input_todo_day());
+    this.input_todo_day().value = "";
+    this.createCheckbox(this.ul_tasks_day());
+
+    var br = document.createElement("br");
+    this.ul_tasks_day().appendChild(br);
+    document.getElementById("delete_todo_form").style.display = "block";
+  }
+
+};
 
 
-  ul_tasks_day.appendChild(checkbox);
-  var br = document.createElement("br");
-  ul_tasks_day.appendChild(br);
-  document.getElementById("delete_todo_form").style.display = "block";
-}
-
-//SEVEN DAYS METHODS OBJECT
+//DATES AND TIME OBJECT
 
 var dates = {
-  date: function() {
+  date: function () {
     return new Date();
   },
-  today: function() {
+  today: function () {
     return this.shortToLong(this.date().toDateString());
   },
-  hellotoday: function() {
+  hellotoday: function () {
     return "Hi, today's " + this.today();
   },
-  day: function() {
+  day: function () {
     return this.date().getDay();
   },
 
-  nowHour: function() {
+  nowHour: function () {
     return this.date().getHours();
   },
 
-  welcomeMessage: function(el) {
+  welcomeMessage: function (el) {
     return (document.getElementById("welcoming").innerHTML = "Good " + el);
   },
 
-  morQuote: function() {
+  morQuote: function () {
     return (document.getElementById("quotes_text").innerHTML =
       "I opened two gifts this morning. They were my eyes.");
   },
 
-  aftQuote: function() {
+  aftQuote: function () {
     return (document.getElementById("quotes_text").innerHTML =
       "Get busy living or get busy dying. - Stephen King");
   },
 
-  eveQuote: function() {
+  eveQuote: function () {
     return (document.getElementById("quotes_text").innerHTML =
       "Eighty percent of success is showing up. – Woody Allen");
   },
 
-  jumpToNextDay: function(date, numb) {
+  jumpToNextDay: function (date, numb) {
     var currentDate = this.shortToLong(
       new Date(
         +date + (7 - ((date.getDay() + numb) % 7)) * 86400000
@@ -300,19 +307,19 @@ var dates = {
     document.getElementById("background_text").innerHTML = currentDate;
   },
 
-  jumpToToday: function() {
+  jumpToToday: function () {
     document.getElementById("background_text").innerHTML = this.hellotoday();
   },
 
-  notToday: function(dayNumber) {
+  notToday: function (dayNumber) {
     return (
       document.getElementById("btns_" + dayNumber + "_sub").previousSibling
-        .previousSibling.previousSibling.previousSibling.firstChild.firstChild
-        .innerHTML !== "TODAY"
+      .previousSibling.previousSibling.previousSibling.firstChild.firstChild
+      .innerHTML !== "TODAY"
     );
   },
 
-  shortToLong: function(el) {
+  shortToLong: function (el) {
     return el
       .replace(/Mon/g, "Monday,")
       .replace(/Tue/g, "Tuesday,")
@@ -336,7 +343,7 @@ var dates = {
       .replace(/2019/g, "");
   },
 
-  nowTime: function() {
+  nowTime: function () {
     if (this.nowHour() >= 5 && this.nowHour() <= 11) {
       this.welcomeMessage("morning.");
       this.morQuote();
@@ -352,7 +359,7 @@ var dates = {
     }
   },
 
-  orderDays: function() {
+  orderDays: function () {
     var box1 = document.getElementById("box1");
     var box2 = document.getElementById("box2");
     var box3 = document.getElementById("box3");
@@ -388,7 +395,7 @@ var dates = {
     }
   },
 
-  randomPicGen: function(pic1, pic2) {
+  randomPicGen: function (pic1, pic2) {
     var randomPic = Math.floor(Math.random() * 2 + 1);
 
     if (randomPic === 1) {
@@ -405,7 +412,7 @@ var dates = {
 
 document.addEventListener(
   "click",
-  function(event) {
+  function (event) {
     if (event.target.id.includes("btn_")) {
       view.enableAdd();
       view.undisplayForm();
@@ -622,16 +629,16 @@ document.addEventListener(
       }
       view.calculateProgress();
     } else if (event.target.id.includes("enter")) {
-      if (inputLength(input_todo_form) > 0) {
-        createListForm();
+      if (todos.inputLength(todos.input_todo_form()) > 0) {
+        todos.createListForm();
       }
     } else if (event.target.id.includes("enter")) {
-      if (inputLength(input_todo_form) > 0) {
-        createListForm();
+      if (todos.inputLength(todos.input_todo_form()) > 0) {
+        todos.createListForm();
       }
     } else if (event.target.id.includes("add")) {
-      if (inputLength(input_todo_day) > 0) {
-        createListDay();
+      if (todos.inputLength(todos.input_todo_day()) > 0) {
+        todos.createListDay();
         view.calculateProgress();
       }
     }
@@ -641,10 +648,10 @@ document.addEventListener(
 
 document.addEventListener(
   "keypress",
-  function(event) {
+  function (event) {
     if (event.target.id.includes("input_list")) {
-      if (inputLength(input_todo_day) > 0 && event.keyCode === 13) {
-        createListForm();
+      if (todos.inputLength(todos.input_todo_day()) > 0 && event.keyCode === 13) {
+        todos.createListForm();
         view.calculateProgress();
       }
     }
@@ -652,7 +659,7 @@ document.addEventListener(
   false
 );
 
-window.onload = function() {
+window.onload = function () {
   dates.nowTime();
   dates.orderDays();
 };
