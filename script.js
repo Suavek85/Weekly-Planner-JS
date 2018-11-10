@@ -24,7 +24,9 @@ class Day {
   createDayCard(dayNumber) {
     document.querySelector("#output8").innerHTML = this.b;
     var word = this.g;
-    var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul></div>`;
+    var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul><img src='images/trash.png' class='button_day' id='delete_output'></img>
+    <img src='images/completed.png' class='button_day' id='completed'>
+    </img></div>`;
     mynotes.insertAdjacentHTML("afterend", todoHtml);
     document.getElementById("close-day-" + dayNumber).style.display = "block";
   }
@@ -154,7 +156,7 @@ var view = {
       progressBar.innerHTML = "0% completed";
       progressBar.style.backgroundColor = "#A4A4A4";
     } else {
-      progressBar.style.width = widthPercentage * 1.8;
+      progressBar.style.width = widthPercentage * 2.1;
       progressBar.style.backgroundColor = "orange";
       if (widthPercentage > 40) {
         progressBar.innerHTML = widthPercentage + "% done";
