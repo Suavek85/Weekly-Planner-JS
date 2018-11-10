@@ -36,6 +36,10 @@ class Day {
   }
 }
 
+
+
+
+
 //VIEW OBJECT 
 
 var view = {
@@ -130,7 +134,7 @@ var view = {
 
     for (var i = 0, length = allTodosOutput.length; i < length; i++) {
       if (
-        allTodosOutput[i].previousSibling.style.textDecoration ===
+        allTodosOutput[i].nextSibling.style.textDecoration ===
         "line-through"
       ) {
         var todosCompletedCount = todosCompletedCount + 1;
@@ -179,9 +183,13 @@ var view = {
     var quotes = document.querySelector(".quotes");
     welcome.style.display = "block";
     quotes.style.display = "block";
-  }
-};
+  },
 
+  removeFilter: function(num) {
+    document.getElementById("box_image_" + num).classList.remove("black_and_white");
+  }
+
+}
 
 //TODOS OBJECT
 
@@ -213,9 +221,8 @@ var todos = {
     logo_done.setAttribute("src", "images/completed.png");
     logo_done.setAttribute("alt", "logo done");
     logo_done.setAttribute("class", "logo_done");
-    logo_done.setAttribute("height", "15px");
-    logo_done.setAttribute("width", "15px");
-
+    logo_done.setAttribute("height", "16px");
+    logo_done.setAttribute("width", "16px");
     el.appendChild(logo_done);
   },
 
@@ -235,10 +242,10 @@ var todos = {
   },
 
   createListForm: function () {
-    this.createIconDone(this.ul_tasks());
+    this.createCheckbox(this.ul_tasks());
     this.createLi(this.ul_tasks(), this.input_todo_form());
     this.input_todo_form().value = "";
-    this.createCheckbox(this.ul_tasks());
+    this.createIconDone(this.ul_tasks());
 
     var br = document.createElement("br");
     this.ul_tasks().appendChild(br);
@@ -246,10 +253,10 @@ var todos = {
   },
 
   createListDay: function () {
-    this.createIconDone(this.ul_tasks_day());
+    this.createCheckbox(this.ul_tasks_day());
     this.createLi(this.ul_tasks_day(), this.input_todo_day());
     this.input_todo_day().value = "";
-    this.createCheckbox(this.ul_tasks_day());
+    this.createIconDone(this.ul_tasks_day());
 
     var br = document.createElement("br");
     this.ul_tasks_day().appendChild(br);
@@ -257,6 +264,7 @@ var todos = {
   }
 
 };
+
 
 
 //DATES AND TIME OBJECT
@@ -475,24 +483,31 @@ document.addEventListener(
       switch (eventbtn_add) {
         case "day1-button":
           view.displaySubmit(1);
+          view.removeFilter(1);
           break;
         case "day2-button":
           view.displaySubmit(2);
+          view.removeFilter(2);
           break;
         case "day3-button":
           view.displaySubmit(3);
+          view.removeFilter(3);
           break;
         case "day4-button":
           view.displaySubmit(4);
+          view.removeFilter(4);
           break;
         case "day5-button":
           view.displaySubmit(5);
+          view.removeFilter(5);
           break;
         case "day6-button":
           view.displaySubmit(6);
+          view.removeFilter(6);
           break;
         case "day7-button":
           view.displaySubmit(7);
+          view.removeFilter(7);
           break;
         default:
           break;
@@ -513,6 +528,7 @@ document.addEventListener(
           dates.jumpToToday();
         }
         day1full.createDayCard(1);
+        view.calculateProgress();
       } else if (eventbtn_open === "btns_2_sub") {
         if (dates.notToday(2)) {
           dates.jumpToNextDay(dates.date(), 5);
@@ -594,11 +610,13 @@ document.addEventListener(
       view.enableAdd();
       view.enableOpen();
       view.undisplayForm();
+      view.addFilter();
     } else if (event.target.id.includes("delete_todo_form")) {
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
-          allTodos[i].previousSibling.remove();
+          allTodos[i].nextSibling.remove();
+          allTodos[i].nextSibling.remove();
           allTodos[i].nextSibling.remove();
           allTodos[i].remove();
           i--;
@@ -608,8 +626,8 @@ document.addEventListener(
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
-          allTodos[i].previousSibling.remove();
-          allTodos[i].previousSibling.remove();
+          allTodos[i].nextSibling.remove();
+          allTodos[i].nextSibling.remove();
           allTodos[i].nextSibling.remove();
           allTodos[i].remove();
           i--;
@@ -620,10 +638,10 @@ document.addEventListener(
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
-          allTodos[i].previousSibling.style.textDecoration = "line-through";
-          allTodos[i].previousSibling.style.color = "grey";
+          allTodos[i].nextSibling.style.textDecoration = "line-through";
+          allTodos[i].nextSibling.style.color = "grey";
           allTodos[i].checked = false;
-          allTodos[i].previousSibling.previousSibling.style.display =
+          allTodos[i].nextSibling.nextSibling.style.display =
             "inline-block";
         }
       }

@@ -11,8 +11,8 @@ body {
 
   width: 90vw;
   display: flex;
-justify-content: flex-start;
-margin: auto;
+  justify-content: flex-start;
+  margin: auto;
 }
 
 
@@ -38,6 +38,13 @@ h1 {
   letter-spacing: 2;
 }
 
+li {
+
+  overflow-wrap: break-word;
+
+
+}
+
 #logo {
   width: 50px;
   height: 50px;
@@ -55,46 +62,46 @@ h1 {
 
 .welcome_text {
 
+  font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 40px;
-  font-family: 'Montserrat', sans-serif;
   text-align: center;
-  align-items: center
-  
-  }
+  align-items: center;
+
+}
 
 
 /* QUOTES*/
 
 
 
-  #quotes_text {
-  
-    color: white;
-    font-size: 20px;
-    font-family: cursive;
-    font-style: italic;
-    text-align: center;
+#quotes_text {
+
+  color: white;
+  font-size: 20px;
+  font-family: cursive;
+  font-style: italic;
+  text-align: center;
   align-items: center
-    }
-  
+}
+
 
 /* DAYS BOX*/
 
 
 .main-image {
 
-background-image: url(images/mountains_morning_resize.jpg);
-background-size: cover; 
-background-attachment: fixed;
-width: 90vw;
-min-height: 90vh;
-max-height: 220vh;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-border-radius: 10px;
-margin: auto;
+  background-image: url(images/mountains_morning_resize.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  width: 90vw;
+  min-height: 90vh;
+  max-height: 220vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin: auto;
 
 
 }
@@ -107,7 +114,9 @@ h2 {
   margin: 15 0 7 0;
   font-size: 18px;
   text-transform: uppercase;
-  color: darkslateblue;
+  color: black;
+  padding-top: 5;
+  padding-bottom: 5;
   background-color: #eef2f3;
 }
 
@@ -124,7 +133,7 @@ h2 {
   display: flex;
   flex-direction: column;
   position: relative;
-  border-radius: 15px;
+  border-radius: 8px;
   overflow: hidden;
   width: 180px;
   height: 160px;
@@ -140,11 +149,15 @@ h2 {
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  background-image: url("images/generic_360x120.jpg"),
-    -webkit-linear-gradient(to right, #2193b0, #6dd5ed);
-  background-image: url("images/generic_360x120.jpg"),
-    linear-gradient(to right, #2193b0, #6dd5ed);
+  background-image: url("images/generic_360x120.jpg"),linear-gradient(to right, #2193b0, #6dd5ed);
+
 }
+
+.black_and_white {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 
 .day_box_text {
   flex-basis: 50%;
@@ -211,7 +224,8 @@ h2 {
   cursor: pointer;
 }
 
-.open:hover, .add:hover {
+.open:hover,
+.add:hover {
   transform: scale(1.1);
 
 }
@@ -302,8 +316,9 @@ h2 {
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-start;
+  word-break: break-all;
   background: linear-gradient(to right, #eef2f3, #8e9eab);
- 
+
 }
 
 .notes-item {
@@ -313,11 +328,7 @@ h2 {
   background-color: white;
 }
 
-#todolist {
 
-  width: 600px;
-
-}
 
 .notes_day_background {
   display: flex;
@@ -344,17 +355,17 @@ h2 {
 
 #progressbar {
 
-   border-radius: 8px;
-   width: 100%;
-   height: 27px;
-   background-color: transparent;
-   text-align: center;
-   justify-content: center;
-   align-content: center;
-   align-items: center;
-   padding-top: 8px;
-   align-items: flex-start;
-   justify-content: flex-start;
+  border-radius: 8px;
+  width: 100%;
+  height: 27px;
+  background-color: transparent;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding-top: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
 
 }
 
@@ -390,7 +401,7 @@ i {
 }
 
 .logo_done {
-  margin-right: 5px;
+  margin-left: 5px;
   display: none;
 }
 
@@ -459,10 +470,10 @@ i {
 
   display: flex;
   flex-direction: row;
-  justify-content:stretch;
+  justify-content: stretch;
   align-items: stretch;
   align-content: space-between;
-  
+
 }
 
 .button_day {
@@ -478,30 +489,46 @@ i {
 
 .button_day:first-child:hover {
   background-color: red;
- 
+
 }
 
 .button_day:nth-child(2):hover {
   background-color: green;
- 
+
 }
 
 .button_day:nth-child(3):hover {
   background-color: green;
- 
+
 }
 
 .close-save {
 
-    cursor: pointer;
-    position: absolute;
-    top: 5;
-    left: 5;
-    width: 48;
+  cursor: pointer;
+  position: absolute;
+  top: 5;
+  left: 5;
+  width: 48;
 
 }
 
 .close-save:hover {
   transform: scale(1.1);
 
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #8e9eab;
+  display: inline-block;
+  outline: 0;
+  margin-bottom: -0.1px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: orange;
 }
