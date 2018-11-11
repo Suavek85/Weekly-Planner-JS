@@ -27,8 +27,8 @@
             <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name1'>MONDAY</h2>
             <p class="output" id='output1'></p></div>
             </div>
-            <image src='images\new.png' class='add' id='day1-button'></image>
-            <image src='images\edit.png' class='open' id='btns_1_sub'></image>
+            <image day-name='Mon' src='images\new.png' class='add' id='day1-add'></image>
+            <image day-name='Mon' src='images\edit.png' class='open' id='btns_1_open'></image>
         </li>
 
         <li class='day-box' id='box2'>
@@ -36,8 +36,8 @@
             <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name2'>TUESDAY</h2>
             <p class="output" id='output2'></p></div>
             </div>
-            <image src='images\new.png' class='add' id='day2-button'></image>
-            <image src='images\edit.png' class='open' id='btns_2_sub'></image>
+            <image day-name='Tue' src='images\new.png' class='add' id='day2-add'></image>
+            <image day-name='Tue' src='images\edit.png' class='open' id='btns_2_open'></image>
         </li>
 
         <li class='day-box' id='box3'>
@@ -45,8 +45,8 @@
             <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name3'>WEDNESDAY</h2>
             <p class="output" id='output3'></p></div>
             </div>
-            <image src='images\new.png' class='add' id='day3-button'></image>
-            <image src='images\edit.png' class='open' id='btns_3_sub'></image>
+            <image day-name='Wed' src='images\new.png' class='add' id='day3-add'></image>
+            <image day-name='Wed' src='images\edit.png' class='open' id='btns_3_open'></image>
         </li>
 
         <li class='day-box' id='box4'>
@@ -54,8 +54,8 @@
             <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name4'>THURSDAY</h2>
             <p class="output" id='output4'></p></div>
             </div>
-            <image src='images\new.png' class='add' id='day4-button'></image>
-            <image src='images\edit.png' class='open' id='btns_4_sub'></image>
+            <image day-name='Thu' src='images\new.png' class='add' id='day4-add'></image>
+            <image day-name='Thu' src='images\edit.png' class='open' id='btns_4_open'></image>
         </li>
 
         <li class='day-box' id='box5'>
@@ -63,8 +63,8 @@
             <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name5'>FRIDAY</h2>
             <p class="output" id='output5'></p></div>
             </div>
-            <image src='images\new.png' class='add' id='day5-button'></image>
-            <image src='images\edit.png' class='open' id='btns_5_sub'></image>
+            <image day-name='Fri' src='images\new.png' class='add' id='day5-add'></image>
+            <image day-name='Fri' src='images\edit.png' class='open' id='btns_5_open'></image>
         </li>
 
         <li class='day-box' id='box6'>
@@ -72,8 +72,8 @@
             <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name6'>SATURDAY</h2>
             <p class="output" id='output6'></p></div>
             </div>
-            <image src='images\new.png' class='add' id='day6-button'></image>
-            <image src='images\edit.png' class='open' id='btns_6_sub'></image>
+            <image day-name='Sat' src='images\new.png' class='add' id='day6-add'></image>
+            <image day-name='Sat' src='images\edit.png' class='open' id='btns_6_open'></image>
         </li>
 
         <li class='day-box' id='box7'>
@@ -81,8 +81,8 @@
             <div class='day_box_text'><div class='day_box_text_sub'><h2 id='name7'>SUNDAY</h2>
             <p class="output" id='output7'></p></div>
             </div>
-            <image src='images\new.png' class='add' id='day7-button'></image>
-            <image src='images\edit.png' class='open' id='btns_7_sub'></image>
+            <image day-name='Sun' src='images\new.png' class='add' id='day7-add'></image>
+            <image day-name='Sun' src='images\edit.png' class='open' id='btns_7_open'></image>
         </li>
 
     </ul>
@@ -126,13 +126,13 @@
             <div class='flex-form-btns'>
                 <div id='submit-btns' class="form-item">
 
-                    <button class='submit-btn' id='btn_1'>Submit</button>
-                    <button class='submit-btn' id='btn_2'>Submit</button>
-                    <button class='submit-btn' id='btn_3'>Submit</button>
-                    <button class='submit-btn' id='btn_4'>Submit</button>
-                    <button class='submit-btn' id='btn_5'>Submit</button>
-                    <button class='submit-btn' id='btn_6'>Submit</button>
-                    <button class='submit-btn' id='btn_7'>Submit</button>
+                    <button day-name="Mon" class='submit-btn' id='submit_1'>Submit</button>
+                    <button day-name="Tue" class='submit-btn' id='submit_2'>Submit</button>
+                    <button day-name="Wed" class='submit-btn' id='submit_3'>Submit</button>
+                    <button day-name="Thu" class='submit-btn' id='submit_4'>Submit</button>
+                    <button day-name="Fri" class='submit-btn' id='submit_5'>Submit</button>
+                    <button day-name="Sat" class='submit-btn' id='submit_6'>Submit</button>
+                    <button day-name="Sun" class='submit-btn' id='submit_7'>Submit</button>
 
                 </div>
 
@@ -172,13 +172,13 @@
             <div id='progressbar_background'> <span id='progressbar'></span></div>
             
 
-            <img src='images\save-close.png' class='close-save' id='close-day-1'></img>
-            <img src='images\save-close.png'' class='close-save'id='close-day-2'></img>
-            <img src='images\save-close.png'' class='close-save'id='close-day-3'></img>
-            <img src='images\save-close.png'' class='close-save'id='close-day-4'></img>
-            <img src='images\save-close.png'' class='close-save'id='close-day-5'></img>
-            <img src='images\save-close.png'' class='close-save'id='close-day-6'></img>
-            <img src='images\save-close.png'' class='close-save'id='close-day-7'></img>
+            <img day-name="Mon" src='images\save-close.png' class='close-save' id='close-day-1'></img>
+            <img day-name="Tue" src='images\save-close.png'' class='close-save'id='close-day-2'></img>
+            <img day-name="Wed" src='images\save-close.png'' class='close-save'id='close-day-3'></img>
+            <img day-name="Thu" src='images\save-close.png'' class='close-save'id='close-day-4'></img>
+            <img day-name="Fri" src='images\save-close.png'' class='close-save'id='close-day-5'></img>
+            <img day-name="Sat" src='images\save-close.png'' class='close-save'id='close-day-6'></img>
+            <img day-name="Sun" src='images\save-close.png'' class='close-save'id='close-day-7'></img>
 
         </div>
 

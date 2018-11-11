@@ -1,5 +1,13 @@
+//GLOBAL VARS
+
+var dayIndex;
+var weekArray = [];
+
+//DAY CLASS
+
 class Day {
-  constructor() {
+  constructor(a) {
+    this.a = a;
     this.b = document.getElementById("notes").value;
     var radios = document.getElementsByName("day");
     for (var i = 0, length = radios.length; i < length; i++) {
@@ -13,7 +21,7 @@ class Day {
   }
 
   createDayBox(dayNumber) {
-    document.getElementById("btns_" + dayNumber + "_sub").style.display =
+    document.getElementById("btns_" + dayNumber + "_open").style.display =
       "block";
 
     document.getElementById(
@@ -38,11 +46,7 @@ class Day {
   }
 }
 
-
-
-
-
-//VIEW OBJECT 
+//VIEW OBJECT
 
 var view = {
   addArray: Array.prototype.slice.call(document.querySelectorAll(".add")),
@@ -53,36 +57,36 @@ var view = {
 
   openArray: Array.prototype.slice.call(document.querySelectorAll(".open")),
 
-  todoListRemove: function () {
+  todoListRemove: function() {
     var todolist = document.getElementById("todolist");
     todolist.remove();
   },
 
-  disableAdd: function () {
+  disableAdd: function() {
     for (var i = 0; i < this.addArray.length; i++) {
       this.addArray[i].style.visibility = "hidden";
     }
   },
 
-  disableOpen: function () {
+  disableOpen: function() {
     for (var i = 0; i < this.openArray.length; i++) {
       this.openArray[i].style.visibility = "hidden";
     }
   },
 
-  enableAdd: function () {
+  enableAdd: function() {
     for (var i = 0; i < this.addArray.length; i++) {
       this.addArray[i].style.visibility = "visible";
     }
   },
 
-  enableOpen: function () {
+  enableOpen: function() {
     for (var i = 0; i < this.openArray.length; i++) {
       this.openArray[i].style.visibility = "visible";
     }
   },
 
-  displayForm: function () {
+  displayForm: function() {
     document.getElementById("notes").value = "";
     document.getElementById("work").checked = true;
     document.getElementById("form-container").style.display = "flex";
@@ -90,22 +94,22 @@ var view = {
     todos.ul_tasks().innerHTML = "";
   },
 
-  clearTodo: function () {
+  clearTodo: function() {
     todos.ul_tasks().innerHTML = "";
   },
 
-  undisplayForm: function () {
+  undisplayForm: function() {
     for (var i = 0; i < this.submitArray.length; i++) {
       this.submitArray[i].style.display = "none";
       document.getElementById("form-container").style.display = "none";
     }
   },
 
-  displaySubmit: function (el) {
-    document.getElementById("btn_" + el).style.display = "block";
+  displaySubmit: function(el) {
+    document.getElementById("submit_" + el).style.display = "block";
   },
 
-  undisplayDay: function () {
+  undisplayDay: function() {
     document.querySelector(".notes-box").style.display = "none";
     var closeSave = Array.prototype.slice.call(
       document.querySelectorAll(".close-save")
@@ -118,15 +122,15 @@ var view = {
     document.getElementById("close-day-1").style.display;
   },
 
-  displayDay: function () {
+  displayDay: function() {
     document.querySelector(".notes-box").style.display = "flex";
   },
 
-  startFromToday: function (number) {
+  startFromToday: function(number) {
     document.getElementById("name" + number).innerHTML = "TODAY";
   },
 
-  calculateProgress: function () {
+  calculateProgress: function() {
     var allTodosOutput = Array.prototype.slice.call(
       document.getElementsByName("todoscb")
     );
@@ -136,8 +140,7 @@ var view = {
 
     for (var i = 0, length = allTodosOutput.length; i < length; i++) {
       if (
-        allTodosOutput[i].nextSibling.style.textDecoration ===
-        "line-through"
+        allTodosOutput[i].nextSibling.style.textDecoration === "line-through"
       ) {
         var todosCompletedCount = todosCompletedCount + 1;
       }
@@ -166,21 +169,21 @@ var view = {
     }
   },
 
-  clearProgress: function () {
+  clearProgress: function() {
     var progressBar = document.getElementById("progressbar");
     progressBar.style.width = "100%";
     progressBar.innerHTML = "0% completed";
     progressBar.style.backgroundColor = "#A4A4A4";
   },
 
-  undisplayWelcome: function () {
+  undisplayWelcome: function() {
     var welcome = document.querySelector(".welcome");
     var quotes = document.querySelector(".quotes");
     welcome.style.display = "none";
     quotes.style.display = "none";
   },
 
-  displayWelcome: function () {
+  displayWelcome: function() {
     var welcome = document.querySelector(".welcome");
     var quotes = document.querySelector(".quotes");
     welcome.style.display = "block";
@@ -188,37 +191,36 @@ var view = {
   },
 
   removeFilter: function(num) {
-    document.getElementById("box_image_" + num).classList.remove("black_and_white");
+    document
+      .getElementById("box_image_" + num)
+      .classList.remove("black_and_white");
   }
-
-}
+};
 
 //TODOS OBJECT
 
 var todos = {
-
-  input_todo_form: function () {
+  input_todo_form: function() {
     return document.getElementById("input_list");
   },
 
-  input_todo_day: function () {
+  input_todo_day: function() {
     return document.getElementById("input_list_output");
   },
 
-  ul_tasks: function () {
+  ul_tasks: function() {
     return document.getElementById("task_list");
   },
 
-  ul_tasks_day: function () {
+  ul_tasks_day: function() {
     return document.getElementById("task_list_output");
   },
 
-  inputLength: function (element) {
+  inputLength: function(element) {
     return element.value.length;
   },
 
-  createIconDone: function (el) {
-
+  createIconDone: function(el) {
     var logo_done = document.createElement("img");
     logo_done.setAttribute("src", "images/completed.png");
     logo_done.setAttribute("alt", "logo done");
@@ -228,7 +230,7 @@ var todos = {
     el.appendChild(logo_done);
   },
 
-  createCheckbox: function (el) {
+  createCheckbox: function(el) {
     var checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = "checkbox_todo";
@@ -237,13 +239,13 @@ var todos = {
     el.appendChild(checkbox);
   },
 
-  createLi: function (el, el2) {
+  createLi: function(el, el2) {
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(el2.value));
     el.appendChild(li);
   },
 
-  createListForm: function () {
+  createListForm: function() {
     this.createCheckbox(this.ul_tasks());
     this.createLi(this.ul_tasks(), this.input_todo_form());
     this.input_todo_form().value = "";
@@ -254,7 +256,7 @@ var todos = {
     document.getElementById("delete_todo_form").style.display = "block";
   },
 
-  createListDay: function () {
+  createListDay: function() {
     this.createCheckbox(this.ul_tasks_day());
     this.createLi(this.ul_tasks_day(), this.input_todo_day());
     this.input_todo_day().value = "";
@@ -264,51 +266,48 @@ var todos = {
     this.ul_tasks_day().appendChild(br);
     document.getElementById("delete_todo_form").style.display = "block";
   }
-
 };
-
-
 
 //DATES AND TIME OBJECT
 
 var dates = {
-  date: function () {
+  date: function() {
     return new Date();
   },
-  today: function () {
+  today: function() {
     return this.shortToLong(this.date().toDateString());
   },
-  hellotoday: function () {
+  hellotoday: function() {
     return "Hi, today's " + this.today();
   },
-  day: function () {
+  day: function() {
     return this.date().getDay();
   },
 
-  nowHour: function () {
+  nowHour: function() {
     return this.date().getHours();
   },
 
-  welcomeMessage: function (el) {
+  welcomeMessage: function(el) {
     return (document.getElementById("welcoming").innerHTML = "Good " + el);
   },
 
-  morQuote: function () {
+  morQuote: function() {
     return (document.getElementById("quotes_text").innerHTML =
       "I opened two gifts this morning. They were my eyes.");
   },
 
-  aftQuote: function () {
+  aftQuote: function() {
     return (document.getElementById("quotes_text").innerHTML =
       "Get busy living or get busy dying. - Stephen King");
   },
 
-  eveQuote: function () {
+  eveQuote: function() {
     return (document.getElementById("quotes_text").innerHTML =
       "Eighty percent of success is showing up. – Woody Allen");
   },
 
-  jumpToNextDay: function (date, numb) {
+  jumpToNextDay: function(date, numb) {
     var currentDate = this.shortToLong(
       new Date(
         +date + (7 - ((date.getDay() + numb) % 7)) * 86400000
@@ -317,19 +316,19 @@ var dates = {
     document.getElementById("background_text").innerHTML = currentDate;
   },
 
-  jumpToToday: function () {
+  jumpToToday: function() {
     document.getElementById("background_text").innerHTML = this.hellotoday();
   },
 
-  notToday: function (dayNumber) {
+  notToday: function(dayNumber) {
     return (
-      document.getElementById("btns_" + dayNumber + "_sub").previousSibling
-      .previousSibling.previousSibling.previousSibling.firstChild.firstChild
-      .innerHTML !== "TODAY"
+      document.getElementById("btns_" + dayNumber + "_open").previousSibling
+        .previousSibling.previousSibling.previousSibling.firstChild.firstChild
+        .innerHTML !== "TODAY"
     );
   },
 
-  shortToLong: function (el) {
+  shortToLong: function(el) {
     return el
       .replace(/Mon/g, "Monday,")
       .replace(/Tue/g, "Tuesday,")
@@ -353,7 +352,7 @@ var dates = {
       .replace(/2019/g, "");
   },
 
-  nowTime: function () {
+  nowTime: function() {
     if (this.nowHour() >= 5 && this.nowHour() <= 11) {
       this.welcomeMessage("morning.");
       this.morQuote();
@@ -369,7 +368,7 @@ var dates = {
     }
   },
 
-  orderDays: function () {
+  orderDays: function() {
     var box1 = document.getElementById("box1");
     var box2 = document.getElementById("box2");
     var box3 = document.getElementById("box3");
@@ -405,16 +404,24 @@ var dates = {
     }
   },
 
-  randomPicGen: function (pic1, pic2) {
+  randomPicGen: function(pic1, pic2) {
     var randomPic = Math.floor(Math.random() * 2 + 1);
 
     if (randomPic === 1) {
       document.getElementById("main_pic").style.backgroundImage =
-        "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(images/" + pic1 + ".jpg";
+        "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(images/" +
+        pic1 +
+        ".jpg";
     } else {
       document.getElementById("main_pic").style.backgroundImage =
-        "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(images/" + pic2 + ".jpg";
+        "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(images/" +
+        pic2 +
+        ".jpg";
     }
+  },
+
+  addAttribute: function() {
+    return event.target.getAttribute("day-name");
   }
 };
 
@@ -422,185 +429,93 @@ var dates = {
 
 document.addEventListener(
   "click",
-  function (event) {
-    if (event.target.id.includes("btn_")) {
+  function(event) {
+    var day_name = event.target.getAttribute("day-name");
+
+    if (event.target.id.includes("submit_")) {
       view.enableAdd();
       view.undisplayForm();
       view.enableOpen();
-
-      var eventbtn_submit = event.target;
-
-      switch (eventbtn_submit.id) {
-        case "btn_1":
-          day1full = new Day();
-          day1full.createDayBox(1);
-          view.clearTodo();
-          break;
-
-        case "btn_2":
-          day2full = new Day();
-          day2full.createDayBox(2);
-          view.clearTodo();
-          break;
-
-        case "btn_3":
-          day3full = new Day();
-          day3full.createDayBox(3);
-          view.clearTodo();
-          break;
-
-        case "btn_4":
-          day4full = new Day();
-          day4full.createDayBox(4);
-          view.clearTodo();
-          break;
-
-        case "btn_5":
-          day5full = new Day();
-          day5full.createDayBox(5);
-          view.clearTodo();
-          break;
-
-        case "btn_6":
-          day6full = new Day();
-          day6full.createDayBox(6);
-          view.clearTodo();
-          break;
-
-        case "btn_7":
-          day7full = new Day();
-          day7full.createDayBox(7);
-          view.clearTodo();
-          break;
-
-        default:
-          break;
-      }
-    } else if (event.target.id.includes("-button")) {
+      var numberSubmit = event.target.id.slice(-1);
+      dayfull = new Day(day_name);
+      weekArray.push(dayfull);
+      dayIndex = weekArray.findIndex(function(element) {
+        return element.a === event.target.getAttribute("day-name");
+      });
+      weekArray[dayIndex].createDayBox(numberSubmit);
+      view.clearTodo();
+    } else if (event.target.id.includes("-add")) {
       view.displayForm();
       view.disableAdd();
       view.undisplayWelcome();
       var eventbtn_add = event.target.id;
-
-      switch (eventbtn_add) {
-        case "day1-button":
-          view.displaySubmit(1);
-          view.removeFilter(1);
-          break;
-        case "day2-button":
-          view.displaySubmit(2);
-          view.removeFilter(2);
-          break;
-        case "day3-button":
-          view.displaySubmit(3);
-          view.removeFilter(3);
-          break;
-        case "day4-button":
-          view.displaySubmit(4);
-          view.removeFilter(4);
-          break;
-        case "day5-button":
-          view.displaySubmit(5);
-          view.removeFilter(5);
-          break;
-        case "day6-button":
-          view.displaySubmit(6);
-          view.removeFilter(6);
-          break;
-        case "day7-button":
-          view.displaySubmit(7);
-          view.removeFilter(7);
-          break;
-        default:
-          break;
-      }
-    } else if (event.target.id.includes("_sub")) {
+      var numberAdd = eventbtn_add.slice(3, 4);
+      view.displaySubmit(numberAdd);
+      view.removeFilter(numberAdd);
+    } else if (event.target.id.includes("_open")) {
       view.displayDay();
       view.undisplayForm();
       view.disableOpen();
       view.disableAdd();
       view.undisplayWelcome();
-
       var eventbtn_open = event.target.id;
+      dayIndex = weekArray.findIndex(function(element) {
+        return element.a === day_name;
+      });
 
-      if (eventbtn_open === "btns_1_sub") {
+      if (eventbtn_open === "btns_1_open") {
         if (dates.notToday(1)) {
           dates.jumpToNextDay(dates.date(), 6);
         } else {
           dates.jumpToToday();
         }
-        day1full.createDayCard(1);
-        view.calculateProgress();
-      } else if (eventbtn_open === "btns_2_sub") {
+      } else if (eventbtn_open === "btns_2_open") {
         if (dates.notToday(2)) {
           dates.jumpToNextDay(dates.date(), 5);
         } else {
           dates.jumpToToday();
         }
-        day2full.createDayCard(2);
-        view.calculateProgress();
-      } else if (eventbtn_open === "btns_3_sub") {
+      } else if (eventbtn_open === "btns_3_open") {
         if (dates.notToday(3)) {
           dates.jumpToNextDay(dates.date(), 4);
         } else {
           dates.jumpToToday();
         }
-        day3full.createDayCard(3);
-        view.calculateProgress();
-      } else if (eventbtn_open === "btns_4_sub") {
+      } else if (eventbtn_open === "btns_4_open") {
         if (dates.notToday(4)) {
           dates.jumpToNextDay(dates.date(), 3);
         } else {
           dates.jumpToToday();
         }
-        day4full.createDayCard(4);
-        view.calculateProgress();
-      } else if (eventbtn_open === "btns_5_sub") {
+      } else if (eventbtn_open === "btns_5_open") {
         if (dates.notToday(5)) {
           dates.jumpToNextDay(dates.date(), 2);
         } else {
           dates.jumpToToday();
         }
-        day5full.createDayCard(5);
-        view.calculateProgress();
-      } else if (eventbtn_open === "btns_6_sub") {
+      } else if (eventbtn_open === "btns_6_open") {
         if (dates.notToday(6)) {
           dates.jumpToNextDay(dates.date(), 1);
         } else {
           dates.jumpToToday();
         }
-        day6full.createDayCard(6);
-        view.calculateProgress();
-      } else if (eventbtn_open === "btns_7_sub") {
+      } else if (eventbtn_open === "btns_7_open") {
         if (dates.notToday(7)) {
           dates.jumpToNextDay(dates.date(), 0);
         } else {
           dates.jumpToToday();
         }
-        day7full.createDayCard(7);
-        view.calculateProgress();
       } else {
         return;
       }
+      var numberOpen = event.target.id.slice(5, 6);
+      weekArray[dayIndex].createDayCard(numberOpen);
+      view.calculateProgress();
     } else if (event.target.id.includes("close-day")) {
-      var eventbtn_closesave = event.target.id;
-      if (eventbtn_closesave === "close-day-1") {
-        day1full.updateDay();
-      } else if (eventbtn_closesave === "close-day-2") {
-        day2full.updateDay();
-      } else if (eventbtn_closesave === "close-day-3") {
-        day3full.updateDay();
-      } else if (eventbtn_closesave === "close-day-4") {
-        day4full.updateDay();
-      } else if (eventbtn_closesave === "close-day-5") {
-        day5full.updateDay();
-      } else if (eventbtn_closesave === "close-day-6") {
-        day6full.updateDay();
-      } else if (eventbtn_closesave === "close-day-7") {
-        day7full.updateDay();
-      } else {
-        return;
-      }
+      dayIndex = weekArray.findIndex(function(element) {
+        return element.a === day_name;
+      });
+      weekArray[dayIndex].updateDay();
       view.displayWelcome();
       view.undisplayDay();
       view.todoListRemove();
@@ -625,6 +540,7 @@ document.addEventListener(
         }
       }
     } else if (event.target.id.includes("delete_output")) {
+      
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
@@ -643,8 +559,7 @@ document.addEventListener(
           allTodos[i].nextSibling.style.textDecoration = "line-through";
           allTodos[i].nextSibling.style.color = "grey";
           allTodos[i].checked = false;
-          allTodos[i].nextSibling.nextSibling.style.display =
-            "inline-block";
+          allTodos[i].nextSibling.nextSibling.style.display = "inline-block";
         }
       }
       view.calculateProgress();
@@ -668,9 +583,12 @@ document.addEventListener(
 
 document.addEventListener(
   "keypress",
-  function (event) {
+  function(event) {
     if (event.target.id.includes("input_list")) {
-      if (todos.inputLength(todos.input_todo_day()) > 0 && event.keyCode === 13) {
+      if (
+        todos.inputLength(todos.input_todo_day()) > 0 &&
+        event.keyCode === 13
+      ) {
         todos.createListForm();
         view.calculateProgress();
       }
@@ -679,7 +597,7 @@ document.addEventListener(
   false
 );
 
-window.onload = function () {
+window.onload = function() {
   dates.nowTime();
   dates.orderDays();
 };

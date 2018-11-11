@@ -435,24 +435,24 @@ i {
   padding: 10px;
 }
 
-#btn_1,
-#btn_2,
-#btn_3,
-#btn_4,
-#btn_5,
-#btn_6,
-#btn_7 {
+#submit_1,
+#submit_2,
+#submit_3,
+#submit_4,
+#submit_5,
+#submit_6,
+#submit_7 {
   display: none;
   padding: 10px;
 }
 
-#btns_1_sub,
-#btns_2_sub,
-#btns_3_sub,
-#btns_4_sub,
-#btns_5_sub,
-#btns_6_sub,
-#btns_7_sub {
+#btns_1_open,
+#btns_2_open,
+#btns_3_open,
+#btns_4_open,
+#btns_5_open,
+#btns_6_open,
+#btns_7_open {
   display: none;
 }
 
