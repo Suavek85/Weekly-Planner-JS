@@ -2,6 +2,9 @@
 
 var dayIndex;
 var weekArray = [];
+var x;
+var lolipop;
+var candy, candy2, sweats;
 
 //DAY CLASS
 
@@ -265,6 +268,27 @@ var todos = {
     var br = document.createElement("br");
     this.ul_tasks_day().appendChild(br);
     document.getElementById("delete_todo_form").style.display = "block";
+  },
+
+  countWeeklyTodos: function() {
+    lolipop = [];
+    sweats = [];
+    for (i = 0; i < weekArray.length; i++) {
+      x = (weekArray[i].g.match(/through/g) || []).length;
+      lolipop.push(x);
+
+      y = (weekArray[i].g.match(/todoscb/g) || []).length;
+      sweats.push(y);
+    }
+
+    candy = lolipop.reduce(function(a, b) {
+      return a + b;
+    });
+
+    candy2 = sweats.reduce(function(a, b) {
+      return a + b;
+    });
+    console.log(candy + " out of " + candy2 + " done");
   }
 };
 
@@ -508,6 +532,7 @@ document.addEventListener(
       } else {
         return;
       }
+
       var numberOpen = event.target.id.slice(5, 6);
       weekArray[dayIndex].createDayCard(numberOpen);
       view.calculateProgress();
@@ -540,7 +565,6 @@ document.addEventListener(
         }
       }
     } else if (event.target.id.includes("delete_output")) {
-      
       var allTodos = document.getElementsByName("todoscb");
       for (var i = 0, length = allTodos.length; i < length; i++) {
         if (allTodos[i].checked) {
