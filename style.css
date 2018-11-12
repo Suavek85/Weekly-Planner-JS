@@ -11,8 +11,8 @@ body {
 
   width: 90vw;
   display: flex;
-  justify-content: flex-start;
-  margin: auto;
+  justify-content: center;
+  margin: 0 auto 30px auto;
 }
 
 
@@ -82,7 +82,9 @@ li {
   font-family: cursive;
   font-style: italic;
   text-align: center;
-  align-items: center
+  margin: auto;
+  align-items: center;
+  margin-top:150px;
 }
 
 
@@ -95,14 +97,12 @@ li {
   background-size: cover;
   background-attachment: fixed;
   width: 90vw;
-  min-height: 90vh;
+  min-height: 100vh;
   max-height: 220vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border-radius: 10px;
+  justify-content: flex-start;
   margin: auto;
-
 
 }
 
@@ -149,7 +149,7 @@ h2 {
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
-  background-image: url("images/generic_360x120.jpg"),linear-gradient(to right, #2193b0, #6dd5ed);
+  background-image: url("images/generic_360x120.jpg"), linear-gradient(to right, #2193b0, #6dd5ed);
 
 }
 
@@ -327,9 +327,10 @@ h2 {
   width: 250px;
   background-color: white;
 }
+
 #mynotes {
 
-width: 150px;
+  width: 150px;
 
 }
 
@@ -553,9 +554,8 @@ input[type="checkbox"]:checked {
   background-color: orange;
 }
 
-input[type="text"]
-{
-    font-size:16px;
+input[type="text"] {
+  font-size: 16px;
 }
 
 input[type="text"] {
