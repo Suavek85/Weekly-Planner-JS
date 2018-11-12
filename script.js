@@ -282,7 +282,7 @@ var todos = {
     }
 
     if(todosDoneArray.length === 0 && todosAllArray.length === 0) {
-      document.getElementById('outstanding_tasks').innerHTML = "You have no outstanding tasks this week.";
+      document.getElementById('outstanding_tasks').innerHTML = "You have no outstanding tasks.";
     } else {
 
       countDone = todosDoneArray.reduce(function(a, b) {
@@ -292,7 +292,7 @@ var todos = {
       countAll = todosAllArray.reduce(function(a, b) {
         return a + b;
       });
-      document.getElementById('outstanding_tasks').innerHTML = countDone + " out of " + countAll + " tasks done this week.";
+      document.getElementById('outstanding_tasks').innerHTML = countDone + " out of " + countAll + " tasks done for the next 7 days.";
     }
 
   }
