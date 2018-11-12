@@ -507,12 +507,12 @@ i {
   margin-left: 10px;
 }
 
-.button_day:nth-child(2):hover {
+.button_day:nth-child(3):hover {
   background-color: red;
 
 }
 
-.button_day:nth-child(3):hover {
+.button_day:nth-child(2):hover {
   background-color: green;
 
 }

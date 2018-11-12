@@ -2,9 +2,7 @@
 
 var dayIndex;
 var weekArray = [];
-var x;
-var lolipop;
-var candy, candy2, sweats;
+
 
 //DAY CLASS
 
@@ -35,9 +33,9 @@ class Day {
   createDayCard(dayNumber) {
     document.querySelector("#output8").innerHTML = this.b;
     var word = this.g;
-    var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul><img src='images/trash.png' class='button_day' id='delete_output'></img>
+    var todoHtml = `<div id='todolist' class='notes-item'>My tasks:<ul id='task_list_output'>${word}</ul>
     <img src='images/completed.png' class='button_day' id='completed'>
-    </img></div>`;
+    </img><img src='images/trash.png' class='button_day' id='delete_output'></img></div>`;
     mynotes.insertAdjacentHTML("afterend", todoHtml);
     document.getElementById("close-day-" + dayNumber).style.display = "block";
   }
@@ -271,24 +269,32 @@ var todos = {
   },
 
   countWeeklyTodos: function() {
-    lolipop = [];
-    sweats = [];
-    for (i = 0; i < weekArray.length; i++) {
-      x = (weekArray[i].g.match(/through/g) || []).length;
-      lolipop.push(x);
+    var todosDoneArray = [];
+    var todosAllArray = [];
+    
 
-      y = (weekArray[i].g.match(/todoscb/g) || []).length;
-      sweats.push(y);
+    for (i = 0; i < weekArray.length; i++) {
+      var done_per_day = (weekArray[i].g.match(/through/g) || []).length;
+      todosDoneArray.push(done_per_day);
+
+     var all_per_day = (weekArray[i].g.match(/todoscb/g) || []).length;
+     todosAllArray.push(all_per_day);
     }
 
-    candy = lolipop.reduce(function(a, b) {
-      return a + b;
-    });
+    if(todosDoneArray.length === 0 && todosAllArray.length === 0) {
+      document.getElementById('outstanding_tasks').innerHTML = "You have no outstanding tasks this week.";
+    } else {
 
-    candy2 = sweats.reduce(function(a, b) {
-      return a + b;
-    });
-    console.log(candy + " out of " + candy2 + " done");
+      countDone = todosDoneArray.reduce(function(a, b) {
+        return a + b;
+      });
+  
+      countAll = todosAllArray.reduce(function(a, b) {
+        return a + b;
+      });
+      document.getElementById('outstanding_tasks').innerHTML = countDone + " out of " + countAll + " tasks done this week.";
+    }
+
   }
 };
 
@@ -459,10 +465,12 @@ document.addEventListener(
     if (event.target.id.includes("submit_")) {
       view.enableAdd();
       view.undisplayForm();
+      view.displayWelcome();
       view.enableOpen();
       var numberSubmit = event.target.id.slice(-1);
       dayfull = new Day(day_name);
       weekArray.push(dayfull);
+      todos.countWeeklyTodos();
       dayIndex = weekArray.findIndex(function(element) {
         return element.a === event.target.getAttribute("day-name");
       });
@@ -482,6 +490,7 @@ document.addEventListener(
       view.disableOpen();
       view.disableAdd();
       view.undisplayWelcome();
+      todos.countWeeklyTodos();
       var eventbtn_open = event.target.id;
       dayIndex = weekArray.findIndex(function(element) {
         return element.a === day_name;
@@ -536,17 +545,20 @@ document.addEventListener(
       var numberOpen = event.target.id.slice(5, 6);
       weekArray[dayIndex].createDayCard(numberOpen);
       view.calculateProgress();
+      
     } else if (event.target.id.includes("close-day")) {
       dayIndex = weekArray.findIndex(function(element) {
         return element.a === day_name;
       });
       weekArray[dayIndex].updateDay();
+      todos.countWeeklyTodos();
       view.displayWelcome();
       view.undisplayDay();
       view.todoListRemove();
       view.enableAdd();
       view.enableOpen();
       view.clearProgress();
+  
     } else if (event.target.id.includes("close-form")) {
       view.displayWelcome();
       view.enableAdd();
@@ -624,4 +636,5 @@ document.addEventListener(
 window.onload = function() {
   dates.nowTime();
   dates.orderDays();
+  todos.countWeeklyTodos();
 };
