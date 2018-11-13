@@ -308,7 +308,7 @@ var dates = {
     return this.shortToLong(this.date().toDateString());
   },
   hellotoday: function() {
-    return "Hi, today's " + this.today();
+    return "Today's " + this.today();
   },
   day: function() {
     return this.date().getDay();
